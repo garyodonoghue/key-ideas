@@ -22,6 +22,7 @@
 
 	</head>
 
+
   <body>
     <div class="container">
       <div class="header">
@@ -41,19 +42,8 @@
            <div class="navbar-collapse collapse">
              <ul class="nav navbar-nav">
                <li class="active"><a href="index.html">Home</a></li>
-               <li><a href="http://broadmarkpartners.com">About Us</a></li>
-               <li><a href="http://broadmark.io/blog">Contact Us</a></li>
-               <li class="dropdown">
-                 <ul class="dropdown-menu">
-                   <li><a href="#">Action</a></li>
-                   <li><a href="#">Another action</a></li>
-                   <li><a href="#">Something else here</a></li>
-                   <li class="divider"></li>
-                   <li class="dropdown-header">Nav header</li>
-                   <li><a href="#">Separated link</a></li>
-                   <li><a href="#">One more separated link</a></li>
-                 </ul>
-               </li>
+               <li><a href="#" onclick="loadAbout()">About Us</a></li>
+							 <li><a href="#" onclick="loadAbout()">Contact Us</a></li>
              </ul>
              <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
                <li>
@@ -86,8 +76,9 @@
       </div>
 	</div>
 
-<div class="container">
+	<div id="body">
 
+	<div class="container">
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
@@ -123,7 +114,7 @@
 	  </a>
 	</div>
 
-</br></br>
+	</br></br>
 	</div>
       <div class="container">
         <div class="row main-row">
@@ -167,5 +158,8 @@
 
         </div>
       </div>
+		</div>
+
+		<script src="js/index.js"></script>
   </body>
 </html>
