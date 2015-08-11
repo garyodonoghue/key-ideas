@@ -104,4 +104,16 @@ $( "#postBtn" ).bind( "click", function(event, ui) {
         alert('error');
       }
     });
+  });
+
+$( "#forumBtn" ).bind( "click", function(event, ui) {
+    $("#body" ).empty();
+
+    //add in content here to be discussed
+
+    $.get('/forum.html', function(data) {
+      $("#forumComments").html(data);
+    });
+
+    return false;
 });
