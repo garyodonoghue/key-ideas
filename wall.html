@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Include jQuery Mobile stylesheets -->
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <!-- Include the jQuery library -->
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <!-- Include the jQuery Mobile library -->
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+    
+	<div data-role="header">
+    	<h1>Post Comments and give feedback to others</h1>
+    </div>
+  
+  
+	</br>
+	</br>
+
+	<div class="container">
+
+	<div id="comment-box">
+		<textarea id="commentTxtBox" "rows="4" cols="10" placeholder="Say something..."></textarea>
+		<input id="postBtn" type="submit" value="Post Comment">
+    </div>
+	
+	</br>
+	
+	<div class="container" id="main">
+	
+	</div>
+	<script>
+		$( document ).ready(function() {
+		  //call to get all comments on page load
+		  var url = 'https://glaring-torch-16.firebaseio.com/comments.json';
+		  var commentIndexMappings = [];
+		  $.ajax(
+			{
+				type: "GET",
+				url: url,
+				data: "{}",
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (data) {
+					var commentsArr = $.map(data, function(el, i) 
+					{
+						commentIndexMappings.push(i);
+						return el; 
+					})
+					
+					console.log(commentIndexMappings);
+					var html = '</br></br></br>';
+					
+						for(var i=commentsArr.length-1; i>=0;i--){
+							html += '<br><div id="'+commentIndexMappings[i]+'" class="container"><b>';
+							html += commentsArr[i].text;
+							html += '</b></br></br>';
+							
+							html += '<textarea placeholder="respond to comment..." class="form-group" id="' + commentIndexMappings[i] + 'RespTxt" "rows="1" cols="100"></textarea></br>';
+							html += '<input class="form-group" id="'+ commentIndexMappings[i] +'" type="submit" value="Respond" onClick="submitResponse(event)">';
+
+							html += '</br></br>';
+
+							if(commentsArr[i].responses != null){
+
+								var responsesIndexMappings = [];
+
+								var responsesArr = $.map(commentsArr[i].responses, function(el, i) 
+								{
+									responsesIndexMappings.push(i);
+									return el; 
+								})
+
+
+								for(var j = 0; j<responsesArr.length;j++){
+									html += '<li>' + responsesArr[j].text;
+									html += '</br>';
+								}
+							}
+							
+							html += '</div></form></br><hr>';
+						}
+						
+					$("#main").html(html);
+				},
+				error: function (msg, url, line) {
+					alert('error');
+				}
+			});
+		});
+	</script>
+	
+	<script>
+		function submitResponse(event){
+			var commentDiv = "#"+event.target.id;
+			var respTxtDiv = "#"+event.target.id+"RespTxt";
+			var responseText = $(respTxtDiv).val();
+
+		    var url = 'https://glaring-torch-16.firebaseio.com/comments/'+event.target.id+'/responses.json';
+			
+			$.ajax(
+			{
+				type: "POST",
+				url: url,
+				data: '{"text" : "'+responseText+'", "userId" : 123}'	,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (data) {
+					$(commentDiv).append("<div>"+responseText+"</div>");
+					console.log('commentId='+event.target.id);
+			
+					$(respTxtDiv).val('');
+				},
+				error: function (msg, url, line) {
+					alert('error');
+				}
+			});
+		}
+	</script>
+	
+	<script>  
+		$( "#postBtn" ).bind( "click", function(event, ui) {
+			
+		  var url = 'https://glaring-torch-16.firebaseio.com/comments.json';
+		  var commentText = $('#commentTxtBox').val();
+		  commentText = commentText.replace(/\n/g, "");
+		  
+		  //Passing fake user id at the moment - need to pass real value
+		  $.ajax(
+			{
+				type: "POST",
+				url: url,
+				data: '{"text" : "'+commentText+'", "userId" : 123}'	,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (data) {
+					$("#main").prepend("<div><b>"+commentText+"</b></div></br><hr>")	
+					$("#commentTxtBox").val('');
+				},
+				error: function (msg, url, line) {
+					alert('error');
+				}
+			});
+		});	
+	</script>
+</body>
+</html>
