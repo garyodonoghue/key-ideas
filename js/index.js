@@ -10,6 +10,7 @@ function loadAbout(){
 
 function loadContact(){
   $("#body" ).empty();
+  $("#forumComments" ).empty();
 
   $.get('/contact.html', function(data) {
     $("#body").html(data);
