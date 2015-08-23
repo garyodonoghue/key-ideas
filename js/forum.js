@@ -122,12 +122,23 @@ $( "#postBtn" ).bind( "click", function(event, ui) {
   });
 });
 
+function populateWaterChargesInformation(){
+  //populate content in the div about water charges
+  var html = '';
+  $.get('/water_charges.html', function(data) {
+    html += data;
+    html += '</br></br></br><div class="row main-row">Post your opinion on this topic or read people\'s comments below....</div>';
+    $("#forumInfo").html(html);
+  });
+}
+
 $( "#waterChargesBtn" ).bind( "click", function(event, ui) {
     $("#body" ).empty();
 
     context = 'water_charges';
+    populateWaterChargesInformation();
 
-    //add in content here to be discussed
+    debugger;
 
     $.get('/forum.html', function(data) {
       $("#forumComments").html(data);
