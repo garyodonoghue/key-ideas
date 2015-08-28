@@ -16,6 +16,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/forum.css" />
     <link rel="stylesheet" href="css/social-button.css" />
@@ -48,26 +52,21 @@
 							 <li><a href="#" onclick="loadContact()">Contact Us</a></li>
              </ul>
              <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
-               <li>
-               	<a href="https://www.facebook.com/keyideas.ie?_rdr=p" class="btn btn-social-icon">
+							 <li>
+               	<a onClick="loginFacebook()" class="btn btn-social-icon">
                    <i class="fa fa-facebook"></i>
                </a>
                </li>
                <li>
-               <a href="https://twitter.com/KEYIdeasIE" class="btn btn-social-icon">
+               <a onClick="loginTwitter()" class="btn btn-social-icon">
                    <i class="fa fa-twitter"></i>
                </a>
                </li>
 							 <li>
- 								<a href="https://plus.google.com/u/0/115929611821689583255" class="btn btn-social-icon">
+ 								<a onClick="loginGoogle()" class="btn btn-social-icon">
  									<i class="fa fa-google-plus"></i>
  							</a>
  							</li>
-							<li>
-							 <a href="https://www.youtube.com/channel/UCFi36usDU6RDjqjxeBA8o3w" class="btn btn-social-icon">
-								 <i class="fa fa-youtube"></i>
-						 </a>
-						 </li>
              </ul>
            </div>
      <!--/.nav-collapse -->

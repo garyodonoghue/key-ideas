@@ -24,27 +24,9 @@ function displayPosts(){
             html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><div class="titleBox"><label>';
             html += commentsArr[i].text;
             html += '</label></div><div class="commentBox"><p class="taskDescription">';
-            html += '<img class="img-circle" src="' + commentsArr[i].profilePicUrl + '">';
+            html += '<img class="img-circle" width="100" height="100" src="' + commentsArr[i].profilePicUrl + '">';
             html += '<div>' + commentsArr[i].userName + '</div>';
             html += '</br>';
-
-            if(commentsArr[i].responses != null){
-
-              var responsesIndexMappings = [];
-
-              //var responsesArr = $.map(commentsArr[i].responses, function(el, i)
-              //{
-              //  responsesIndexMappings.push(i);
-              //  return el;
-              //})
-
-
-              //for(var j = 0; j<responsesArr.length;j++){
-              //  html += '<div class="actionBox"><ul class="commentList"><li><div class="commenterImage"><img src="http://lorempixel.com/50/50/people/6"></div><div class="commentText"><p class="">';
-              //  html += responsesArr[j].text;
-              //  html += '</p> <span class="date sub-text">on March 5th, 2014</span></div></li>';
-              //}
-            }
 
             html += '</div>';
             html += '<form class="form-inline" role="form">';
@@ -62,7 +44,6 @@ function displayPosts(){
 }
 
 function submitResponse(event){
-  debugger;
     var commentDiv = "#"+event.target.id;
     var respTxtDiv = "#"+event.target.id+"RespTxt";
     var responseText = $(respTxtDiv).val();
@@ -89,37 +70,63 @@ function submitResponse(event){
 $( "#postBtn" ).bind( "click", function(event, ui) {
 
   var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-  ref.authWithOAuthPopup("facebook", function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
 
+  //check if user is signed in and authenticated before allowing them to post content
+  var authToken = ref.getAuth();
 
-      var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/' + context + '/comments.json';
-      var commentText = $('#commentTxtBox').val();
-      commentText = commentText.replace(/\n/g, "");
+  if(authToken == null){
+    BootstrapDialog.show({
+            title: 'Please Login',
+            message: 'Login in using the buttons on the top-right'
+    });
+  }
+  else{
+    debugger;
 
-      debugger;
+    //users to alreadt logged in
+    var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/' + context + '/comments.json';
+    var commentText = $('#commentTxtBox').val();
+    commentText = commentText.replace(/\n/g, "");
 
-      //Passing fake user id at the moment - need to pass real value
-      $.ajax(
-      {
-        type: "POST",
-        url: url,
-        data: '{"text" : "' + commentText + '", "userName" : "' + authData.facebook.displayName + '", "profilePicUrl" : "' + authData.facebook.profileImageURL + '"}'	,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-          $("#commentTxtBox").val('');
-          displayPosts();
-        },
-        error: function (msg, url, line) {
-          alert('error');
-        }
-      });
+    //get the user credentials (profile pic, username) from the auth token
+    var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+    //check if user is signed in and authenticated before allowing them to post content
+    var authToken = ref.getAuth();
+    var authProvider = authToken.provider;
+
+    var profileImageURL;
+    var displayName;
+
+    if(authProvider == "google"){
+        displayName = authToken.google.displayName;
+        profileImageURL = authToken.google.profileImageURL
     }
-  });
+    else if(authProvider == "facebook"){
+      displayName = authToken.facebook.displayName;
+      profileImageURL = authToken.facebook.profileImageURL
+    }
+    else if(authProvider == "twitter"){
+      displayName = authToken.twitter.displayName;
+      profileImageURL = authToken.twitter.profileImageURL
+    }
+
+    $.ajax(
+    {
+      type: "POST",
+      url: url,
+      data: '{"text" : "' + commentText + '", "userName" : "' + displayName + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data) {
+        $("#commentTxtBox").val('');
+        displayPosts();
+      },
+      error: function (msg, url, line) {
+        alert('error');
+      }
+    });
+  }
 });
 
 function populateWaterChargesInformation(){
@@ -146,3 +153,53 @@ $( "#waterChargesBtn" ).bind( "click", function(event, ui) {
 
     return false;
 });
+
+function loginFacebook(){
+  var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+  //check if user is signed in and authenticated before allowing them to post content
+  var authToken = ref.getAuth();
+  if(authToken == null){
+    ref.authWithOAuthPopup("facebook", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    }, {remember: "none"});
+  }
+}
+
+function loginTwitter(){
+  var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+  //check if user is signed in and authenticated before allowing them to post content
+  var authToken = ref.getAuth();
+  if(authToken == null){
+    ref.authWithOAuthPopup("twitter", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    }, {remember: "none"});
+  }
+}
+
+
+function loginGoogle(){
+  var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+  //check if user is signed in and authenticated before allowing them to post content
+  var authToken = ref.getAuth();
+  if(authToken == null){
+  debugger;
+    ref.authWithOAuthPopup("google", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    }, {remember: "none"});
+  }
+}
