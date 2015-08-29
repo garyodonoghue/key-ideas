@@ -1,6 +1,8 @@
 function loadAbout(){
     $("#body" ).empty();
-
+    $("#forumInfo").empty();
+    $("#forumComments" ).empty();
+    
     $.get('/about.html', function(data) {
       $("#body").html(data);
     });
@@ -11,6 +13,7 @@ function loadAbout(){
 function loadContact(){
   $("#body" ).empty();
   $("#forumComments" ).empty();
+  $("#forumInfo").empty();
 
   $.get('/contact.html', function(data) {
     $("#body").html(data);

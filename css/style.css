@@ -30,3 +30,12 @@
     color: #fff;
     background-color: #C76565;
 }
+
+.carousel-inner > .item > img{
+       width:1240px;
+       height:360px;
+       -webkit-transition: 0.6s ease-in-out left;
+       -moz-transition: 0.6s ease-in-out left;
+       -o-transition: 0.6s ease-in-out left;
+       transition: 1.6s ease-in-out left;
+}
