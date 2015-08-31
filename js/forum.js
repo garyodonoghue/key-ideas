@@ -81,8 +81,6 @@ $( "#postBtn" ).bind( "click", function(event, ui) {
     });
   }
   else{
-    debugger;
-
     //users to alreadt logged in
     var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/' + context + '/comments.json';
     var commentText = $('#commentTxtBox').val();
@@ -145,8 +143,6 @@ $( "#waterChargesBtn" ).bind( "click", function(event, ui) {
     context = 'water_charges';
     populateWaterChargesInformation();
 
-    debugger;
-
     $.get('/forum.html', function(data) {
       $("#forumComments").html(data);
     });
@@ -193,7 +189,6 @@ function loginGoogle(){
   //check if user is signed in and authenticated before allowing them to post content
   var authToken = ref.getAuth();
   if(authToken == null){
-  debugger;
     ref.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
