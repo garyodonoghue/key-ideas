@@ -4,7 +4,8 @@ var slideInterval = 3000;
 function toggleCaption() {
     $('.carousel-caption').hide();
     var caption = carouselContainer.find('.active').find('.carousel-caption');
-    caption.delay(500).toggle("slide", {direction:'right'});
+    caption[0].setAttribute("style", "display:block");
+    caption.addClass('animated bounceInUp');
 }
 
 carouselContainer.carousel({
