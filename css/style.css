@@ -49,6 +49,25 @@
     height: 100% !important;
 }
 
+.carousel {
+    border-radius: 55px 55px 55px 55px;
+    overflow: hidden;
+}
+
 .text-shadow{
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.dropdown-menu {
+    min-width: 110px;
+}
+
+.roundyCorners{
+  border-radius: 55px 55px 55px 55px;
+  overflow: hidden;
+}
+
+
+.fa-facebook, .fa-twitter, .fa-google-plus{
+  color:#DC5843;
 }

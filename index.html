@@ -36,8 +36,8 @@
        </ul>
        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
          <div class="container">
-           <div class="navbar-header custom-remove-padding" style="padding: 0px 0px;">
-             <a class="navbar-brand custom-remove-padding" href="#">
+           <div class="navbar-header custom-remove-padding">
+             <a class="navbar-brand custom-remove-padding" href="index.html">
               <img class="logo-image" src="images/logo orange large.JPG"></img>
             </a>
              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -49,21 +49,26 @@
 							 <li><a href="#" onclick="loadContact()">Contact Us</a></li>
              </ul>
              <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
-							 <li>
-               	<a onClick="loginFacebook()" class="btn btn-social-icon">
-                   <i class="fa fa-facebook"></i>
-               </a>
-               </li>
-               <li>
-               <a onClick="loginTwitter()" class="btn btn-social-icon">
-                   <i class="fa fa-twitter"></i>
-               </a>
-               </li>
-							 <li>
- 								<a onClick="loginGoogle()" class="btn btn-social-icon">
- 									<i class="fa fa-google-plus"></i>
- 							</a>
- 							</li>
+							 <div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    Sign In
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<ul class='list-inline'>
+									 <a onClick="loginFacebook()" class="btn btn-social-icon">
+											<i class="fa fa-facebook"></i>
+									</a>
+									<a onClick="loginTwitter()" class="btn btn-social-icon">
+											<i class="fa fa-twitter"></i>
+									</a>
+									 <a onClick="loginGoogle()" class="btn btn-social-icon">
+										 <i class="fa fa-google-plus"></i>
+								 </a>
+								 </li>
+							 </ul>
+							  </ul>
+							</div>
              </ul>
            </div>
      <!--/.nav-collapse -->
@@ -92,9 +97,9 @@
 
 
 	  <!-- Wrapper for slides -->
-		<div class="carousel-inner" style="height:340px">
+		<div class="carousel-inner" style="height:340px" style="overflow:hidden">
 	    <div class="item active">
-	      <img src="images/carousel1.jpg">
+	      <img class="roundyCorners" src="images/carousel1.jpg">
 				<div class="carousel-caption">
           <h1 class="text-shadow">Your Voice!</h1>
 				  <h4 class="text-shadow">We want to empower you to feel a part of Irish soceity and to be able to make a difference in the things that matter to you</h4>
@@ -102,7 +107,7 @@
 	    </div>
 
 	    <div class="item">
-	      <img src="images/carousel2.jpg">
+	      <img class="roundyCorners" src="images/carousel2.jpg">
 				<div class="carousel-caption">
           <h1 class="text-shadow">Your Decisions!</h1>
 				  <h4 class="text-shadow">We want to facilitate young people to work together to develop their ideas and turn them into action!</h4>
@@ -110,7 +115,7 @@
 	    </div>
 
 	    <div class="item">
-	      <img src="images/carousel4.jpg">
+	      <img class="roundyCorners" src="images/carousel4.jpg">
 				<div class="carousel-caption">
           <h1 class="text-shadow">Your Ideas!</h1>
 				  <h4 class="text-shadow">We want to provide a space for you to discuss your ideas for change in Irish society with others.</h4>
@@ -118,7 +123,7 @@
 	    </div>
 
 			<div class="item">
-	      <img src="images/carousel5.jpg">
+	      <img class="roundyCorners" src="images/carousel5.jpg">
 				<div class="carousel-caption">
           <h1 class="text-shadow">Your Voice!</h1>
 				  <h4 class="text-shadow">We want to empower you to feel a part of Irish soceity and to be able to make a difference in the things that matter to you</h4>
