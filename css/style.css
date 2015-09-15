@@ -47,10 +47,20 @@
     padding-bottom: 30px;
     background: none;
     height: 100% !important;
+
+}
+
+.carousel-inner>.item {
+    -webkit-transition: 1.2s ease-in-out left;
+    transition: 1.2s ease-in-out left;
+    -webkit-transition: 1.2s, ease-in-out, left;
+    -moz-transition: 1.2s, ease-in-out, left;
+    -o-transition: 1.2s, ease-in-out, left;
+    transition: 1.2s, ease-in-out, left;
 }
 
 .carousel {
-    border-radius: 55px 55px 55px 55px;
+    border-radius: 55px 55px 0px 0px;
     overflow: hidden;
 }
 
@@ -63,11 +73,11 @@
 }
 
 .roundyCorners{
-  border-radius: 55px 55px 55px 55px;
+  border-radius: 55px 55px 0px 0px;
   overflow: hidden;
 }
 
 
-.fa-facebook, .fa-twitter, .fa-google-plus{
+.fa-facebook, .fa-twitter, .fa-google-plus, .fa-youtube, .fa-envelope{
   color:#DC5843;
 }

@@ -1,5 +1,5 @@
 var carouselContainer = $('.carousel');
-var slideInterval = 4000;
+var slideInterval = 5000;
 
 function toggleCaption() {
     $('.carousel-caption').hide();
@@ -8,12 +8,10 @@ function toggleCaption() {
     //caption.removeClass('animated bounceOutDown');
     caption.removeClass('animated bounceInUp');
 
-    caption[0].setAttribute("style", "display:block");
-    caption.addClass('animated bounceInUp');
-
-    //setInterval(function(){
-    //  caption.addClass('animated bounceOutDown');
-    //}, 2700);
+    if(caption[0] != null){
+      caption[0].setAttribute("style", "display:block");
+      caption.addClass('animated bounceInUp');
+    }
 }
 
 carouselContainer.carousel({
