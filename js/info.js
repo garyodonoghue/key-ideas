@@ -17,3 +17,13 @@ $( "#preziBtn" ).bind( "click", function(event, ui) {
 
     return false;
 });
+
+$( "#glossaryBtn" ).bind( "click", function(event, ui) {
+    $("#body" ).empty();
+
+    $.get('/glossary.html', function(data) {
+      $("#forumComments").html(data);
+    });
+
+    return false;
+});
