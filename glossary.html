@@ -1,279 +1,620 @@
 <head>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <scrript type="text/javascript" src="js/typeahead.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  type="text/javascript" src="js/typeahead.js"></script>
+  <script type="text/javascript">
+$(document).ready(function(){
+	$('input.typeahead').typeahead({
+		name: 'accounts',
+		local: ['Adhoccommittee',
+'Agriculture and Food, Department of',
+'Amendment',
+'Aristocracy',
+'Arts, Sports and Tourism, Department of',
+'Assembly',
+'Attorney General',
+'Backbench',
+'Bailout',
+'Balanced budget',
+'Balance of power',
+'Ballot',
+'Ballot box',
+'Ballot box stuffing',
+'Ballot paper',
+'Bandwagon effect',
+'Bi-cameral legislature',
+'Bill(law)',
+'Bill',
+'Private Members',
+'Bi-partisanship',
+'Borough council',
+'Brown envelope',
+'Branch',
+'Bunreacht na hÉireann',
+'Bureaucracy',
+'By-election',
+'Cabinet',
+'Campaign',
+'Campaign spending limits',
+'Candidate',
+'Canvassing',
+'Capitalism',
+'Cathaoirleach',
+'Caucus',
+'Ceann Comhairle',
+'Census',
+'Centre',
+'Centrist',
+'Checks and balances',
+'Chief Justice',
+'Chief Whip',
+'Citizen',
+'Citizenship (Irish)',
+'Citizenship rights',
+'City councils',
+'City or county manager',
+'City state',
+'Civic participation or engagement',
+'Civil and political rights',
+'Civil law',
+'Civil law system',
+'Civil liberty',
+'Civil service',
+'Coalition',
+'Coalition government',
+'Code of conduct for office holders',
+'Committeeon Procedures and Privileges',
+'Communications, Marine and Natural Resources, Department of',
+'Communism',
+'Community, Rural and Gaeltacht Affairs, Department of',
+'Consensus',
+'Conservation',
+'Conservative',
+'Constituency',
+'Constituency boundary',
+'Constitution',
+'Constitution of Ireland',
+'Convention',
+'Council of State',
+'Councillor',
+'County council',
+'County Development Boards',
+'County Registrar',
+'Criminal law',
+'Dáil Committee',
+'Dáil Éireann',
+'Data Protection Commissioner',
+'Defamation',
+'Defence, Department of',
+'Deficit',
+'Delegate',
+'Democracy',
+'Democratic rights',
+'Democratic Unionist Party (DUP)',
+'Demonstration',
+'Deputy',
+'Despot',
+'Devolution',
+'Dictator',
+'Dictatorship',
+'Diplomat',
+'Director of Consumer Affairs',
+'Direct provision',
+'Dissolution',
+'Economic and social rights',
+'Economic policy',
+'Education and Science, Department of',
+'Education for Democratic Citizenship (EDC)',
+'Election',
+'Election day',
+'Election expenses',
+'Elector',
+'Electoral Register (also known as Register of Electors)',
+'Electorate',
+'Electronic voting',
+'Enterprise',
+'Trade and Employment, Department of',
+'Environment',
+'Heritage and Local Government, Department of',
+'European Commission',
+'European Central Bank',
+'Exit poll',
+'Fianna Fáil',
+'Finance, Department of',
+'Fine Gael',
+'Foreign Affairs, Department of',
+'Free market',
+'Freedom of speech',
+'Front bench',
+'Front runner',
+'Garda Commissioner',
+'Gender gap',
+'General election',
+'Gerrymander',
+'Government',
+'Government Chief Whip',
+'Government department',
+'Government revenue',
+'Grassroots',
+'Grassroots movement',
+'Head of state',
+'Health and Children, Department of',
+'Ideology',
+'IMF-International Monetary Fund',
+'Incumbent',
+'Independence',
+'Independent',
+'Interest group',
+'Irish Water',
+'Joint Oireachtas Committee',
+'Judicial review',
+'Judiciary',
+'Junior Minister',
+'Justice, Equality and Law Reform, Department of',
+'Labour Court',
+'Labour Party',
+'Laissez-faire',
+'Law Reform Commission',
+'Leader of the opposition',
+'Left, the',
+'Left-wing',
+'Legal rights',
+'Legislation',
+'Legislature',
+'Legislative',
+'power',
+'Legislative process',
+'Libel',
+'Liberalism',
+'Libertarian',
+'Lobby',
+'Lobby group',
+'Lobbyist',
+'Local authority',
+'Local elections',
+'Local government',
+'Majority',
+'Majority party',
+'Mandate',
+'Manifesto',
+'Member',
+'Member of Parliament (MP)',
+'Member of the European Parliament (MEP)',
+'Minister',
+'Motion of no confidence',
+'National debt',
+'Nationalise',
+'Nationalism',
+'NDP-National Development Plan',
+'Neo-conservatives(neo-cons)',
+'Nominee',
+'Non-partisan',
+'Non-party candidate',
+'NRA-National Roads Authority',
+'NTMA-National Treasury Management Agency',
+'Oireachtas',
+'Ombudsman',
+'Opposition',
+'OPW-Office of Public Works',
+'Pacifism',
+'Parliament',
+'Parliamentary questions (PQs)',
+'Parliamentary privileges',
+'Parliamentary wing (of a political party)',
+'Party policy',
+'Party political',
+'Petition',
+'Platform',
+'Pledge',
+'Policy',
+'Political agenda',
+'Political ideology',
+'Political participation',
+'Political rights',
+'Political spectrum',
+'Political values',
+'Poll',
+'Polling card',
+'Polling station',
+'Populist',
+'Precedent',
+'Preferential voting',
+'Presidential Commission',
+'Private Members Bill',
+'Proclamation',
+'Programme for Government',
+'Propaganda',
+'Proportional representation(PR)',
+'Protest',
+'Protest vote',
+'Public funds',
+'Public policy',
+'Public sector',
+'Public servant',
+'Public services',
+'Private sector',
+'Quota',
+'Referendum',
+'Referendum Commission',
+'Referendum, constitutional',
+'Regulation',
+'Representative democracy',
+'Returning Officer',
+'Right, the',
+'Rights',
+'Ruling party',
+'Seanad Éireann',
+'Secession',
+'Secret ballot',
+'Select Committee',
+'Single Transferable Vote-STV',
+'Sinn Féin',
+'Social and civil services',
+'Social and Family Affairs, Department of',
+'Social capital',
+'Social welfare',
+'Socialism',
+'Spin',
+'Status quo',
+'Statute law',
+'Statutory',
+'Straw poll',
+'Supreme Court',
+'Surplus (votes)',
+'Tallymen',
+'Tánaiste',
+'Taoiseach',
+'TD-TeachtaDála',
+'Think tank',
+'Transport, Department of',
+'Treaty',
+'Tribunal of inquiry',
+'Troika',
+'Veto',
+'Whip',
+'Whistleblower',
+'White paper']
+	}).on('typeahead:selected', function (obj, datum) {
+    console.log(obj);
+    console.log(datum);
+    var divId = '#'+datum.value.split(' ').join(''); //take the whitespace out to align with div naming convention
 
+    $('html, body').animate({
+        scrollTop: $(divId).offset().top -120
+    }, 2000);
+    return false;
+});
+});
+
+
+</script>
+
+
+<style type="text/css">
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 100px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 8px;
+	font-size: 24px;
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 396px;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 24px;
+	line-height: 24px;
+	padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top" style="margin-top:-30px; z-index: 1001;" role="toolbar">
+    <div id="" class="bs-example">
+        <input type="text" placeholder="Search for your term..."class="typeahead tt-query" autocomplete="off" spellcheck="false">
+    </div>
+</div>
+<div id="" class="container"></br></br>
+<div id="" class="row main-row"><b>Absentee ballot</b> A ballot paper that is filled in and posted to the Board of Elections before an election if a registered voter cannot get to a polling station on election day
+</div></br> <div id="Adhoccommittee" class="row main-row"><b>Ad hoc committee:        </b> A group of people that comes together to carry out a particular task and then breaks up when the task is over
+</div></br> <div id="AgricultureandFood" class="row main-row"><b>Agriculture and Food, Department of: </b> The Government department responsible for regulating and supporting agriculture and food industries and monitoring and controlling animal and plant health, animal welfare and some aspects of food safety
+</div></br> <div id="Amendment" class="row main-row"><b>Amendment:               </b> A change to the detail of a law or contract
+</div></br> <div id="Aristocracy" class="row main-row"><b>Aristocracy:             </b> A ruling system based on social class, wealth and noble birth
+</div></br> <div id="Arts,SportsandTourism" class="row main-row"><b>Arts, Sports and Tourism:</b> Department of The Government department responsible for promoting and fostering the arts, including the Irish film industry, promoting and developing sports, through programmes and major sports projects, and promoting and developing the tourism industry
+</div></br> <div id="Assembly" class="row main-row"><b>Assembly:                </b> A group of people gathered together for a special purpose, sometimes as a law-making body, as in the Northern Ireland Assembly  Attorney General The main legal advisor to the Irish Government, who is appointed by the Taoiseach
+</div></br> <div id="Backbench" class="row main-row"><b>Backbench:               </b> The seats occupied in Dáil Eireann by any member of the Irish Government who is not a minister or junior minister
+</div></br> <div id="Bailout" class="row main-row"><b>Bailout:                 </b> The act of giving financial assistance to a failing business or economy to prevent it from collapsing
+</div></br> <div id="Balancedbudget" class="row main-row"><b>Balanced budget:         </b> A government's annual budget in which income (for example from taxes) is equal to spending
+</div></br> <div id="Balanceofpower" class="row main-row"><b>Balance of power:        </b> Power held by a small party or group of independent representatives when a major political party needs their support to form a government
+</div></br> <div id="Ballot" class="row main-row"><b>Ballot:                  </b> A way of voting, usually using a ballot paper and ballot box
+</div></br> <div id="Ballotbox" class="row main-row"><b>Ballot box:              </b> A container for storing completed ballot papers during an election and only opened when votes are ready to be counted
+</div></br> <div id="Ballotbox stuffing" class="row main-row"><b>Ballot box stuffing: </b> An illegal action that involves voting many times to affect the result of an election
+</div></br> <div id="Ballotpaper" class="row main-row"><b>Ballot paper:            </b> A slip of paper, usually with representatives' names and photos, that registered voters use to record their preferences in an election or referendum
+</div></br> <div id="Bandwagoneffect" class="row main-row"><b>Bandwagon effect:        </b> The tendency for a candidate or proposal that seems to be winning to gather extra support simply because of being ahead; also called the 'snowball effect'
+</div></br> <div id="Bi-camerallegislature" class="row main-row"><b>Bi-cameral legislature:  </b> A law-making body, known in Ireland as the Oireachtas, that is divided into an upper and a lower house
+</div></br> <div id="Bill(law)" class="row main-row"><b>Bill (law):              </b> A draft of a new law or change to a current law that has yet to be passed by the Oireachtas
+</div></br> <div id="Bill,PrivateMember's" class="row main-row"><b>Bill, Private Member's:  </b> A proposal for a law that comes from an individual TD or senator
+</div></br> <div id="Bi-partisanship" class="row main-row"><b>Bi-partisanship:         </b> Co-operation on an issue or issues by two people or groups
+</div></br> <div id="Boroughcouncil" class="row main-row"><b>Borough council:         </b> A local authority, usually in larger towns; found in Ireland in Clonmel, Drogheda, Kilkenny, Sligo and Wexford
+</div></br> <div id="Brownenvelope" class="row main-row"><b>Brown envelope:</b> A term referring to the practice of politicians receiving illegal payments (in brown envelopes) in exchange for favours
+</div></br> <div id="Branch" class="row main-row"><b>Branch:</b> A section of a political party that draws members from a local area
+</div></br> <div id="BunreachtnahÉireann" class="row main-row"><b>Bunreacht na hÉireann:</b> Irish Constitution - see Constitution of Ireland
+</div></br> <div id="Bureaucracy" class="row main-row"><b>Bureaucracy:</b> A system involving many rules and procedures and several levels of management and relying on written communication
+</div></br> <div id="By-election" class="row main-row"><b>By-election:</b> An election for a seat in the Dáil that becomes vacant if a TD dies or resigns their seat
+</div></br> <div id="Cabinet" class="row main-row"><b>Cabinet:</b> The group of Government ministers, the Taoiseach and the Attorney General, which decides policy and is responsible for all the Government departments
+</div></br> <div id="Campaign" class="row main-row"><b>Campaign:</b> An organised competition for votes by people who are seeking a particular result from an election or referendum or who are seeking to change the behaviour of government, business, other large institutions and the general population through the media, protests, written proposals, public meetings and so on
+</div></br> <div id="Campaignspendinglimits" class="row main-row"><b>Campaign spending limits: </b>Limits on the amount of money that political candidates can spend in an election campaign
+</div></br> <div id="Candidate" class="row main-row"><b>Candidate:</b> Someone who stands for election to a representative office
+</div></br> <div id="Canvassing" class="row main-row"><b>Canvassing:</b> Trying to win votes by contacting voters directly, for example by going door to door
+</div></br> <div id="Capitalism" class="row main-row"><b>Capitalism:</b> An economic system in which private individuals and corporations own goods, aim to make a profit and have freedom to set prices for goods and services
+</div></br> <div id="Cathaoirleach" class="row main-row"><b>Cathaoirleach:</b> The Irish word for chairperson
+</div></br> <div id="Caucus" class="row main-row"><b>Caucus:</b> A group or a meeting of people, especially members of a political party with power to decide on policy
+</div></br> <div id="CeannComhairle" class="row main-row"><b>Ceann Comhairle:</b> The chairperson of Dáil Éireann, who chairs its proceedings and must make sure that all parties and independent members are treated fairly
+</div></br> <div id="Census" class="row main-row"><b>Census:</b> A detailed count by the Central Statistics Office (CSO) of every person in Ireland, including people who don't usually live here, on a particular date roughly every five years
+</div></br> <div id="Centre" class="row main-row"><b>Centre:</b> The middle point of the political spectrum, ranging from 'far left' (communism) to 'far right' (fascism)
+</div></br> <div id="Centrist" class="row main-row"><b>Centrist:</b> A person with moderate political opinions and policies
+</div></br> <div id="Checksandbalances" class="row main-row"><b>Checks and balances:</b> A term describing the actions of the three branches of government - the legislature, executive and judiciary - to monitor (check) each other's work and limit (balance) each other's powers so no branch becomes too powerful
+</div></br> <div id="ChiefJustice" class="row main-row"><b>Chief Justice:</b> The head of the Supreme Court
+</div></br> <div id="ChiefWhip" class="row main-row"><b>Chief Whip:</b> The member of Irish Government who organises and co-ordinates government business in Dáil Éireann
+</div></br> <div id="Citizen" class="row main-row"><b>Citizen:</b> A member of a city, state or nation who enjoys its legal, social and political rights and of whom loyalty and responsibility is expected
+</div></br> <div id="Citizenship(Irish)" class="row main-row"><b>Citizenship (Irish):</b> A legal status granted to: anyone born in Ireland if one of their parents was an Irish citizen at the time of their birth; or anyone born abroad if one of their parents was born in Ireland; or a child born in Ireland after 1 January 2005 to non-citizen parents if one of the parents was lawfully living in Ireland for at least three of the four years before the child's birth
+</div></br> <div id="Citizenshiprights" class="row main-row"><b>Citizenship rights:</b> Rights that are enjoyed by a citizen, such as the right to vote and to live permanently in a particular country
+</div></br> <div id="Citycouncils" class="row main-row"><b>City councils:</b> Local authorities responsible for services such as housing, planning, roads, water supply and recreation facilities in particular cities
+</div></br> <div id="Cityorcountymanager" class="row main-row"><b>City or county manager:</b> The person who manages a city or county council
+</div></br> <div id="Citystate" class="row main-row"><b>City state:</b> A small state consisting only of a city and its surrounding land, for example Singapore or the Vatican
+</div></br> <div id="Civicparticipationorengagement" class="row main-row"><b>Civic participation or engagement:</b> A process in which people use the freedoms of democracy to do things such as sign a petition, contact their local councillor, vote, stand for election and become informed on issues
+</div></br> <div id="Civilandpoliticalrights" class="row main-row"><b>Civil and political rights:</b> Freedoms and entitlements given by a nation to its people, including the right to a fair trial, the right to privacy, the right to marry, the right to take part in public life and the right to freedom of movement
+</div></br> <div id="Civillaw" class="row main-row"><b>Civil law:</b> The law that regulates relations between individuals, or between individuals and corporations, and deals with property rights, personal injury and personal dignity and freedom
+</div></br> <div id="Civillawsystem" class="row main-row"><b>Civil law system: </b>A system in which most of the laws are decided by legislation
+</div></br> <div id="Civilliberty" class="row main-row"><b>Civil liberty:</b> The freedom to act, assemble, think or speak as you wish, regulated only as much as is needed for the good of other people
+</div></br> <div id="Civilservice" class="row main-row"><b>Civil service:</b> The body of Government workers and officials who advise ministers and carry out the day-to-day work of Government departments
+</div></br> <div id="Coalition" class="row main-row"><b>Coalition:</b> A collection of two or more groups or parties, usually to form a government or opposition
+</div></br> <div id="Coalitiongovernment" class="row main-row"><b>Coalition government:</b> A government made up of more than one political party because no party obtained enough votes to form a government on its own
+</div></br> <div id="Codeofconductforofficeholders" class="row main-row"><b>Code of conduct for office holders:</b> Rules for TDs to help them make sure they behave ethically, fairly and responsibly and act in the best interests of the public
+</div></br> <div id="CommitteeonProceduresandPrivileges" class="row main-row"><b>Committee on Procedures and Privileges:</b> A committee in Dáil Éireann and in Seanad Éireann that works to make sure that members of each house do not act in a way that abuses the power that comes with their position and may recommend that members be disciplined if any abuse takes place
+</div></br> <div id="Communications,MarineandNaturalResources" class="row main-row"><b>Communications, Marine and Natural Resources:</b> Department of The Government department responsible for regulating and overseeing the broadcasting, telecommunications (post, Internet and telephone services) and energy sectors and protecting and developing marine and natural resources, such as minerals and oil
+</div></br> <div id="Communism" class="row main-row"><b>Communism:</b> An economic and political system put into place after the Bolshevik revolution in Russia in 1917 in which people share the ownership of all goods and property; also, a system, such as in the former Soviet Union, where the government controls every aspect of a citizen's life and denies political freedoms
+</div></br> <div id="Community, Rural and Gaeltacht Affairs" class="row main-row"><b>Community, Rural and Gaeltacht Affairs:</b> Department of The Government department responsible for advancing the use of the Irish language and for promoting and supporting the growth of urban and rural communities, including Gaeltacht and island communities, to reduce disadvantage
+</div></br> <div id="Consensus" class="row main-row"><b>Consensus:</b> Agreement that is generally acceptable
+</div></br> <div id="Conservation" class="row main-row"><b>Conservation:</b> Using natural resources carefully (for example minerals, gas water or plants) and maintaining places of environmental or cultural importance to make sure they are available to future generations
+</div></br> <div id="Conservative" class="row main-row"><b>Conservative:</b> A person or political party who wishes to keep things the way they are, supports traditional values and opposes government interference; known as 'right', 'right wing' or 'right of centre' in politics
+</div></br> <div id="Constituency" class="row main-row"><b>Constituency:</b> The area of voters that a politician represents
+</div></br> <div id="Constituencyboundary" class="row main-row"><b>Constituency boundary:</b> A border between one constituency and another
+</div></br> <div id="Constitution" class="row main-row"><b>Constitution:</b> A set of principles used by an organisation, including a country or a state, to govern, or the document setting out those principles
+</div></br> <div id="ConstitutionofIreland" class="row main-row"><b>Constitution of Ireland:</b> Known in Irish as Bunreacht na hÉireann, the document in force since 29 December 1937 that outlines the values and structures of the State, must be obeyed by new laws or practices and can only be changed with the agreement of the people
+</div></br> <div id="Convention" class="row main-row"><b>Convention:</b> An agreement between nations or sides, for example the European Convention on Human Rights; also, a formal meeting of members or representatives of groups such as political parties, professional associations or industry groups
+</div></br> <div id="Council of State" class="row main-row"><b>Council of State:</b> The group of current and past Taoisigh (Prime Ministers), Presidents, Chief Justices, the Ceann Comhairle, the Cathaoirleach of the Seanad and the Attorney General, which advises the President of Ireland and must be consulted before the President calls a meeting of Dáil Éireann and Seanad Éireann or signs new bills into law
+</div></br> <div id="Councillor" class="row main-row"><b>Councillor:</b> A person elected to a county, city or urban district council to represent the interests of those living in the area covered by the council
+</div></br> <div id="Countycouncil" class="row main-row"><b>County council:</b> A type of local authority, covering a county that is responsible for services including housing, planning, roads, water supply and recreation facilities
+</div></br> <div id="CountyDevelopmentBoards" class="row main-row"><b>County Development Boards:</b> Boards set up in Ireland to bring together local development bodies, State agencies and other social partners to take part in long-term planning for counties over 10 years
+</div></br> <div id="CountyRegistrar" class="row main-row"><b>County Registrar:</b> A person appointed to make sure that an election or referendum and the return of its results are carried out properly
+</div></br> <div id="Criminallaw" class="row main-row"><b>Criminal law:</b> The body of laws that ban certain behaviour - for example drunken driving, drug dealing, assault, murder and theft – that would otherwise cause social order to break down
+</div></br> <div id="DáilCommittee" class="row main-row"><b>Dáil Committee:</b> A committee of members of the Dáil, broadly divided according to the division of Dáil seats among the political parties and independent TDs to consider matters relating to how TDs and certain public bodies carry out their functions
+</div></br> <div id="DáilÉireann" class="row main-row"><b>Dáil Éireann:</b> Known as 'the Dáil' for short, the lower house of the Oireachtas, in which members carry out a number of functions, such as debating and voting on issues and passing bills
+</div></br> <div id="DataProtectionCommissioner" class="row main-row"><b>Data Protection Commissioner:</b> An independent person appointed by the Government to make sure that people can keep their right to privacy when information about them is held on computers or on paper and to deal with complaints from anyone who feels their rights have been infringed
+</div></br> <div id="Defamation" class="row main-row"><b>Defamation:</b> Saying or writing something false about a living person that is proven to damage their reputation in the eyes of rightminded people
+</div></br> <div id="Defence,Departmentof" class="row main-row"><b>Defence, Department of:</b> The Government department responsible for managing, training, organising and equipping the defence forces and co-ordinating and overseeing emergency planning in response to threats
+</div></br> <div id="Deficit" class="row main-row"><b>Deficit:</b> A situation that occurs when the Government is spending more money than it is taking in
+</div></br> <div id="Delegate" class="row main-row"><b>Delegate:</b> A representative at a political or other conference who has been given the power to make decisions for others at that conference
+</div></br> <div id="Democracy" class="row main-row"><b>Democracy:</b> A society that favours equal rights, fair trials and freedom of speech and in which people govern themselves (direct democracy) or are governed by elected officials (representative democracy)
+</div></br> <div id="Democraticrights" class="row main-row"><b>Democratic rights:</b> Rights to political or social equality for all
+</div></br> <div id="DemocraticUnionistParty(DUP)" class="row main-row"><b>Democratic Unionist Party (DUP):</b> Unionist party in Northern Ireland founded by Reverend Ian Paisley
+</div></br> <div id="Demonstration" class="row main-row"><b>Demonstration:</b> In political terms, a public show of protest against or sympathy with a particular cause
+</div></br> <div id="DeputyInIreland" class="row main-row"><b>Deputy In Ireland:</b> the short name for someone elected to Dáil Éireann to represent their constituency
+</div></br> <div id="Despot" class="row main-row"><b>Despot:</b> A ruler who exercises total power, especially in a cruel or harsh way
+</div></br> <div id="Devolution" class="row main-row"><b>Devolution:</b> A system in which the central government of a state passes a law granting certain powers to local, national or regional authorities while still keeping the central government's authority
+</div></br> <div id="Dictator" class="row main-row"><b>Dictator:</b> A ruler who has total power over a country or state, regardless of the laws of the state or any opposition
+</div></br> <div id="Dictatorship" class="row main-row"><b>Dictatorship:</b> A state in which one person or group has total power to govern
+</div></br> <div id="Diplomat" class="row main-row"><b>Diplomat:</b> A person appointed to represent Ireland in other countries and to manage our relations with those countries
+</div></br> <div id="DirectorofConsumerAffairs" class="row main-row"><b>Director of Consumer Affairs:</b> An independent person appointed by Government who is responsible for defending, enforcing and providing advice and information on consumer rights
+</div></br> <div id="Directprovision" class="row main-row"><b>Direct provision:</b> Direct provision is a controversial system intended to provide welfare for asylum seekers and their families as they await decisions on their asylum application. The Irish Immigrant Support Centre and the Irish Refugee Council, amongst others, have protested Direct Provision due to the restrictive rules which it places on those in the system, as well as other issues related to standard of welfare and the duration for which asylum seekers remain in the system.
+</div></br> <div id="Dissolution" class="row main-row"><b>Dissolution:</b> An action by the President of Ireland (with the support of the Taoiseach) to end the current term of the Dáil so a general election can be held
+</div></br> <div id="Economicandsocialrights" class="row main-row"><b>Economic and social rights:</b> Rights that help people develop and enjoy an adequate standard of living, such as the right to work, the right to education and the right to free time, as outlined in the Covenant on Economic and Social Rights adopted by the United Nations 1966
+</div></br> <div id="Economicpolicy" class="row main-row"><b>Economic policy:</b> A Government plan on how to manage money and taxes
+</div></br> <div id="EducationandScience" class="row main-row"><b>Education and Science:</b> Department of The Government department responsible for devising education policy and overseeing programmes and services that help promote lifelong learning and provide education that meets personal, social, cultural and economic needs
+</div></br> <div id="EducationforDemocraticCitizenship(EDC)" class="row main-row"><b>Education for Democratic Citizenship (EDC):</b> A project organised by the Council of Europe to inform people about their rights and responsibilities in society and how they can use them
+</div></br> <div id="Election" class="row main-row"><b>Election:</b> Choosing a person or a government by voting
+</div></br> <div id="Electionday" class="row main-row"><b>Election day:</b> The day when the election takes place
+</div></br> <div id="Electionexpenses" class="row main-row"><b>Election expenses:</b> Amounts that political parties and independent candidates spend on advertising, canvassing and opposing other candidates during election campaigns, which, since 1997, must be accounted for and within certain limits
+</div></br> <div id="Elector" class="row main-row"><b>Elector:</b> A person who votes or has the right to vote
+</div></br> <div id="ElectoralRegister(alsoknownasRegisterofElectors)" class="row main-row"><b>Electoral Register (also known as Register of Electors):</b> A list of those who have the right to vote in national, local or European elections in Ireland, put together by city and county councils
+</div></br> <div id="Electorate" class="row main-row"><b>Electorate:</b> All those who have a right to vote in an election
+</div></br> <div id="Electronicvoting" class="row main-row"><b>Electronic voting:</b> Using electronic equipment and computers to vote and count votes
+</div></br> <div id="Enterprise,TradeandEmployment" class="row main-row"><b>Enterprise, Trade and Employment:</b> Department of The Government department responsible for regulating employment, health and safety at work, consumer issues, trade, competition and company matters and overseeing state bodies that provide training and promote trade and employment, such as FAS, Enterprise Ireland and the Industrial Development Agency (IDA)
+</div></br> <div id="Environment,HeritageandLocalGovernment" class="row main-row"><b>Environment, Heritage and Local Government:</b> Department of The Government department responsible for protecting the environment, preserving and promoting heritage buildings, collecting motor tax, coordinating elections, devising housing policy and overseeing county, city and urban district councils
+</div></br> <div id="EuropeanCommission" class="row main-row"><b>European Commission:</b> The executive body of the European Union responsible for proposing legislation, implementing decisions, upholding the EU treaties and managing the day-to-day business of the EU
+</div></br> <div id="EuropeanCentralBank" class="row main-row"><b>European Central Bank:</b> The central bank for the euro currency which administers monetary policy for the Eurozone
+</div></br> <div id="Exitpoll" class="row main-row"><b>Exit poll:</b> A survey of a small percentage of people leaving the place where they have just voted to ask them who or what they voted for
+</div></br> <div id="FiannaFáil" class="row main-row"><b>Fianna Fáil:</b> National political party founded in 1926 with democratic Republican values
+</div></br> <div id="Finance" class="row main-row"><b>Finance:</b> Department of The Government department responsible for implementing Government policy and advising the Minister for Finance on the finances of the State, drafting and reviewing finance and other laws and managing and developing the public sector
+</div></br> <div id="FineGael" class="row main-row"><b>Fine Gael:</b> National independent political party founded in 1933
+</div></br> <div id="ForeignAffairs" class="row main-row"><b>Foreign Affairs:</b> Department of The Government department responsible for advancing Ireland's political and economic interests in the European Union and elsewhere, promoting Ireland's contribution to international peace, security and development through the European Union and international organisations, especially the United Nations, protecting Irish citizens abroad and dealing with political issues concerning Northern Ireland
+</div></br> <div id="Freemarket" class="row main-row"><b>Free market:</b> An economic system where prices are set not by government but by competition between businesses
+</div></br> <div id="Freedomofspeech" class="row main-row"><b>Freedom of speech:</b> A right to speak freely on social and political matters without fear of forced silence
+</div></br> <div id="Frontbench" class="row main-row"><b>Front bench:</b> Members of the Dáil who are ministers or spokespeople
+</div></br> <div id="Frontrunner" class="row main-row"><b>Front runner:</b> A candidate who is likely to win an election or be nominated by their party to take part in an election
+</div></br> <div id="GardaCommissioner" class="row main-row"><b>Garda Commissioner:</b> Responsible for the general direction, management and control of An Garda Síochána. While the Minister for Justice, Equality & Law Reform is responsible to the Government for the performance of An Garda Síochána, it is the Commissioner who runs the organisation on a day to day basis
+</div></br> <div id="Gendergap" class="row main-row"><b>Gender gap:</b> The difference between men and women in types and levels of employment, earnings, educational qualifications, voting and general health, among other areas
+</div></br> <div id="Generalelection" class="row main-row"><b>General election:</b> A national election for all seats in the Dáil and Seanad, which must be held within 30 days of the dissolution of the Dáil
+</div></br> <div id="GerrymanderDividing" class="row main-row"><b>Gerrymander Dividing:</b> a constituency deliberately to give an advantage to one political party or to particular voters, for example according to racial or ethnic background
+</div></br> <div id="Government" class="row main-row"><b>Government:</b> A system, involving a group of senior ministers, that runs a state and gives effect to its laws
+</div></br> <div id="GovernmentChiefWhip" class="row main-row"><b>Government Chief Whip:</b> The person responsible for organising and co-ordinating Government business in Dáil Éireann
+</div></br> <div id="Governmentdepartment" class="row main-row"><b>Government department:</b> A group of civil servants, headed by a minister, which is responsible for a specific area of work within a government, for example health or the environment
+</div></br> <div id="Governmentrevenue" class="row main-row"><b>Government revenue:</b> Income that a government gets from tax, excise duties, customs and other sources
+</div></br> <div id="Grassroots" class="row main-row"><b>Grass roots:</b> A basic source of support for a cause or a group, usually developed naturally without prompting or organisation from traditional holders of power
+</div></br> <div id="Grassroots movement" class="row main-row"><b>Grassroots movement:</b> The action of groups of likeminded people who lobby for change on a particular issue, usually through door-to-door canvassing, letter writing, local meetings and so on
+</div></br> <div id="Headofstate" class="row main-row"><b>Head of state:</b> A formal leader of a country or a group of people organised under one government, for example the President in Ireland and the Queen in the United Kingdom
+</div></br> <div id="HealthandChildren" class="row main-row"><b>Health and Children:</b> Department of The Government department responsible for managing, regulating and developing the health services, ensuring the safety and welfare of children and developing policies, programmes and information campaigns to protect and promote public health
+</div></br> <div id="Ideology" class="row main-row"><b>Ideology:</b> A set of connected ideas, usually about a political system, or a way of looking at something  IMF - International Monetary Fund The International Monetary Fund (IMF) is an organization of 188 countries, working to foster global monetary cooperation, secure financial stability, facilitate international trade, promote high employment and sustainable economic growth, and reduce poverty around the world. Created in 1945, the IMF is governed by and accountable to the 188 countries that make up its near-global membership.
+</div></br> <div id="Incumbent" class="row main-row"><b>Incumbent:</b> A person who currently holds a post or office
+</div></br> <div id="Independence" class="row main-row"><b>Independence:</b> Freedom from the influence or rule of another person, group or country
+</div></br> <div id="Independent" class="row main-row"><b>Independent:</b> A TD, Senator or Councillor who does not belong to a political party
+</div></br> <div id="Interestgrou" class="row main-row"><b>Interest group:</b> A group of people organised to take action about a cause or interest
+</div></br> <div id="IrishWater" class="row main-row"><b>Irish Water:</b> Irish Water is the new national water utility that has the responsibility for the delivery of water and wastewater services to homes and businesses. Irish Water is responsible for the operation of public water services including management of national water assets, maintenance of the water system, investment and planning, managing capital projects and customer care and billing
+</div></br> <div id="JointOireachtasCommittee" class="row main-row"><b>Joint Oireachtas Committee:</b> A committee made up of members of the Dáil and Seanad to discuss and vote on particular matters, for example the Joint Oireachtas Committee on Education and Science and Joint Oireachtas Committee on Foreign Affairs
+</div></br> <div id="Judicialreview" class="row main-row"><b>Judicial review:</b> The power of judges to review whether laws and official acts by the Government violate the Constitution or basic rules of justice and, if they do, strike them down or overturn them
+</div></br> <div id="Judiciary" class="row main-row"><b>Judiciary:</b> The branch of government that is concerned with interpreting laws and upholding justice through the courts
+</div></br> <div id="JuniorMinister" class="row main-row"><b>Junior Minister:</b> A member of government appointed by the Taoiseach to assist a senior minister for a Government department; officially called Minister of State
+</div></br> <div id="Justice,EqualityandLawReform" class="row main-row"><b>Justice, Equality and Law Reform:</b> Department of The Government department responsible for protecting the security of the State, implementing Government policy on crime, advising criminal justice institutions (prisons, courts, Gardaí and Probation and Welfare Services) and developing and implementing policies on immigration and asylum, equality, anti-discrimination, human rights and childcare, among others
+</div></br> <div id="LabourCourt" class="row main-row"><b>Labour Court:</b> A place that hears employment disputes when all other methods to resolve them have failed and gives non-binding opinions and recommendations on how to settle them  
+</div></br> <div id="LabourParty" class="row main-row"><b>Labour Party:</b> Political party formed nationally in 1912 with a focus on equality, freedom, community and democracy
+</div></br> <div id="Laissez-faire" class="row main-row"><b>Laissez-faire:</b> An ideology that opposes Government interference in economic affairs, other than the minimum necessary to maintain property rights and peace, and individual interference in another's freedom of choice and action
+</div></br> <div id="LawReformCommission" class="row main-row"><b>Law Reform Commission:</b> An independent body set up by Government to review laws and advise the Government on necessary reforms, often after seeking the views of interest groups and the public
+</div></br> <div id="Leaderoftheopposition" class="row main-row"><b>Leader of the opposition:</b> The leader of the largest political party that is not in government and the opposition's main spokesperson
+</div></br> <div id="Left" class="row main-row"><b>Left:</b> the Organisations or political parties that favour social justice and freedom, aim to share a country's wealth between all people equally and focus on workers' rights; originally comes from the French Revolution, when politicians representing the people's interests sat to the left of the president's chair
+</div></br> <div id="Left-wing" class="row main-row"><b>Left-wing:</b> The section of a political system or party that favours social justice over the free market
+</div></br> <div id="Legalrights" class="row main-row"><b>Legal rights:</b> Rights of all individuals in a society as outlined in the laws of the State
+</div></br> <div id="Legislation" class="row main-row"><b>Legislation:</b> A law or a set of laws or the act of making laws
+</div></br> <div id="Legislature" class="row main-row"><b>Legislature:</b> The branch of government that makes laws, known in Ireland as the Oireachtas
+</div></br> <div id="Legislativepower" class="row main-row"><b>Legislative power:</b> The power to make and change laws
+</div></br> <div id="Legislativeprocess" class="row main-row"><b>Legislative process:</b> A series of actions that result in a law being made
+</div></br> <div id="Libel" class="row main-row"><b>Libel:</b> A written or recorded (on radio or TV) statement about a person that is proven to be false and damaging to their reputation
+</div></br> <div id="Liberalism" class="row main-row"><b>Liberalism:</b> A broad political ideology that generally favours individual freedom, open government and the free market, but contains different views on whether the government should interfere in the market, for example through anti-discrimination laws or social welfare for those who are unable to work
+</div></br> <div id="Libertarian" class="row main-row"><b>Libertarian:</b> A person who supports individual personal and property rights and minimal government involvement in people's lives
+</div></br> <div id="Lobby" class="row main-row"><b>Lobby:</b> Trying to influence public opinion to change laws or certain actions, for example by writing letters, making proposals or meeting decision makers; originally comes from the UK, where people waited in the lobby (entrance hall) or corridors of parliament to talk to Members of Parliament
+</div></br> <div id="Lobbygroup" class="row main-row"><b>Lobby group:</b> A group that tries to get support for a particular cause to change laws or certain actions
+</div></br> <div id="Lobbyist" class="row main-row"><b>Lobbyist:</b> A person who lobbies
+</div></br> <div id="Localauthority" class="row main-row"><b>Local authority:</b> A local form of government, consisting of elected officials and full-time staff, which is responsible for providing a range of public services, for example libraries, swimming pools and refuse collection
+</div></br> <div id="Localelections" class="row main-row"><b>Local elections:</b> Elections held in Ireland every five years, usually in May or June, to elect councillors to represent the community in local authorities around the country
+</div></br> <div id="Localgovernment" class="row main-row"><b>Local government:</b> A term to refer to the system of county and city councils whose members are elected by the people
+</div></br> <div id="Majority" class="row main-row"><b>Majority:</b> The difference between the largest number of votes for or against something and the number of remaining votes
+</div></br> <div id="Majorityparty" class="row main-row"><b>Majority party:</b> The political party that wins more votes in an election than other political parties
+</div></br> <div id="Mandate" class="row main-row"><b>Mandate:</b> The authority to represent people's interests and take action for them, given by voters to elected officials or sometimes by members of an organisation to its leaders
+</div></br> <div id="Manifesto" class="row main-row"><b>Manifesto:</b> A document stating a political party's values, goals and intended actions
+</div></br> <div id="Member" class="row main-row"><b>Member:</b> A person who belongs to an organisation or body
+</div></br> <div id="MemberofParliament(MP)" class="row main-row"><b>Member of Parliament (MP):</b> A member of the British House of Commons
+</div></br> <div id="MemberoftheEuropeanParliament(MEP)" class="row main-row"><b>Member of the European Parliament (MEP):</b> An elected politician who represents a region of their own country in the European Parliament
+</div></br> <div id="Minister" class="row main-row"><b>Minister:</b> A member of the Irish Government who runs and manages a department and may propose new or amended laws
+</div></br> <div id="Motionofnoconfidence" class="row main-row"><b>Motion of no confidence:</b> A vote on the performance of a leader or a government, usually proposed by the opposition, that, if passed, may require the person to resign or the government to stand down and request a general election    
+</div></br> <div id="NAPS-NationalAntiPovertyStrategy" class="row main-row"><b>NAPS - National Anti Poverty Strategy:</b> A Government medium-term plan (three to five years) to tackle poverty
+</div></br> <div id="Nationaldebt" class="row main-row"><b>National debt:</b> The total amount of money owed by a government
+</div></br> <div id="Nationalise" class="row main-row"><b>Nationalise:</b> Bringing an industry under the control or ownership of a government
+</div></br> <div id="Nationalism" class="row main-row"><b>Nationalism:</b> A belief that a large group of people are or should be a nation with its own government and a policy of asserting the interests of a nation against other nations or the common interests of all nations
+</div></br> <div id="NDP-NationalDevelopmentPlan" class="row main-row"><b>NDP - National Development Plan:</b> A Government plan to improve the economy and living standards by investing money in education and training, regional development, social services, roads and so on
+</div></br> <div id="Neo-conservatives('neo-cons')" class="row main-row"><b>Neo-conservatives ('neo-cons'):</b> A term used usually to refer to right-wing members of the US Republican Party who promote traditional family values, the free market and action by the United States against other countries to improve its standing and promote its values and interests
+</div></br> <div id="Nominee" class="row main-row"><b>Nominee:</b> A person who is nominated, or proposed by others, as a candidate for public office
+</div></br> <div id="Non-partisan" class="row main-row"><b>Non-partisan:</b> Neutral or not involving or influenced by a political party
+</div></br> <div id="Non-partycandidate" class="row main-row"><b>Non-party candidate:</b> An independent candidate, one who is not a member of a political party
+</div></br> <div id="NRA-NationalRoadsAuthority" class="row main-row"><b>NRA - National Roads Authority:</b> The Government body responsible for planning, improving and managing the road network in Ireland
+</div></br> <div id="NTMA-NationalTreasuryManagementAgency" class="row main-row"><b>NTMA - National Treasury Management Agency:</b> The Government body responsible for managing the Government's assets and national debt as well as certain funds such as the National Pensions Fund and the Dormant Accounts Fund
+</div></br> <div id="Oireachtas" class="row main-row"><b>Oireachtas:</b> The national parliament of Ireland, which consists of the President, Dáil Éireann (the lower house) and Seanad Éireann (the Senate or upper house), and whose powers and functions are outlined by the Constitution
+</div></br> <div id="Ombudsman" class="row main-row"><b>Ombudsman:</b> A public official who is responsible for investigating complaints against the Irish Government or the public service
+</div></br> <div id="Opposition" class="row main-row"><b>Opposition:</b> The second largest political party or group of parties in the Dáil that opposes what it believes to be wrong with Government policies and actions
+</div></br> <div id="OPW-OfficeofPublicWorks" class="row main-row"><b>OPW - Office of Public Works:</b> The Government engineering agency responsible for restoring and preserving state buildings, buying and fitting office accommodation for Government departments, building and maintaining Garda stations and prisons and managing flood relief and drainage programmes
+</div></br> <div id="Pacifism" class="row main-row"><b>Pacifism:</b> A belief that violence, especially war, must be avoided when resolving disputes
+</div></br> <div id="Parliament" class="row main-row"><b>Parliament:</b> An assembly of elected representatives that forms the legislature of a state or a nation and may have both an upper and a lower house  
+</div></br> <div id="Parliamentaryquestions(PQs)" class="row main-row"><b>Parliamentary questions (PQs):</b> Questions that TDs ask the Government – orally or in writing – about any issue for which the Government is responsible and that are recorded in the Official Report of Parliamentary Debates in Dáil Éireann and on the web site of the Houses of the Oireachtas
+</div></br> <div id="Parliamentaryprivileges" class="row main-row"><b>Parliamentary privileges:</b> Certain rights granted to TDs and Senators in Ireland that are not enjoyed by the general public, for example the right not to be sued for defamation because of anything they say in a speech in the Dáil or Seanad
+</div></br> <div id="Parliamentarywing(ofapoliticalparty)" class="row main-row"><b>Parliamentary wing (of a political party):</b> The people from a political party who have been elected to parliament
+</div></br> <div id="Partypolicy" class="row main-row"><b>Party policy:</b> The rules, values and approaches that a political party obeys and follows
+</div></br> <div id="Partypolitical" class="row main-row"><b>Party political:</b> Relating to the business or interests of a political party
+</div></br> <div id="Petition" class="row main-row"><b>Petition:</b> A document, usually containing signatures from many people, that is presented to a person or group in power by those asking for action on a matter  
+</div></br> <div id="Platform" class="row main-row"><b>Platform:</b> A political party's written statement of its principles and policies on a number of topics, which is published during an election campaign
+</div></br> <div id="Pledge" class="row main-row"><b>Pledge:</b> A solemn promise to do something, usually made when somebody takes a high-level official role
+</div></br> <div id="Policy" class="row main-row"><b>Policy:</b> A statement of a person's or group's intended action on a matter
+</div></br> <div id="Politicalagenda" class="row main-row"><b>Political agenda:</b> A set of issues that are dealt with in politics at a particular time and can sometimes be influenced by the media
+</div></br> <div id="Politicalideology" class="row main-row"><b>Political ideology:</b> A range of beliefs on which the aims and activities of a political party are based
+</div></br> <div id="Politicalparticipation" class="row main-row"><b>Political participation:</b> Voting in a referendum or election and, or, taking part in political activities
+</div></br> <div id="Politicalrights" class="row main-row"><b>Political rights:</b> Rights that allow a person to take part in political life, including the right to vote, hold particular political views and join a political party and influence public life
+</div></br> <div id="Politicalspectrum" class="row main-row"><b>Political spectrum:</b> The range of political thoughts, policies and approaches from the right to the left
+</div></br> <div id="Politicalvalues" class="row main-row"><b>Political values:</b> Beliefs and rules that are important to a political party or person, such as equality, liberty and tolerance of diversity
+</div></br> <div id="Poll" class="row main-row"><b>Poll:</b> Asking and recording the opinion of people, for example in a survey or at an election
+</div></br> <div id="Pollingcard" class="row main-row"><b>Polling card:</b> A card sent to a person's home before an election to tell the date and time of voting and where to vote
+</div></br> <div id="Pollingstation" class="row main-row"><b>Polling station:</b> A place where people vote
+</div></br> <div id="Populist" class="row main-row"><b>Populist:</b> A person whose public views reflect the interests and concerns of the average person
+</div></br> <div id="Precedent" class="row main-row"><b>Precedent:</b> Something that has been done before and is a guide to what should be done again, for example a decision in a legal case that is followed when similar cases come before the courts
+</div></br> <div id="Preferential" class="row main-row"><b>Preferential:</b> voting A voting system in which people vote for candidates in order of preference, putting 1 on the ballot paper beside their favourite candidate, 2 for their second favourite, 3 for their third favourite and so on    
+</div></br> <div id="PresidentialCommission" class="row main-row"><b>Presidential Commission:</b> A group that carries out the functions of the President of Ireland if they die, resign, permanently lose their health, fail to perform their functions or are out of the country or removed from office
+</div></br> <div id="PrivateMember'sBill" class="row main-row"><b>Private Member's Bill:</b> See Bill, Private Member's
+</div></br> <div id="Proclamation" class="row main-row"><b>Proclamation:</b> An official public announcement, for example the 1916 Proclamation – a public announcement of independence from British rule
+</div></br> <div id="ProgrammeforGovernment" class="row main-row"><b>Programme for Government:</b> A plan which is set out by the government. It is essentially a “to-do” list of tasks and activities for the term of government.
+</div></br> <div id="Propaganda" class="row main-row"><b>Propaganda:</b> Ideas or information, not always true, that help or injure an institution, cause or person
+</div></br> <div id="Proportionalrepresentation(PR)" class="row main-row"><b>Proportional representation (PR):</b> An election system in which the number of seats won by a party are broadly in proportion to (a percentage of ) the number of total votes its candidates receive
+</div></br> <div id="Protest" class="row main-row"><b>Protest:</b> A public statement or demonstration against a situation or the actions of others
+</div></br> <div id="Protestvote" class="row main-row"><b>Protest vote:</b> A vote for a candidate not out of support for them but to show disapproval of another political party and its candidate
+</div></br> <div id="Publicfunds" class="row main-row"><b>Public funds:</b> Money generated from taxes and other sources that is spent by a government
+</div></br> <div id="Publicpolicy" class="row main-row"><b>Public policy:</b> A body of laws, regulations and government action on matters concerning the public
+</div></br> <div id="Publicsector" class="row main-row"><b>Public sector:</b> The part of a country's economy that involves representing the public and providing and managing services for them, for example through schools, state bodies or hospitals
+</div></br> <div id="Publicservant" class="row main-row"><b>Public servant:</b> A person who works with the civil service, a local authority or other state body
+</div></br> <div id="Publicservices" class="row main-row"><b>Public services:</b> Services that are wholly or partly funded through taxes, including national, regional and local government and state agencies
+</div></br> <div id="Privatesector" class="row main-row"><b>Private sector:</b> The part of a country's economy that is involved in making profit, for example corporations, firms and banks
+</div></br> <div id="Quota" class="row main-row"><b>Quota:</b> The number of votes that a candidate needs to win a seat under the proportional representation (PR) system
+</div></br> <div id="Referendum" class="row main-row"><b>Referendum:</b> A vote on a topic or question
+</div></br> <div id="ReferendumCommission" class="row main-row"><b>Referendum Commission:</b> A group established before each referendum to tell the public what the referendum is about and to give the arguments for and against the proposal on which people will vote
+</div></br> <div id="Referendum,constitutional" class="row main-row"><b>Referendum, constitutional:</b> A referendum that takes place to let voters decide whether the Government can make a proposed change to the Constitution and to give them a chance to say they are for or against the proposed change
+</div></br> <div id="Regulation" class="row main-row"><b>Regulation:</b> A law made by an Act or sometimes a Government minister
+</div></br> <div id="Representativedemocracy" class="row main-row"><b>Representative democracy:</b> A system of government where voters elect representatives to make decisions for them
+</div></br> <div id="ReturningOfficer" class="row main-row"><b>Returning Officer:</b> A person who supervises the counting of votes during an election or referendum and who certifies and officially announces the results
+</div></br> <div id="Right,the" class="row main-row"><b>Right, the:</b> A term used to describe political parties and other groups that favour the free market and support the way things are now or want to return to past ways of doing things
+</div></br> <div id="Rights" class="row main-row"><b>Rights:</b> Claims that society recognises as fair, such as legal rights, political rights, social rights and human rights
+</div></br> <div id="Rulingparty" class="row main-row"><b>Ruling party:</b> The political party that controls the government
+</div></br> <div id="SeanadÉireann" class="row main-row"><b>Seanad Éireann:</b> Known as 'the Seanad' for short, the upper house of the Irish parliament (Oireachtas), which currently has 60 members, known as Senators, who debate issues, revise laws passed in Dáil Éireann and sometimes begin the process of introducing new laws
+</div></br> <div id="Secession" class="row main-row"><b>Secession:</b> The act of pulling out from a political alliance or association, especially from a federation of states
+</div></br> <div id="Secretballot" class="row main-row"><b>Secret ballot:</b> A system of voting that allows people to vote in private and anonymously (without giving their name) so they cannot be pressured to vote in a certain way
+</div></br> <div id="SelectCommittee" class="row main-row"><b>Select Committee:</b> A committee in the Oireachtas, which consists of members of the Dáil or the Seanad, that is usually set up to review the work of a Government department
+</div></br> <div id="SingleTransferableVote-STV" class="row main-row"><b>Single Transferable Vote - STV:</b> A system of preferential voting where several seats are available in a constituency that gives a person's vote to their favourite candidate and transfers unneeded or unused votes for that candidate (for example if they already have enough to be elected) to other candidates in the constituency until all seats are filled
+</div></br> <div id="SinnFéin" class="row main-row"><b>Sinn Féin:</b> A republican political party seeking to end British rule in Northern Ireland
+</div></br> <div id="Socialandcivilservices" class="row main-row"><b>Social and civil services:</b> The range of services available to the public, for example social welfare, education, health services, family supports and services that help people assert their rights on consumer issues, employment, equality and refugee status, among others
+</div></br> <div id="SocialandFamilyAffairs" class="row main-row"><b>Social and Family Affairs:</b> Department of The Government department responsible for devising and managing social welfare payments and benefits and developing and implementing policies to tackle poverty and long-term unemployment
+</div></br> <div id="Socialcapital" class="row main-row"><b>Social capital:</b> A general term for the networks and common values that allow members of a community to co-operate with and support each other
+</div></br> <div id="Socialwelfare" class="row main-row"><b>Social welfare:</b> State support for people when they are unemployed, ill, retired, widowed or caring full-time for others through payments or other benefits each week or month; known in other countries as social security
+</div></br> <div id="Socialism" class="row main-row"><b>Socialism:</b> A system and form of political thought that favours distributing wealth and assets equally so that all people, either directly or through their governments, have a say in how they are used  
+</div></br> <div id="Spin" class="row main-row"><b>Spin:</b> Public relations (PR) activity, for example press releases or interviews, or a way of interpreting information that aims to enhance the public image of a person or group, such as a politician or their party, at the expense of a political opponent or the opposition party
+</div></br> <div id="Statusquo" class="row main-row"><b>Status quo:</b> A situation that is unchanged or is as it was before a recent change
+</div></br> <div id="Statutelaw" class="row main-row"><b>Statute law:</b> A law passed by parliament, as opposed to common law, which is set by decisions made in court
+</div></br> <div id="Statutory" class="row main-row"><b>Statutory:</b> Something that is decided, set up or controlled by statute law
+</div></br> <div id="Strawpoll" class="row main-row"><b>Straw poll:</b> An unofficial vote or poll taken to see the general opinion among a group on a given issue
+</div></br> <div id="SupremeCourt" class="row main-row"><b>Supreme Court:</b> The highest court in Ireland, which hears appeals of decisions from the High Court
+</div></br> <div id="Surplus(votes)" class="row main-row"><b>Surplus (votes):</b> The amount of votes that exceed the quota needed for a candidate to be elected
+</div></br> <div id="Tallymen" class="row main-row"><b>Tally men:</b> Members of a political party who carry out an unofficial count of the ballot papers while the election or referendum is still taking place
+</div></br> <div id="Tánaiste" class="row main-row"><b>Tánaiste:</b> Irish Deputy Prime Minister, who takes the place of the Taoiseach if the Taoiseach dies, permanently loses health or is temporarily absent or if a successor has not yet been appointed; usually the leader of the smaller party in a two-party coalition government
+</div></br> <div id="Taoiseach" class="row main-row"><b>Taoiseach:</b> The head of the Irish Government, nominated by the Dáil, who speaks for the Government on major policy issues, chairs Cabinet meetings and has powers to reorganise the Cabinet
+</div></br> <div id="TD-TeachtaDála" class="row main-row"><b>TD -Teachta Dála:</b> One of 166 members of Dáil Eireann, who represents their constituency, takes part in debates and question time, votes on bills, runs an office in their constituency and usually also provides a clinic - a service where the public can meet the TD at certain times during the week to discuss local issues
+</div></br> <div id="Thinktank" class="row main-row"><b>Think tank:</b> A non-profit institute, corporation or group set up to research a range of areas and make recommendations to a government on public policy
+</div></br> <div id="Transport" class="row main-row"><b>Transport:</b> Department of The Government department responsible for devising and implementing policies on road building, road safety and driver licensing and testing, among others, providing safe and efficient public transport and supporting high quality, safe and competitive air travel
+</div></br> <div id="Treaty" class="row main-row"><b>Treaty:</b> A formal agreement between states on trade, peace or other issues
+</div></br> <div id="Tribunalofinquiry" class="row main-row"><b>Tribunal of inquiry:</b> A body set up by the Oireachtas and headed by a judge to investigate matters of urgent public importance, such as corrupt practices by public representatives or poor management of public services, and communicate its findings and recommendations to the Oireachtas
+</div></br> <div id="Troika" class="row main-row"><b>Troika:</b> The European Troika is a term which refers to the decision group comprised of the European Commission, the European Central Bank, and the International Monetary Fund.
+</div></br> <div id="Veto" class="row main-row"><b>Veto:</b> Blocking or rejecting a proposed law or change to the constitution; sometimes exercised by the President of Ireland if they refuse to sign into law a bill passed by the Dáil and the Seanad
+</div></br> <div id="Whip" class="row main-row"><b>Whip:</b> The manager of a political party, who is responsible for organising members of their party to take part in debates and vote in a way that that the party's leader desires
+</div></br> <div id="Whistleblower" class="row main-row"><b>Whistleblower:</b> An employee or a former employee of a business or public body who reports wrongdoing, for example fraud, underpaying staff or breaking safety regulations, to a person who can take corrective action directly or embarrass others into doing so
+</div></br> <div id="Whitepaper" class="row main-row"><b>White paper:</b> A document that outlines a government's plans for particular areas and sometimes forms the basis of later laws  
+</div></div>
 
-<div class="container">
-<h3>Glossary of political keywords</h3></br>
-<div class="row main-row"><b>Absentee ballot</b> A ballot paper that is filled in and posted to the Board of Elections before an election if a registered voter cannot get to a polling station on election day
-</div></br> <div class="row main-row"><b>Ad hoc committee:</b> A group of people that comes together to carry out a particular task and then breaks up when the task is over
-</div></br> <div class="row main-row"><b>Agriculture and Food:</b> Department of The Government department responsible for regulating and supporting agriculture and food industries and monitoring and controlling animal and plant health, animal welfare and some aspects of food safety
-</div></br> <div class="row main-row"><b>Amendment:</b> A change to the detail of a law or contract
-</div></br> <div class="row main-row"><b>Aristocracy:</b> A ruling system based on social class, wealth and noble birth
-</div></br> <div class="row main-row"><b>Arts, Sports and Tourism:</b> Department of The Government department responsible for promoting and fostering the arts, including the Irish film industry, promoting and developing sports, through programmes and major sports projects, and promoting and developing the tourism industry
-</div></br> <div class="row main-row"><b>Assembly:</b> A group of people gathered together for a special purpose, sometimes as a law-making body, as in the Northern Ireland Assembly  Attorney General The main legal advisor to the Irish Government, who is appointed by the Taoiseach
-</div></br> <div class="row main-row"><b>Backbench:</b> The seats occupied in Dáil Eireann by any member of the Irish Government who is not a minister or junior minister
-</div></br> <div class="row main-row"><b>Bailout:</b> The act of giving financial assistance to a failing business or economy to prevent it from collapsing
-</div></br> <div class="row main-row"><b>Balanced budget:</b> A government's annual budget in which income (for example from taxes) is equal to spending
-</div></br> <div class="row main-row"><b>Balance of power:</b> Power held by a small party or group of independent representatives when a major political party needs their support to form a government
-</div></br> <div class="row main-row"><b>Ballot:</b> A way of voting, usually using a ballot paper and ballot box
-</div></br> <div class="row main-row"><b>Ballot box:</b> A container for storing completed ballot papers during an election and only opened when votes are ready to be counted
-</div></br> <div class="row main-row"><b>Ballot box:</b> stuffing An illegal action that involves voting many times to affect the result of an election
-</div></br> <div class="row main-row"><b>Ballot paper:</b> A slip of paper, usually with representatives' names and photos, that registered voters use to record their preferences in an election or referendum
-</div></br> <div class="row main-row"><b>Bandwagon effect:</b> The tendency for a candidate or proposal that seems to be winning to gather extra support simply because of being ahead; also called the 'snowball effect'
-</div></br> <div class="row main-row"><b>Bi-cameral legislature:</b> A law-making body, known in Ireland as the Oireachtas, that is divided into an upper and a lower house
-</div></br> <div class="row main-row"><b>Bill (law):</b> A draft of a new law or change to a current law that has yet to be passed by the Oireachtas
-</div></br> <div class="row main-row"><b>Bill, Private Member's:</b> A proposal for a law that comes from an individual TD or senator
-</div></br> <div class="row main-row"><b>Bi-partisanship:</b> Co-operation on an issue or issues by two people or groups
-</div></br> <div class="row main-row"><b>Borough council:</b> A local authority, usually in larger towns; found in Ireland in Clonmel, Drogheda, Kilkenny, Sligo and Wexford
-</div></br> <div class="row main-row"><b>Brown envelope:</b> A term referring to the practice of politicians receiving illegal payments (in brown envelopes) in exchange for favours
-</div></br> <div class="row main-row"><b>Branch:</b> A section of a political party that draws members from a local area
-</div></br> <div class="row main-row"><b>Bunreacht na hÉireann:</b> Irish Constitution - see Constitution of Ireland
-</div></br> <div class="row main-row"><b>Bureaucracy:</b> A system involving many rules and procedures and several levels of management and relying on written communication
-</div></br> <div class="row main-row"><b>By-election:</b> An election for a seat in the Dáil that becomes vacant if a TD dies or resigns their seat
-</div></br> <div class="row main-row"><b>Cabinet:</b> The group of Government ministers, the Taoiseach and the Attorney General, which decides policy and is responsible for all the Government departments
-</div></br> <div class="row main-row"><b>Campaign:</b> An organised competition for votes by people who are seeking a particular result from an election or referendum or who are seeking to change the behaviour of government, business, other large institutions and the general population through the media, protests, written proposals, public meetings and so on
-</div></br> <div class="row main-row"><b>Campaign:</b> spending limits Limits on the amount of money that political candidates can spend in an election campaign
-</div></br> <div class="row main-row"><b>Candidate:</b> Someone who stands for election to a representative office
-</div></br> <div class="row main-row"><b>Canvassing:</b> Trying to win votes by contacting voters directly, for example by going door to door
-</div></br> <div class="row main-row"><b>Capitalism:</b> An economic system in which private individuals and corporations own goods, aim to make a profit and have freedom to set prices for goods and services
-</div></br> <div class="row main-row"><b>Cathaoirleach:</b> The Irish word for chairperson
-</div></br> <div class="row main-row"><b>Caucus:</b> A group or a meeting of people, especially members of a political party with power to decide on policy
-</div></br> <div class="row main-row"><b>Ceann Comhairle:</b> The chairperson of Dáil Éireann, who chairs its proceedings and must make sure that all parties and independent members are treated fairly
-</div></br> <div class="row main-row"><b>Census:</b> A detailed count by the Central Statistics Office (CSO) of every person in Ireland, including people who don't usually live here, on a particular date roughly every five years
-</div></br> <div class="row main-row"><b>Centre:</b> The middle point of the political spectrum, ranging from 'far left' (communism) to 'far right' (fascism)
-</div></br> <div class="row main-row"><b>Centrist:</b> A person with moderate political opinions and policies
-</div></br> <div class="row main-row"><b>Checks and balances:</b> A term describing the actions of the three branches of government - the legislature, executive and judiciary - to monitor (check) each other's work and limit (balance) each other's powers so no branch becomes too powerful
-</div></br> <div class="row main-row"><b>Chief Justice:</b> The head of the Supreme Court
-</div></br> <div class="row main-row"><b>Chief Whip:</b> The member of Irish Government who organises and co-ordinates government business in Dáil Éireann
-</div></br> <div class="row main-row"><b>Citizen:</b> A member of a city, state or nation who enjoys its legal, social and political rights and of whom loyalty and responsibility is expected
-</div></br> <div class="row main-row"><b>Citizenship (Irish):</b> A legal status granted to: anyone born in Ireland if one of their parents was an Irish citizen at the time of their birth; or anyone born abroad if one of their parents was born in Ireland; or a child born in Ireland after 1 January 2005 to non-citizen parents if one of the parents was lawfully living in Ireland for at least three of the four years before the child's birth
-</div></br> <div class="row main-row"><b>Citizenship rights:</b> Rights that are enjoyed by a citizen, such as the right to vote and to live permanently in a particular country
-</div></br> <div class="row main-row"><b>City councils:</b> Local authorities responsible for services such as housing, planning, roads, water supply and recreation facilities in particular cities
-</div></br> <div class="row main-row"><b>City or county manager:</b> The person who manages a city or county council
-</div></br> <div class="row main-row"><b>City state:</b> A small state consisting only of a city and its surrounding land, for example Singapore or the Vatican
-</div></br> <div class="row main-row"><b>Civic participation or engagement:</b> A process in which people use the freedoms of democracy to do things such as sign a petition, contact their local councillor, vote, stand for election and become informed on issues
-</div></br> <div class="row main-row"><b>Civil and political rights:</b> Freedoms and entitlements given by a nation to its people, including the right to a fair trial, the right to privacy, the right to marry, the right to take part in public life and the right to freedom of movement
-</div></br> <div class="row main-row"><b>Civil law:</b> The law that regulates relations between individuals, or between individuals and corporations, and deals with property rights, personal injury and personal dignity and freedom
-</div></br> <div class="row main-row"><b>Civil law:</b> system A system in which most of the laws are decided by legislation
-</div></br> <div class="row main-row"><b>Civil liberty:</b> The freedom to act, assemble, think or speak as you wish, regulated only as much as is needed for the good of other people
-</div></br> <div class="row main-row"><b>Civil service:</b> The body of Government workers and officials who advise ministers and carry out the day-to-day work of Government departments
-</div></br> <div class="row main-row"><b>Coalition:</b> A collection of two or more groups or parties, usually to form a government or opposition
-</div></br> <div class="row main-row"><b>Coalition government:</b> A government made up of more than one political party because no party obtained enough votes to form a government on its own
-</div></br> <div class="row main-row"><b>Code of conduct for office holders:</b> Rules for TDs to help them make sure they behave ethically, fairly and responsibly and act in the best interests of the public
-</div></br> <div class="row main-row"><b>Committee on Procedures and Privileges:</b> A committee in Dáil Éireann and in Seanad Éireann that works to make sure that members of each house do not act in a way that abuses the power that comes with their position and may recommend that members be disciplined if any abuse takes place
-</div></br> <div class="row main-row"><b>Communications, Marine and Natural Resources:</b> Department of The Government department responsible for regulating and overseeing the broadcasting, telecommunications (post, Internet and telephone services) and energy sectors and protecting and developing marine and natural resources, such as minerals and oil
-</div></br> <div class="row main-row"><b>Communism:</b> An economic and political system put into place after the Bolshevik revolution in Russia in 1917 in which people share the ownership of all goods and property; also, a system, such as in the former Soviet Union, where the government controls every aspect of a citizen's life and denies political freedoms
-</div></br> <div class="row main-row"><b>Community, Rural and Gaeltacht Affairs:</b> Department of The Government department responsible for advancing the use of the Irish language and for promoting and supporting the growth of urban and rural communities, including Gaeltacht and island communities, to reduce disadvantage
-</div></br> <div class="row main-row"><b>Consensus:</b> Agreement that is generally acceptable
-</div></br> <div class="row main-row"><b>Conservation:</b> Using natural resources carefully (for example minerals, gas water or plants) and maintaining places of environmental or cultural importance to make sure they are available to future generations
-</div></br> <div class="row main-row"><b>Conservative:</b> A person or political party who wishes to keep things the way they are, supports traditional values and opposes government interference; known as 'right', 'right wing' or 'right of centre' in politics
-</div></br> <div class="row main-row"><b>Constituency:</b> The area of voters that a politician represents
-</div></br> <div class="row main-row"><b>Constituency:</b> boundary A border between one constituency and another
-</div></br> <div class="row main-row"><b>Constitution:</b> A set of principles used by an organisation, including a country or a state, to govern, or the document setting out those principles
-</div></br> <div class="row main-row"><b>Constitution of Ireland:</b> Known in Irish as Bunreacht na hÉireann, the document in force since 29 December 1937 that outlines the values and structures of the State, must be obeyed by new laws or practices and can only be changed with the agreement of the people
-</div></br> <div class="row main-row"><b>Convention:</b> An agreement between nations or sides, for example the European Convention on Human Rights; also, a formal meeting of members or representatives of groups such as political parties, professional associations or industry groups
-</div></br> <div class="row main-row"><b>Council of State:</b> The group of current and past Taoisigh (Prime Ministers), Presidents, Chief Justices, the Ceann Comhairle, the Cathaoirleach of the Seanad and the Attorney General, which advises the President of Ireland and must be consulted before the President calls a meeting of Dáil Éireann and Seanad Éireann or signs new bills into law
-</div></br> <div class="row main-row"><b>Councillor:</b> A person elected to a county, city or urban district council to represent the interests of those living in the area covered by the council
-</div></br> <div class="row main-row"><b>County council:</b> A type of local authority, covering a county that is responsible for services including housing, planning, roads, water supply and recreation facilities
-</div></br> <div class="row main-row"><b>County Development Boards:</b> Boards set up in Ireland to bring together local development bodies, State agencies and other social partners to take part in long-term planning for counties over 10 years
-</div></br> <div class="row main-row"><b>County Registrar:</b> A person appointed to make sure that an election or referendum and the return of its results are carried out properly
-</div></br> <div class="row main-row"><b>Criminal law:</b> The body of laws that ban certain behaviour - for example drunken driving, drug dealing, assault, murder and theft – that would otherwise cause social order to break down
-</div></br> <div class="row main-row"><b>Dáil Committee:</b> A committee of members of the Dáil, broadly divided according to the division of Dáil seats among the political parties and independent TDs to consider matters relating to how TDs and certain public bodies carry out their functions
-</div></br> <div class="row main-row"><b>Dáil Éireann:</b> Known as 'the Dáil' for short, the lower house of the Oireachtas, in which members carry out a number of functions, such as debating and voting on issues and passing bills
-</div></br> <div class="row main-row"><b>Data Protection Commissioner:</b> An independent person appointed by the Government to make sure that people can keep their right to privacy when information about them is held on computers or on paper and to deal with complaints from anyone who feels their rights have been infringed
-</div></br> <div class="row main-row"><b>Defamation:</b> Saying or writing something false about a living person that is proven to damage their reputation in the eyes of rightminded people
-</div></br> <div class="row main-row"><b>Defence, Department of:</b> The Government department responsible for managing, training, organising and equipping the defence forces and co-ordinating and overseeing emergency planning in response to threats
-</div></br> <div class="row main-row"><b>Deficit:</b> A situation that occurs when the Government is spending more money than it is taking in
-</div></br> <div class="row main-row"><b>Delegate:</b> A representative at a political or other conference who has been given the power to make decisions for others at that conference
-</div></br> <div class="row main-row"><b>Democracy:</b> A society that favours equal rights, fair trials and freedom of speech and in which people govern themselves (direct democracy) or are governed by elected officials (representative democracy)
-</div></br> <div class="row main-row"><b>Democratic:</b> rights Rights to political or social equality for all
-</div></br> <div class="row main-row"><b>Democratic Unionist Party (DUP):</b> Unionist party in Northern Ireland founded by Reverend Ian Paisley
-</div></br> <div class="row main-row"><b>Demonstration:</b> In political terms, a public show of protest against or sympathy with a particular cause
-</div></br> <div class="row main-row"><b>Deputy In Ireland:</b> the short name for someone elected to Dáil Éireann to represent their constituency
-</div></br> <div class="row main-row"><b>Despot:</b> A ruler who exercises total power, especially in a cruel or harsh way
-</div></br> <div class="row main-row"><b>Devolution:</b> A system in which the central government of a state passes a law granting certain powers to local, national or regional authorities while still keeping the central government's authority
-</div></br> <div class="row main-row"><b>Dictator:</b> A ruler who has total power over a country or state, regardless of the laws of the state or any opposition
-</div></br> <div class="row main-row"><b>Dictatorship:</b> A state in which one person or group has total power to govern
-</div></br> <div class="row main-row"><b>Diplomat:</b> A person appointed to represent Ireland in other countries and to manage our relations with those countries
-</div></br> <div class="row main-row"><b>Director of Consumer Affairs:</b> An independent person appointed by Government who is responsible for defending, enforcing and providing advice and information on consumer rights
-</div></br> <div class="row main-row"><b>Direct provision:</b> Direct provision is a controversial system intended to provide welfare for asylum seekers and their families as they await decisions on their asylum application. The Irish Immigrant Support Centre and the Irish Refugee Council, amongst others, have protested Direct Provision due to the restrictive rules which it places on those in the system, as well as other issues related to standard of welfare and the duration for which asylum seekers remain in the system.
-</div></br> <div class="row main-row"><b>Dissolution:</b> An action by the President of Ireland (with the support of the Taoiseach) to end the current term of the Dáil so a general election can be held
-</div></br> <div class="row main-row"><b>Economic and social rights:</b> Rights that help people develop and enjoy an adequate standard of living, such as the right to work, the right to education and the right to free time, as outlined in the Covenant on Economic and Social Rights adopted by the United Nations 1966
-</div></br> <div class="row main-row"><b>Economic policy:</b> A Government plan on how to manage money and taxes
-</div></br> <div class="row main-row"><b>Education and Science:</b> Department of The Government department responsible for devising education policy and overseeing programmes and services that help promote lifelong learning and provide education that meets personal, social, cultural and economic needs
-</div></br> <div class="row main-row"><b>Education for Democratic Citizenship (EDC):</b> A project organised by the Council of Europe to inform people about their rights and responsibilities in society and how they can use them
-</div></br> <div class="row main-row"><b>Election:</b> Choosing a person or a government by voting
-</div></br> <div class="row main-row"><b>Election day:</b> The day when the election takes place
-</div></br> <div class="row main-row"><b>Election expenses:</b> Amounts that political parties and independent candidates spend on advertising, canvassing and opposing other candidates during election campaigns, which, since 1997, must be accounted for and within certain limits
-</div></br> <div class="row main-row"><b>Elector:</b> A person who votes or has the right to vote
-</div></br> <div class="row main-row"><b>Electoral Register (also known as Register of Electors):</b> A list of those who have the right to vote in national, local or European elections in Ireland, put together by city and county councils
-</div></br> <div class="row main-row"><b>Electorate:</b> All those who have a right to vote in an election
-</div></br> <div class="row main-row"><b>Electronic voting:</b> Using electronic equipment and computers to vote and count votes
-</div></br> <div class="row main-row"><b>Enterprise, Trade and Employment:</b> Department of The Government department responsible for regulating employment, health and safety at work, consumer issues, trade, competition and company matters and overseeing state bodies that provide training and promote trade and employment, such as FAS, Enterprise Ireland and the Industrial Development Agency (IDA)
-</div></br> <div class="row main-row"><b>Environment, Heritage and Local Government:</b> Department of The Government department responsible for protecting the environment, preserving and promoting heritage buildings, collecting motor tax, coordinating elections, devising housing policy and overseeing county, city and urban district councils
-</div></br> <div class="row main-row"><b>European Commission:</b> The executive body of the European Union responsible for proposing legislation, implementing decisions, upholding the EU treaties and managing the day-to-day business of the EU
-</div></br> <div class="row main-row"><b>European Central Bank:</b> The central bank for the euro currency which administers monetary policy for the Eurozone
-</div></br> <div class="row main-row"><b>Exit poll:</b> A survey of a small percentage of people leaving the place where they have just voted to ask them who or what they voted for
-</div></br> <div class="row main-row"><b>Fianna Fáil:</b> National political party founded in 1926 with democratic Republican values
-</div></br> <div class="row main-row"><b>Finance:</b> Department of The Government department responsible for implementing Government policy and advising the Minister for Finance on the finances of the State, drafting and reviewing finance and other laws and managing and developing the public sector
-</div></br> <div class="row main-row"><b>Fine Gael:</b> National independent political party founded in 1933
-</div></br> <div class="row main-row"><b>Foreign Affairs:</b> Department of The Government department responsible for advancing Ireland's political and economic interests in the European Union and elsewhere, promoting Ireland's contribution to international peace, security and development through the European Union and international organisations, especially the United Nations, protecting Irish citizens abroad and dealing with political issues concerning Northern Ireland
-</div></br> <div class="row main-row"><b>Free market:</b> An economic system where prices are set not by government but by competition between businesses
-</div></br> <div class="row main-row"><b>Freedom of speech:</b> A right to speak freely on social and political matters without fear of forced silence
-</div></br> <div class="row main-row"><b>Front bench:</b> Members of the Dáil who are ministers or spokespeople
-</div></br> <div class="row main-row"><b>Front runner:</b> A candidate who is likely to win an election or be nominated by their party to take part in an election
-</div></br> <div class="row main-row"><b>Garda Commissioner:</b> Responsible for the general direction, management and control of An Garda Síochána. While the Minister for Justice, Equality & Law Reform is responsible to the Government for the performance of An Garda Síochána, it is the Commissioner who runs the organisation on a day to day basis
-</div></br> <div class="row main-row"><b>Gender gap:</b> The difference between men and women in types and levels of employment, earnings, educational qualifications, voting and general health, among other areas
-</div></br> <div class="row main-row"><b>General election:</b> A national election for all seats in the Dáil and Seanad, which must be held within 30 days of the dissolution of the Dáil
-</div></br> <div class="row main-row"><b>Gerrymander Dividing:</b> a constituency deliberately to give an advantage to one political party or to particular voters, for example according to racial or ethnic background
-</div></br> <div class="row main-row"><b>Government:</b> A system, involving a group of senior ministers, that runs a state and gives effect to its laws
-</div></br> <div class="row main-row"><b>Government Chief Whip:</b> The person responsible for organising and co-ordinating Government business in Dáil Éireann
-</div></br> <div class="row main-row"><b>Government department:</b> A group of civil servants, headed by a minister, which is responsible for a specific area of work within a government, for example health or the environment
-</div></br> <div class="row main-row"><b>Government revenue:</b> Income that a government gets from tax, excise duties, customs and other sources
-</div></br> <div class="row main-row"><b>Grass roots:</b> A basic source of support for a cause or a group, usually developed naturally without prompting or organisation from traditional holders of power
-</div></br> <div class="row main-row"><b>Grassroots movement:</b> The action of groups of likeminded people who lobby for change on a particular issue, usually through door-to-door canvassing, letter writing, local meetings and so on
-</div></br> <div class="row main-row"><b>Head of state:</b> A formal leader of a country or a group of people organised under one government, for example the President in Ireland and the Queen in the United Kingdom
-</div></br> <div class="row main-row"><b>Health and Children:</b> Department of The Government department responsible for managing, regulating and developing the health services, ensuring the safety and welfare of children and developing policies, programmes and information campaigns to protect and promote public health
-</div></br> <div class="row main-row"><b>Ideology:</b> A set of connected ideas, usually about a political system, or a way of looking at something  IMF - International Monetary Fund The International Monetary Fund (IMF) is an organization of 188 countries, working to foster global monetary cooperation, secure financial stability, facilitate international trade, promote high employment and sustainable economic growth, and reduce poverty around the world. Created in 1945, the IMF is governed by and accountable to the 188 countries that make up its near-global membership.
-</div></br> <div class="row main-row"><b>Incumbent:</b> A person who currently holds a post or office
-</div></br> <div class="row main-row"><b>Independence:</b> Freedom from the influence or rule of another person, group or country
-</div></br> <div class="row main-row"><b>Independent:</b> A TD, Senator or Councillor who does not belong to a political party
-</div></br> <div class="row main-row"><b>Interest group:</b> A group of people organised to take action about a cause or interest
-</div></br> <div class="row main-row"><b>Irish Water:</b> Irish Water is the new national water utility that has the responsibility for the delivery of water and wastewater services to homes and businesses. Irish Water is responsible for the operation of public water services including management of national water assets, maintenance of the water system, investment and planning, managing capital projects and customer care and billing
-</div></br> <div class="row main-row"><b>Joint Oireachtas Committee:</b> A committee made up of members of the Dáil and Seanad to discuss and vote on particular matters, for example the Joint Oireachtas Committee on Education and Science and Joint Oireachtas Committee on Foreign Affairs
-</div></br> <div class="row main-row"><b>Judicial review:</b> The power of judges to review whether laws and official acts by the Government violate the Constitution or basic rules of justice and, if they do, strike them down or overturn them
-</div></br> <div class="row main-row"><b>Judiciary:</b> The branch of government that is concerned with interpreting laws and upholding justice through the courts
-</div></br> <div class="row main-row"><b>Junior Minister:</b> A member of government appointed by the Taoiseach to assist a senior minister for a Government department; officially called Minister of State
-</div></br> <div class="row main-row"><b>Justice, Equality and Law Reform:</b> Department of The Government department responsible for protecting the security of the State, implementing Government policy on crime, advising criminal justice institutions (prisons, courts, Gardaí and Probation and Welfare Services) and developing and implementing policies on immigration and asylum, equality, anti-discrimination, human rights and childcare, among others
-</div></br> <div class="row main-row"><b>Labour Court:</b> A place that hears employment disputes when all other methods to resolve them have failed and gives non-binding opinions and recommendations on how to settle them  
-</div></br> <div class="row main-row"><b>Labour Party:</b> Political party formed nationally in 1912 with a focus on equality, freedom, community and democracy
-</div></br> <div class="row main-row"><b>Laissez-faire:</b> An ideology that opposes Government interference in economic affairs, other than the minimum necessary to maintain property rights and peace, and individual interference in another's freedom of choice and action
-</div></br> <div class="row main-row"><b>Law Reform Commission:</b> An independent body set up by Government to review laws and advise the Government on necessary reforms, often after seeking the views of interest groups and the public
-</div></br> <div class="row main-row"><b>Leader of the opposition:</b> The leader of the largest political party that is not in government and the opposition's main spokesperson
-</div></br> <div class="row main-row"><b>Left:</b> the Organisations or political parties that favour social justice and freedom, aim to share a country's wealth between all people equally and focus on workers' rights; originally comes from the French Revolution, when politicians representing the people's interests sat to the left of the president's chair
-</div></br> <div class="row main-row"><b>Left-wing:</b> The section of a political system or party that favours social justice over the free market
-</div></br> <div class="row main-row"><b>Legal rights:</b> Rights of all individuals in a society as outlined in the laws of the State
-</div></br> <div class="row main-row"><b>Legislation:</b> A law or a set of laws or the act of making laws
-</div></br> <div class="row main-row"><b>Legislature:</b> The branch of government that makes laws, known in Ireland as the Oireachtas
-</div></br> <div class="row main-row"><b>Legislative power:</b> The power to make and change laws
-</div></br> <div class="row main-row"><b>Legislative process:</b> A series of actions that result in a law being made
-</div></br> <div class="row main-row"><b>Libel:</b> A written or recorded (on radio or TV) statement about a person that is proven to be false and damaging to their reputation
-</div></br> <div class="row main-row"><b>Liberalism:</b> A broad political ideology that generally favours individual freedom, open government and the free market, but contains different views on whether the government should interfere in the market, for example through anti-discrimination laws or social welfare for those who are unable to work
-</div></br> <div class="row main-row"><b>Libertarian:</b> A person who supports individual personal and property rights and minimal government involvement in people's lives
-</div></br> <div class="row main-row"><b>Lobby:</b> Trying to influence public opinion to change laws or certain actions, for example by writing letters, making proposals or meeting decision makers; originally comes from the UK, where people waited in the lobby (entrance hall) or corridors of parliament to talk to Members of Parliament
-</div></br> <div class="row main-row"><b>Lobby group:</b> A group that tries to get support for a particular cause to change laws or certain actions
-</div></br> <div class="row main-row"><b>Lobbyist:</b> A person who lobbies
-</div></br> <div class="row main-row"><b>Local authority:</b> A local form of government, consisting of elected officials and full-time staff, which is responsible for providing a range of public services, for example libraries, swimming pools and refuse collection
-</div></br> <div class="row main-row"><b>Local elections:</b> Elections held in Ireland every five years, usually in May or June, to elect councillors to represent the community in local authorities around the country
-</div></br> <div class="row main-row"><b>Local government:</b> A term to refer to the system of county and city councils whose members are elected by the people
-</div></br> <div class="row main-row"><b>Majority:</b> The difference between the largest number of votes for or against something and the number of remaining votes
-</div></br> <div class="row main-row"><b>Majority party:</b> The political party that wins more votes in an election than other political parties
-</div></br> <div class="row main-row"><b>Mandate:</b> The authority to represent people's interests and take action for them, given by voters to elected officials or sometimes by members of an organisation to its leaders
-</div></br> <div class="row main-row"><b>Manifesto:</b> A document stating a political party's values, goals and intended actions
-</div></br> <div class="row main-row"><b>Member:</b> A person who belongs to an organisation or body
-</div></br> <div class="row main-row"><b>Member of Parliament (MP):</b> A member of the British House of Commons
-</div></br> <div class="row main-row"><b>Member of the European Parliament (MEP):</b> An elected politician who represents a region of their own country in the European Parliament
-</div></br> <div class="row main-row"><b>Minister:</b> A member of the Irish Government who runs and manages a department and may propose new or amended laws
-</div></br> <div class="row main-row"><b>Motion of no confidence:</b> A vote on the performance of a leader or a government, usually proposed by the opposition, that, if passed, may require the person to resign or the government to stand down and request a general election    
-</div></br> <div class="row main-row"><b>NAPS - National AntiPoverty Strategy:</b> A Government medium-term plan (three to five years) to tackle poverty
-</div></br> <div class="row main-row"><b>National debt:</b> The total amount of money owed by a government
-</div></br> <div class="row main-row"><b>Nationalise:</b> Bringing an industry under the control or ownership of a government
-</div></br> <div class="row main-row"><b>Nationalism:</b> A belief that a large group of people are or should be a nation with its own government and a policy of asserting the interests of a nation against other nations or the common interests of all nations
-</div></br> <div class="row main-row"><b>NDP - National Development Plan:</b> A Government plan to improve the economy and living standards by investing money in education and training, regional development, social services, roads and so on
-</div></br> <div class="row main-row"><b>Neo-conservatives ('neo-cons'):</b> A term used usually to refer to right-wing members of the US Republican Party who promote traditional family values, the free market and action by the United States against other countries to improve its standing and promote its values and interests
-</div></br> <div class="row main-row"><b>Nominee:</b> A person who is nominated, or proposed by others, as a candidate for public office
-</div></br> <div class="row main-row"><b>Non-partisan:</b> Neutral or not involving or influenced by a political party
-</div></br> <div class="row main-row"><b>Non-party candidate:</b> An independent candidate, one who is not a member of a political party
-</div></br> <div class="row main-row"><b>NRA - National Roads Authority:</b> The Government body responsible for planning, improving and managing the road network in Ireland
-</div></br> <div class="row main-row"><b>NTMA - National Treasury Management Agency:</b> The Government body responsible for managing the Government's assets and national debt as well as certain funds such as the National Pensions Fund and the Dormant Accounts Fund
-</div></br> <div class="row main-row"><b>Oireachtas:</b> The national parliament of Ireland, which consists of the President, Dáil Éireann (the lower house) and Seanad Éireann (the Senate or upper house), and whose powers and functions are outlined by the Constitution
-</div></br> <div class="row main-row"><b>Ombudsman:</b> A public official who is responsible for investigating complaints against the Irish Government or the public service
-</div></br> <div class="row main-row"><b>Opposition:</b> The second largest political party or group of parties in the Dáil that opposes what it believes to be wrong with Government policies and actions
-</div></br> <div class="row main-row"><b>OPW - Office of Public Works:</b> The Government engineering agency responsible for restoring and preserving state buildings, buying and fitting office accommodation for Government departments, building and maintaining Garda stations and prisons and managing flood relief and drainage programmes
-</div></br> <div class="row main-row"><b>Pacifism:</b> A belief that violence, especially war, must be avoided when resolving disputes
-</div></br> <div class="row main-row"><b>Parliament:</b> An assembly of elected representatives that forms the legislature of a state or a nation and may have both an upper and a lower house  
-</div></br> <div class="row main-row"><b>Parliamentary questions (PQs):</b> Questions that TDs ask the Government – orally or in writing – about any issue for which the Government is responsible and that are recorded in the Official Report of Parliamentary Debates in Dáil Éireann and on the web site of the Houses of the Oireachtas
-</div></br> <div class="row main-row"><b>Parliamentary privileges:</b> Certain rights granted to TDs and Senators in Ireland that are not enjoyed by the general public, for example the right not to be sued for defamation because of anything they say in a speech in the Dáil or Seanad
-</div></br> <div class="row main-row"><b>Parliamentary wing (of a political party):</b> The people from a political party who have been elected to parliament
-</div></br> <div class="row main-row"><b>Party policy:</b> The rules, values and approaches that a political party obeys and follows
-</div></br> <div class="row main-row"><b>Party political:</b> Relating to the business or interests of a political party
-</div></br> <div class="row main-row"><b>Petition:</b> A document, usually containing signatures from many people, that is presented to a person or group in power by those asking for action on a matter  
-</div></br> <div class="row main-row"><b>Platform:</b> A political party's written statement of its principles and policies on a number of topics, which is published during an election campaign
-</div></br> <div class="row main-row"><b>Pledge:</b> A solemn promise to do something, usually made when somebody takes a high-level official role
-</div></br> <div class="row main-row"><b>Policy:</b> A statement of a person's or group's intended action on a matter
-</div></br> <div class="row main-row"><b>Political agenda:</b> A set of issues that are dealt with in politics at a particular time and can sometimes be influenced by the media
-</div></br> <div class="row main-row"><b>Political ideology:</b> A range of beliefs on which the aims and activities of a political party are based
-</div></br> <div class="row main-row"><b>Political participation:</b> Voting in a referendum or election and, or, taking part in political activities
-</div></br> <div class="row main-row"><b>Political rights:</b> Rights that allow a person to take part in political life, including the right to vote, hold particular political views and join a political party and influence public life
-</div></br> <div class="row main-row"><b>Political spectrum:</b> The range of political thoughts, policies and approaches from the right to the left
-</div></br> <div class="row main-row"><b>Political values:</b> Beliefs and rules that are important to a political party or person, such as equality, liberty and tolerance of diversity
-</div></br> <div class="row main-row"><b>Poll:</b> Asking and recording the opinion of people, for example in a survey or at an election
-</div></br> <div class="row main-row"><b>Polling card:</b> A card sent to a person's home before an election to tell the date and time of voting and where to vote
-</div></br> <div class="row main-row"><b>Polling station:</b> A place where people vote
-</div></br> <div class="row main-row"><b>Populist:</b> A person whose public views reflect the interests and concerns of the average person
-</div></br> <div class="row main-row"><b>Precedent:</b> Something that has been done before and is a guide to what should be done again, for example a decision in a legal case that is followed when similar cases come before the courts
-</div></br> <div class="row main-row"><b>Preferential:</b> voting A voting system in which people vote for candidates in order of preference, putting 1 on the ballot paper beside their favourite candidate, 2 for their second favourite, 3 for their third favourite and so on    
-</div></br> <div class="row main-row"><b>Presidential Commission:</b> A group that carries out the functions of the President of Ireland if they die, resign, permanently lose their health, fail to perform their functions or are out of the country or removed from office
-</div></br> <div class="row main-row"><b>Private Member's Bill:</b> See Bill, Private Member's
-</div></br> <div class="row main-row"><b>Proclamation:</b> An official public announcement, for example the 1916 Proclamation – a public announcement of independence from British rule
-</div></br> <div class="row main-row"><b>Programme for Government:</b> A plan which is set out by the government. It is essentially a “to-do” list of tasks and activities for the term of government.
-</div></br> <div class="row main-row"><b>Propaganda:</b> Ideas or information, not always true, that help or injure an institution, cause or person
-</div></br> <div class="row main-row"><b>Proportional representation (PR):</b> An election system in which the number of seats won by a party are broadly in proportion to (a percentage of ) the number of total votes its candidates receive
-</div></br> <div class="row main-row"><b>Protest:</b> A public statement or demonstration against a situation or the actions of others
-</div></br> <div class="row main-row"><b>Protest vote:</b> A vote for a candidate not out of support for them but to show disapproval of another political party and its candidate
-</div></br> <div class="row main-row"><b>Public funds:</b> Money generated from taxes and other sources that is spent by a government
-</div></br> <div class="row main-row"><b>Public policy:</b> A body of laws, regulations and government action on matters concerning the public
-</div></br> <div class="row main-row"><b>Public sector:</b> The part of a country's economy that involves representing the public and providing and managing services for them, for example through schools, state bodies or hospitals
-</div></br> <div class="row main-row"><b>Public servant:</b> A person who works with the civil service, a local authority or other state body
-</div></br> <div class="row main-row"><b>Public services:</b> Services that are wholly or partly funded through taxes, including national, regional and local government and state agencies
-</div></br> <div class="row main-row"><b>Private sector:</b> The part of a country's economy that is involved in making profit, for example corporations, firms and banks
-</div></br> <div class="row main-row"><b>Quota:</b> The number of votes that a candidate needs to win a seat under the proportional representation (PR) system
-</div></br> <div class="row main-row"><b>Referendum:</b> A vote on a topic or question
-</div></br> <div class="row main-row"><b>Referendum Commission:</b> A group established before each referendum to tell the public what the referendum is about and to give the arguments for and against the proposal on which people will vote
-</div></br> <div class="row main-row"><b>Referendum, constitutional:</b> A referendum that takes place to let voters decide whether the Government can make a proposed change to the Constitution and to give them a chance to say they are for or against the proposed change
-</div></br> <div class="row main-row"><b>Regulation:</b> A law made by an Act or sometimes a Government minister
-</div></br> <div class="row main-row"><b>Representative democracy:</b> A system of government where voters elect representatives to make decisions for them
-</div></br> <div class="row main-row"><b>Returning Officer:</b> A person who supervises the counting of votes during an election or referendum and who certifies and officially announces the results
-</div></br> <div class="row main-row"><b>Right, the:</b> A term used to describe political parties and other groups that favour the free market and support the way things are now or want to return to past ways of doing things
-</div></br> <div class="row main-row"><b>Rights:</b> Claims that society recognises as fair, such as legal rights, political rights, social rights and human rights
-</div></br> <div class="row main-row"><b>Ruling party:</b> The political party that controls the government
-</div></br> <div class="row main-row"><b>Seanad Éireann:</b> Known as 'the Seanad' for short, the upper house of the Irish parliament (Oireachtas), which currently has 60 members, known as Senators, who debate issues, revise laws passed in Dáil Éireann and sometimes begin the process of introducing new laws
-</div></br> <div class="row main-row"><b>Secession:</b> The act of pulling out from a political alliance or association, especially from a federation of states
-</div></br> <div class="row main-row"><b>Secret ballot:</b> A system of voting that allows people to vote in private and anonymously (without giving their name) so they cannot be pressured to vote in a certain way
-</div></br> <div class="row main-row"><b>Select Committee:</b> A committee in the Oireachtas, which consists of members of the Dáil or the Seanad, that is usually set up to review the work of a Government department
-</div></br> <div class="row main-row"><b>Single Transferable Vote - STV:</b> A system of preferential voting where several seats are available in a constituency that gives a person's vote to their favourite candidate and transfers unneeded or unused votes for that candidate (for example if they already have enough to be elected) to other candidates in the constituency until all seats are filled
-</div></br> <div class="row main-row"><b>Sinn Féin:</b> A republican political party seeking to end British rule in Northern Ireland
-</div></br> <div class="row main-row"><b>Social and civil services:</b> The range of services available to the public, for example social welfare, education, health services, family supports and services that help people assert their rights on consumer issues, employment, equality and refugee status, among others
-</div></br> <div class="row main-row"><b>Social and Family Affairs:</b> Department of The Government department responsible for devising and managing social welfare payments and benefits and developing and implementing policies to tackle poverty and long-term unemployment
-</div></br> <div class="row main-row"><b>Social capital:</b> A general term for the networks and common values that allow members of a community to co-operate with and support each other
-</div></br> <div class="row main-row"><b>Social welfare:</b> State support for people when they are unemployed, ill, retired, widowed or caring full-time for others through payments or other benefits each week or month; known in other countries as social security
-</div></br> <div class="row main-row"><b>Socialism:</b> A system and form of political thought that favours distributing wealth and assets equally so that all people, either directly or through their governments, have a say in how they are used  
-</div></br> <div class="row main-row"><b>Spin:</b> Public relations (PR) activity, for example press releases or interviews, or a way of interpreting information that aims to enhance the public image of a person or group, such as a politician or their party, at the expense of a political opponent or the opposition party
-</div></br> <div class="row main-row"><b>Status quo:</b> A situation that is unchanged or is as it was before a recent change
-</div></br> <div class="row main-row"><b>Statute law:</b> A law passed by parliament, as opposed to common law, which is set by decisions made in court
-</div></br> <div class="row main-row"><b>Statutory:</b> Something that is decided, set up or controlled by statute law
-</div></br> <div class="row main-row"><b>Straw poll:</b> An unofficial vote or poll taken to see the general opinion among a group on a given issue
-</div></br> <div class="row main-row"><b>Supreme Court:</b> The highest court in Ireland, which hears appeals of decisions from the High Court
-</div></br> <div class="row main-row"><b>Surplus (votes):</b> The amount of votes that exceed the quota needed for a candidate to be elected
-</div></br> <div class="row main-row"><b>Tally men:</b> Members of a political party who carry out an unofficial count of the ballot papers while the election or referendum is still taking place
-</div></br> <div class="row main-row"><b>Tánaiste:</b> Irish Deputy Prime Minister, who takes the place of the Taoiseach if the Taoiseach dies, permanently loses health or is temporarily absent or if a successor has not yet been appointed; usually the leader of the smaller party in a two-party coalition government
-</div></br> <div class="row main-row"><b>Taoiseach:</b> The head of the Irish Government, nominated by the Dáil, who speaks for the Government on major policy issues, chairs Cabinet meetings and has powers to reorganise the Cabinet
-</div></br> <div class="row main-row"><b>TD -Teachta Dála:</b> One of 166 members of Dáil Eireann, who represents their constituency, takes part in debates and question time, votes on bills, runs an office in their constituency and usually also provides a clinic - a service where the public can meet the TD at certain times during the week to discuss local issues
-</div></br> <div class="row main-row"><b>Think tank:</b> A non-profit institute, corporation or group set up to research a range of areas and make recommendations to a government on public policy
-</div></br> <div class="row main-row"><b>Transport:</b> Department of The Government department responsible for devising and implementing policies on road building, road safety and driver licensing and testing, among others, providing safe and efficient public transport and supporting high quality, safe and competitive air travel
-</div></br> <div class="row main-row"><b>Treaty:</b> A formal agreement between states on trade, peace or other issues
-</div></br> <div class="row main-row"><b>Tribunal of inquiry:</b> A body set up by the Oireachtas and headed by a judge to investigate matters of urgent public importance, such as corrupt practices by public representatives or poor management of public services, and communicate its findings and recommendations to the Oireachtas
-</div></br> <div class="row main-row"><b>Troika:</b> The European Troika is a term which refers to the decision group comprised of the European Commission, the European Central Bank, and the International Monetary Fund.
-</div></br> <div class="row main-row"><b>Veto:</b> Blocking or rejecting a proposed law or change to the constitution; sometimes exercised by the President of Ireland if they refuse to sign into law a bill passed by the Dáil and the Seanad
-</div></br> <div class="row main-row"><b>Whip:</b> The manager of a political party, who is responsible for organising members of their party to take part in debates and vote in a way that that the party's leader desires
-</div></br> <div class="row main-row"><b>Whistleblower:</b> An employee or a former employee of a business or public body who reports wrongdoing, for example fraud, underpaying staff or breaking safety regulations, to a person who can take corrective action directly or embarrass others into doing so
-</div></br> <div class="row main-row"><b>White paper:</b> A document that outlines a government's plans for particular areas and sometimes forms the basis of later laws  
-</div></br> <div class="row main-row"><b>
-</div></br>
+</br></br>
 
 </br></br>
 With thanks to the National Adult Literacy Agency, 2006. A Plain English Guide to Political Terms. Dublin: National Adult Literacy Agency. Available from: http://www.simplyput.ie/downloads/plain_english_guide_to_political_terms.pdf
