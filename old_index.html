@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="A custom Ebay search to get the prices." />
+		<meta name="keywords" content="Ebay, bargin, cheap, venison, ebayvenison" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
+		<link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-button.css" />
+		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
+	</head>
+
+
+  <body>
+    <div class="container">
+      <div class="header">
+       <ul class="nav nav-pills pull-right">
+         <li class="active"></li>
+         <li></li>
+         <li></li>
+       </ul>
+       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+           <div class="navbar-header custom-remove-padding">
+             <a class="navbar-brand custom-remove-padding" href="index.html">
+              <img class="logo-image" src="images/logo orange large.JPG"></img>
+            </a>
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+           </div>
+           <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav">
+               <li class="active"><a href="index.html">Home</a></li>
+               <li><a href="#" onclick="loadAbout()">About Us</a></li>
+							 <li><a href="#" onclick="loadContact()">Contact Us</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
+							 <div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    Sign In
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<ul class='list-inline'>
+									 <a onClick="loginFacebook()" class="btn btn-social-icon">
+											<i class="fa fa-facebook"></i>
+									</a>
+									<a onClick="loginTwitter()" class="btn btn-social-icon">
+											<i class="fa fa-twitter"></i>
+									</a>
+									 <a onClick="loginGoogle()" class="btn btn-social-icon">
+										 <i class="fa fa-google-plus"></i>
+								 </a>
+								 </li>
+							 </ul>
+							  </ul>
+							</div>
+             </ul>
+           </div>
+     <!--/.nav-collapse -->
+          </div>
+        </div>
+        <h3 class="text-muted">&nbsp;</h3>
+        <p>&nbsp;</p>
+      </div>
+	</div>
+
+	<div id="body">
+
+	<div class="container">
+		<div class="row main-row"><h2> Welcome to KEY Ideas + Decisions!</h2>
+					This is a new civic engagement platform created by young people, for young people in Ireland
+		</div>
+		</br>
+
+		<div class="row main-row">
+			 <a href="http://www.surveygizmo.com/s3/2233454/172f1a4575ec" class="btn btn-danger">Take Our Survey!</a>
+		</div>
+
+		</br>
+
+	<div id="myCarousel" class="carousel slide" style="height:360px" data-ride="carousel">
+
+
+	  <!-- Wrapper for slides -->
+		<div class="carousel-inner" style="height:340px">
+	    <div class="item active" style="padding-left:25%">
+	      <img class="roundyCorners" src="images/logo_large.jpg">
+	    </div>
+
+			<div class="item">
+	      <img class="roundyCorners" src="images/carousel1.jpg">
+				<div class="carousel-caption">
+          <h1 class="text-shadow">Your Voice!</h1>
+				  <h4 class="text-shadow">We want to empower you to feel a part of Irish soceity and to be able to make a difference in the things that matter to you</h4>
+        </div>
+	    </div>
+
+	    <div class="item">
+	      <img class="roundyCorners" src="images/carousel4.jpg">
+				<div class="carousel-caption">
+          <h1 class="text-shadow">Your Ideas!</h1>
+				  <h4 class="text-shadow">We want to provide a space for you to discuss your ideas for change in Irish society with others.</h4>
+        </div>
+	    </div>
+
+			<div class="item">
+	      <img class="roundyCorners" src="images/carousel5.jpg">
+				<div class="carousel-caption">
+          <h1 class="text-shadow">Your Decisions!</h1>
+				  <h4 class="text-shadow">We want to facilitate young people to work together to develop their ideas and turn them into action!</h4>
+        </div>
+	    </div>
+	 </div>
+
+	</br></br>
+	</div>
+
+  <div class="container">
+      <div class="row main-row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+              <img src="images/featured1.png"</img>
+            </div>
+            <div class="row">
+              <h5><b>Information about Irish politics and society</b></h5>
+							<button id="partyManifestoBtn" type="button" class="btn btn-link">Party Manifestos</button><br>
+							<button id="preziBtn" type="button" class="btn btn-link">How can I influence policy?</button><br>
+							<button id="glossaryBtn" type="button" class="btn btn-link">Glossary of political keywords</button>
+            </div>
+            <div class="row">
+
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+              <img src="images/featured2.png"</img>
+            </div>
+            <div class="row">
+							<h5 style=><b>Have your say on these important issues</b></h5>
+              <button id="waterChargesBtn" type="button" class="btn btn-link">Water Charges</button>
+            </div>
+            <div class="row">
+
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="row">
+              <img src="images/featured3.png"</img>
+            </div>
+            <div class="row">
+							<h5><b>Join us to turn your ideas into action</b></h5>
+              Keep an eye on this space...
+            </div>
+          </div>
+
+        </div>
+  </div>
+	</div>
+</div>
+
+<div id="forumInfo" class="row main-row"></div>
+<div id="forumComments" class="row main-row"></div>
+
+<script src="js/index.js"></script>
+<script src="js/forum.js"></script>
+<script src="js/info.js"></script>
+<script src="js/carousel.js"></script>
+
+<br><br><br><br><br>
+</body>
+</html>

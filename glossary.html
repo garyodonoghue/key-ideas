@@ -7,10 +7,10 @@ $(document).ready(function(){
 	$('input.typeahead').typeahead({
 		name: 'accounts',
 		local: ['Adhoccommittee',
-'Agriculture and Food, Department of',
+'Agriculture and Food Department of',
 'Amendment',
 'Aristocracy',
-'Arts, Sports and Tourism, Department of',
+'Arts, Sports and Tourism Department of ',
 'Assembly',
 'Attorney General',
 'Backbench',
@@ -64,9 +64,9 @@ $(document).ready(function(){
 'Coalition government',
 'Code of conduct for office holders',
 'Committeeon Procedures and Privileges',
-'Communications, Marine and Natural Resources, Department of',
+'Communications, Marine and Natural Resources Department of ',
 'Communism',
-'Community, Rural and Gaeltacht Affairs, Department of',
+'Community, Rural and Gaeltacht Affairs Department of ',
 'Consensus',
 'Conservation',
 'Conservative',
@@ -85,7 +85,7 @@ $(document).ready(function(){
 'Dáil Éireann',
 'Data Protection Commissioner',
 'Defamation',
-'Defence, Department of',
+'Defence Department of ',
 'Deficit',
 'Delegate',
 'Democracy',
@@ -103,7 +103,7 @@ $(document).ready(function(){
 'Dissolution',
 'Economic and social rights',
 'Economic policy',
-'Education and Science, Department of',
+'Education and Science Department of ',
 'Education for Democratic Citizenship (EDC)',
 'Election',
 'Election day',
@@ -113,16 +113,16 @@ $(document).ready(function(){
 'Electorate',
 'Electronic voting',
 'Enterprise',
-'Trade and Employment, Department of',
+'Trade and Employment Department of ',
 'Environment',
-'Heritage and Local Government, Department of',
+'Heritage and Local Government Department of ',
 'European Commission',
 'European Central Bank',
 'Exit poll',
 'Fianna Fáil',
-'Finance, Department of',
+'Finance Department of ',
 'Fine Gael',
-'Foreign Affairs, Department of',
+'Foreign Affairs Department of ',
 'Free market',
 'Freedom of speech',
 'Front bench',
@@ -138,7 +138,7 @@ $(document).ready(function(){
 'Grassroots',
 'Grassroots movement',
 'Head of state',
-'Health and Children, Department of',
+'Health and Children Department of ',
 'Ideology',
 'IMF-International Monetary Fund',
 'Incumbent',
@@ -150,7 +150,7 @@ $(document).ready(function(){
 'Judicial review',
 'Judiciary',
 'Junior Minister',
-'Justice, Equality and Law Reform, Department of',
+'Justice, Equality and Law Reform Department of ',
 'Labour Court',
 'Labour Party',
 'Laissez-faire',
@@ -161,8 +161,7 @@ $(document).ready(function(){
 'Legal rights',
 'Legislation',
 'Legislature',
-'Legislative',
-'power',
+'Legislative power',
 'Legislative process',
 'Libel',
 'Liberalism',
@@ -250,7 +249,7 @@ $(document).ready(function(){
 'Single Transferable Vote-STV',
 'Sinn Féin',
 'Social and civil services',
-'Social and Family Affairs, Department of',
+'Social and Family Affairs Department of ',
 'Social capital',
 'Social welfare',
 'Socialism',
@@ -266,7 +265,7 @@ $(document).ready(function(){
 'Taoiseach',
 'TD-TeachtaDála',
 'Think tank',
-'Transport, Department of',
+'Transport Department of ',
 'Treaty',
 'Tribunal of inquiry',
 'Troika',
@@ -277,7 +276,8 @@ $(document).ready(function(){
 	}).on('typeahead:selected', function (obj, datum) {
     console.log(obj);
     console.log(datum);
-    var divId = '#'+datum.value.split(' ').join(''); //take the whitespace out to align with div naming convention
+    var divIdNoSpaces = datum.value.split(' ').join(''); //take the whitespace out to align with div naming convention
+    var divId = '#'+divIdNoSpaces.split(',').join('');
 
     $('html, body').animate({
         scrollTop: $(divId).offset().top -120
@@ -347,13 +347,14 @@ $(document).ready(function(){
         <input type="text" placeholder="Search for your term..."class="typeahead tt-query" autocomplete="off" spellcheck="false">
     </div>
 </div>
+
 <div id="" class="container"></br></br>
 <div id="" class="row main-row"><b>Absentee ballot</b> A ballot paper that is filled in and posted to the Board of Elections before an election if a registered voter cannot get to a polling station on election day
 </div></br> <div id="Adhoccommittee" class="row main-row"><b>Ad hoc committee:        </b> A group of people that comes together to carry out a particular task and then breaks up when the task is over
-</div></br> <div id="AgricultureandFood" class="row main-row"><b>Agriculture and Food, Department of: </b> The Government department responsible for regulating and supporting agriculture and food industries and monitoring and controlling animal and plant health, animal welfare and some aspects of food safety
+</div></br> <div id="AgricultureandFoodDepartmentof" class="row main-row"><b>Agriculture and Food, Department of: </b> The Government department responsible for regulating and supporting agriculture and food industries and monitoring and controlling animal and plant health, animal welfare and some aspects of food safety
 </div></br> <div id="Amendment" class="row main-row"><b>Amendment:               </b> A change to the detail of a law or contract
 </div></br> <div id="Aristocracy" class="row main-row"><b>Aristocracy:             </b> A ruling system based on social class, wealth and noble birth
-</div></br> <div id="Arts,SportsandTourism" class="row main-row"><b>Arts, Sports and Tourism:</b> Department of The Government department responsible for promoting and fostering the arts, including the Irish film industry, promoting and developing sports, through programmes and major sports projects, and promoting and developing the tourism industry
+</div></br> <div id="Arts,SportsandTourism,Departmentof" class="row main-row"><b>Arts, Sports and Tourism, Department of:</b> The Government department responsible for promoting and fostering the arts, including the Irish film industry, promoting and developing sports, through programmes and major sports projects, and promoting and developing the tourism industry
 </div></br> <div id="Assembly" class="row main-row"><b>Assembly:                </b> A group of people gathered together for a special purpose, sometimes as a law-making body, as in the Northern Ireland Assembly  Attorney General The main legal advisor to the Irish Government, who is appointed by the Taoiseach
 </div></br> <div id="Backbench" class="row main-row"><b>Backbench:               </b> The seats occupied in Dáil Eireann by any member of the Irish Government who is not a minister or junior minister
 </div></br> <div id="Bailout" class="row main-row"><b>Bailout:                 </b> The act of giving financial assistance to a failing business or economy to prevent it from collapsing
@@ -405,9 +406,9 @@ $(document).ready(function(){
 </div></br> <div id="Coalitiongovernment" class="row main-row"><b>Coalition government:</b> A government made up of more than one political party because no party obtained enough votes to form a government on its own
 </div></br> <div id="Codeofconductforofficeholders" class="row main-row"><b>Code of conduct for office holders:</b> Rules for TDs to help them make sure they behave ethically, fairly and responsibly and act in the best interests of the public
 </div></br> <div id="CommitteeonProceduresandPrivileges" class="row main-row"><b>Committee on Procedures and Privileges:</b> A committee in Dáil Éireann and in Seanad Éireann that works to make sure that members of each house do not act in a way that abuses the power that comes with their position and may recommend that members be disciplined if any abuse takes place
-</div></br> <div id="Communications,MarineandNaturalResources" class="row main-row"><b>Communications, Marine and Natural Resources:</b> Department of The Government department responsible for regulating and overseeing the broadcasting, telecommunications (post, Internet and telephone services) and energy sectors and protecting and developing marine and natural resources, such as minerals and oil
+</div></br> <div id="Communications,MarineandNaturalResources,Departmentof" class="row main-row"><b>Communications, Marine and Natural Resources, Department of:</b> The Government department responsible for regulating and overseeing the broadcasting, telecommunications (post, Internet and telephone services) and energy sectors and protecting and developing marine and natural resources, such as minerals and oil
 </div></br> <div id="Communism" class="row main-row"><b>Communism:</b> An economic and political system put into place after the Bolshevik revolution in Russia in 1917 in which people share the ownership of all goods and property; also, a system, such as in the former Soviet Union, where the government controls every aspect of a citizen's life and denies political freedoms
-</div></br> <div id="Community, Rural and Gaeltacht Affairs" class="row main-row"><b>Community, Rural and Gaeltacht Affairs:</b> Department of The Government department responsible for advancing the use of the Irish language and for promoting and supporting the growth of urban and rural communities, including Gaeltacht and island communities, to reduce disadvantage
+</div></br> <div id="Community,RuralandGaeltachtAffairs,Departmentof" class="row main-row"><b>Community, Rural and Gaeltacht Affairs, Department of:</b> The Government department responsible for advancing the use of the Irish language and for promoting and supporting the growth of urban and rural communities, including Gaeltacht and island communities, to reduce disadvantage
 </div></br> <div id="Consensus" class="row main-row"><b>Consensus:</b> Agreement that is generally acceptable
 </div></br> <div id="Conservation" class="row main-row"><b>Conservation:</b> Using natural resources carefully (for example minerals, gas water or plants) and maintaining places of environmental or cultural importance to make sure they are available to future generations
 </div></br> <div id="Conservative" class="row main-row"><b>Conservative:</b> A person or political party who wishes to keep things the way they are, supports traditional values and opposes government interference; known as 'right', 'right wing' or 'right of centre' in politics
@@ -444,7 +445,7 @@ $(document).ready(function(){
 </div></br> <div id="Dissolution" class="row main-row"><b>Dissolution:</b> An action by the President of Ireland (with the support of the Taoiseach) to end the current term of the Dáil so a general election can be held
 </div></br> <div id="Economicandsocialrights" class="row main-row"><b>Economic and social rights:</b> Rights that help people develop and enjoy an adequate standard of living, such as the right to work, the right to education and the right to free time, as outlined in the Covenant on Economic and Social Rights adopted by the United Nations 1966
 </div></br> <div id="Economicpolicy" class="row main-row"><b>Economic policy:</b> A Government plan on how to manage money and taxes
-</div></br> <div id="EducationandScience" class="row main-row"><b>Education and Science:</b> Department of The Government department responsible for devising education policy and overseeing programmes and services that help promote lifelong learning and provide education that meets personal, social, cultural and economic needs
+</div></br> <div id="EducationandScience,Departmentof" class="row main-row"><b>Education and Science, Department of:</b> The Government department responsible for devising education policy and overseeing programmes and services that help promote lifelong learning and provide education that meets personal, social, cultural and economic needs
 </div></br> <div id="EducationforDemocraticCitizenship(EDC)" class="row main-row"><b>Education for Democratic Citizenship (EDC):</b> A project organised by the Council of Europe to inform people about their rights and responsibilities in society and how they can use them
 </div></br> <div id="Election" class="row main-row"><b>Election:</b> Choosing a person or a government by voting
 </div></br> <div id="Electionday" class="row main-row"><b>Election day:</b> The day when the election takes place
@@ -453,15 +454,15 @@ $(document).ready(function(){
 </div></br> <div id="ElectoralRegister(alsoknownasRegisterofElectors)" class="row main-row"><b>Electoral Register (also known as Register of Electors):</b> A list of those who have the right to vote in national, local or European elections in Ireland, put together by city and county councils
 </div></br> <div id="Electorate" class="row main-row"><b>Electorate:</b> All those who have a right to vote in an election
 </div></br> <div id="Electronicvoting" class="row main-row"><b>Electronic voting:</b> Using electronic equipment and computers to vote and count votes
-</div></br> <div id="Enterprise,TradeandEmployment" class="row main-row"><b>Enterprise, Trade and Employment:</b> Department of The Government department responsible for regulating employment, health and safety at work, consumer issues, trade, competition and company matters and overseeing state bodies that provide training and promote trade and employment, such as FAS, Enterprise Ireland and the Industrial Development Agency (IDA)
-</div></br> <div id="Environment,HeritageandLocalGovernment" class="row main-row"><b>Environment, Heritage and Local Government:</b> Department of The Government department responsible for protecting the environment, preserving and promoting heritage buildings, collecting motor tax, coordinating elections, devising housing policy and overseeing county, city and urban district councils
+</div></br> <div id="Enterprise,TradeandEmployment,Departmentof" class="row main-row"><b>Enterprise, Trade and Employment, Department of:</b> The Government department responsible for regulating employment, health and safety at work, consumer issues, trade, competition and company matters and overseeing state bodies that provide training and promote trade and employment, such as FAS, Enterprise Ireland and the Industrial Development Agency (IDA)
+</div></br> <div id="Environment,HeritageandLocalGovernment,Departmentof" class="row main-row"><b>Environment, Heritage and Local Government, Department of:</b> The Government department responsible for protecting the environment, preserving and promoting heritage buildings, collecting motor tax, coordinating elections, devising housing policy and overseeing county, city and urban district councils
 </div></br> <div id="EuropeanCommission" class="row main-row"><b>European Commission:</b> The executive body of the European Union responsible for proposing legislation, implementing decisions, upholding the EU treaties and managing the day-to-day business of the EU
 </div></br> <div id="EuropeanCentralBank" class="row main-row"><b>European Central Bank:</b> The central bank for the euro currency which administers monetary policy for the Eurozone
 </div></br> <div id="Exitpoll" class="row main-row"><b>Exit poll:</b> A survey of a small percentage of people leaving the place where they have just voted to ask them who or what they voted for
 </div></br> <div id="FiannaFáil" class="row main-row"><b>Fianna Fáil:</b> National political party founded in 1926 with democratic Republican values
-</div></br> <div id="Finance" class="row main-row"><b>Finance:</b> Department of The Government department responsible for implementing Government policy and advising the Minister for Finance on the finances of the State, drafting and reviewing finance and other laws and managing and developing the public sector
+</div></br> <div id="Finance,Departmentof" class="row main-row"><b>Finance, Department of:</b> The Government department responsible for implementing Government policy and advising the Minister for Finance on the finances of the State, drafting and reviewing finance and other laws and managing and developing the public sector
 </div></br> <div id="FineGael" class="row main-row"><b>Fine Gael:</b> National independent political party founded in 1933
-</div></br> <div id="ForeignAffairs" class="row main-row"><b>Foreign Affairs:</b> Department of The Government department responsible for advancing Ireland's political and economic interests in the European Union and elsewhere, promoting Ireland's contribution to international peace, security and development through the European Union and international organisations, especially the United Nations, protecting Irish citizens abroad and dealing with political issues concerning Northern Ireland
+</div></br> <div id="ForeignAffairs,Departmentof" class="row main-row"><b>Foreign Affairs, Department of:</b> The Government department responsible for advancing Ireland's political and economic interests in the European Union and elsewhere, promoting Ireland's contribution to international peace, security and development through the European Union and international organisations, especially the United Nations, protecting Irish citizens abroad and dealing with political issues concerning Northern Ireland
 </div></br> <div id="Freemarket" class="row main-row"><b>Free market:</b> An economic system where prices are set not by government but by competition between businesses
 </div></br> <div id="Freedomofspeech" class="row main-row"><b>Freedom of speech:</b> A right to speak freely on social and political matters without fear of forced silence
 </div></br> <div id="Frontbench" class="row main-row"><b>Front bench:</b> Members of the Dáil who are ministers or spokespeople
@@ -477,7 +478,7 @@ $(document).ready(function(){
 </div></br> <div id="Grassroots" class="row main-row"><b>Grass roots:</b> A basic source of support for a cause or a group, usually developed naturally without prompting or organisation from traditional holders of power
 </div></br> <div id="Grassroots movement" class="row main-row"><b>Grassroots movement:</b> The action of groups of likeminded people who lobby for change on a particular issue, usually through door-to-door canvassing, letter writing, local meetings and so on
 </div></br> <div id="Headofstate" class="row main-row"><b>Head of state:</b> A formal leader of a country or a group of people organised under one government, for example the President in Ireland and the Queen in the United Kingdom
-</div></br> <div id="HealthandChildren" class="row main-row"><b>Health and Children:</b> Department of The Government department responsible for managing, regulating and developing the health services, ensuring the safety and welfare of children and developing policies, programmes and information campaigns to protect and promote public health
+</div></br> <div id="HealthandChildren,Departmentof" class="row main-row"><b>Health and Children, Department of:</b> The Government department responsible for managing, regulating and developing the health services, ensuring the safety and welfare of children and developing policies, programmes and information campaigns to protect and promote public health
 </div></br> <div id="Ideology" class="row main-row"><b>Ideology:</b> A set of connected ideas, usually about a political system, or a way of looking at something  IMF - International Monetary Fund The International Monetary Fund (IMF) is an organization of 188 countries, working to foster global monetary cooperation, secure financial stability, facilitate international trade, promote high employment and sustainable economic growth, and reduce poverty around the world. Created in 1945, the IMF is governed by and accountable to the 188 countries that make up its near-global membership.
 </div></br> <div id="Incumbent" class="row main-row"><b>Incumbent:</b> A person who currently holds a post or office
 </div></br> <div id="Independence" class="row main-row"><b>Independence:</b> Freedom from the influence or rule of another person, group or country
@@ -488,7 +489,7 @@ $(document).ready(function(){
 </div></br> <div id="Judicialreview" class="row main-row"><b>Judicial review:</b> The power of judges to review whether laws and official acts by the Government violate the Constitution or basic rules of justice and, if they do, strike them down or overturn them
 </div></br> <div id="Judiciary" class="row main-row"><b>Judiciary:</b> The branch of government that is concerned with interpreting laws and upholding justice through the courts
 </div></br> <div id="JuniorMinister" class="row main-row"><b>Junior Minister:</b> A member of government appointed by the Taoiseach to assist a senior minister for a Government department; officially called Minister of State
-</div></br> <div id="Justice,EqualityandLawReform" class="row main-row"><b>Justice, Equality and Law Reform:</b> Department of The Government department responsible for protecting the security of the State, implementing Government policy on crime, advising criminal justice institutions (prisons, courts, Gardaí and Probation and Welfare Services) and developing and implementing policies on immigration and asylum, equality, anti-discrimination, human rights and childcare, among others
+</div></br> <div id="Justice,EqualityandLawReform,Departmentof" class="row main-row"><b>Justice, Equality and Law Reform, Department of:</b> The Government department responsible for protecting the security of the State, implementing Government policy on crime, advising criminal justice institutions (prisons, courts, Gardaí and Probation and Welfare Services) and developing and implementing policies on immigration and asylum, equality, anti-discrimination, human rights and childcare, among others
 </div></br> <div id="LabourCourt" class="row main-row"><b>Labour Court:</b> A place that hears employment disputes when all other methods to resolve them have failed and gives non-binding opinions and recommendations on how to settle them  
 </div></br> <div id="LabourParty" class="row main-row"><b>Labour Party:</b> Political party formed nationally in 1912 with a focus on equality, freedom, community and democracy
 </div></br> <div id="Laissez-faire" class="row main-row"><b>Laissez-faire:</b> An ideology that opposes Government interference in economic affairs, other than the minimum necessary to maintain property rights and peace, and individual interference in another's freedom of choice and action
@@ -588,7 +589,7 @@ $(document).ready(function(){
 </div></br> <div id="SingleTransferableVote-STV" class="row main-row"><b>Single Transferable Vote - STV:</b> A system of preferential voting where several seats are available in a constituency that gives a person's vote to their favourite candidate and transfers unneeded or unused votes for that candidate (for example if they already have enough to be elected) to other candidates in the constituency until all seats are filled
 </div></br> <div id="SinnFéin" class="row main-row"><b>Sinn Féin:</b> A republican political party seeking to end British rule in Northern Ireland
 </div></br> <div id="Socialandcivilservices" class="row main-row"><b>Social and civil services:</b> The range of services available to the public, for example social welfare, education, health services, family supports and services that help people assert their rights on consumer issues, employment, equality and refugee status, among others
-</div></br> <div id="SocialandFamilyAffairs" class="row main-row"><b>Social and Family Affairs:</b> Department of The Government department responsible for devising and managing social welfare payments and benefits and developing and implementing policies to tackle poverty and long-term unemployment
+</div></br> <div id="SocialandFamilyAffairs,Departmentof" class="row main-row"><b>Social and Family Affairs, Department of:</b> The Government department responsible for devising and managing social welfare payments and benefits and developing and implementing policies to tackle poverty and long-term unemployment
 </div></br> <div id="Socialcapital" class="row main-row"><b>Social capital:</b> A general term for the networks and common values that allow members of a community to co-operate with and support each other
 </div></br> <div id="Socialwelfare" class="row main-row"><b>Social welfare:</b> State support for people when they are unemployed, ill, retired, widowed or caring full-time for others through payments or other benefits each week or month; known in other countries as social security
 </div></br> <div id="Socialism" class="row main-row"><b>Socialism:</b> A system and form of political thought that favours distributing wealth and assets equally so that all people, either directly or through their governments, have a say in how they are used  
@@ -604,7 +605,7 @@ $(document).ready(function(){
 </div></br> <div id="Taoiseach" class="row main-row"><b>Taoiseach:</b> The head of the Irish Government, nominated by the Dáil, who speaks for the Government on major policy issues, chairs Cabinet meetings and has powers to reorganise the Cabinet
 </div></br> <div id="TD-TeachtaDála" class="row main-row"><b>TD -Teachta Dála:</b> One of 166 members of Dáil Eireann, who represents their constituency, takes part in debates and question time, votes on bills, runs an office in their constituency and usually also provides a clinic - a service where the public can meet the TD at certain times during the week to discuss local issues
 </div></br> <div id="Thinktank" class="row main-row"><b>Think tank:</b> A non-profit institute, corporation or group set up to research a range of areas and make recommendations to a government on public policy
-</div></br> <div id="Transport" class="row main-row"><b>Transport:</b> Department of The Government department responsible for devising and implementing policies on road building, road safety and driver licensing and testing, among others, providing safe and efficient public transport and supporting high quality, safe and competitive air travel
+</div></br> <div id="Transport,Departmentof" class="row main-row"><b>Transport, Department of:</b> The Government department responsible for devising and implementing policies on road building, road safety and driver licensing and testing, among others, providing safe and efficient public transport and supporting high quality, safe and competitive air travel
 </div></br> <div id="Treaty" class="row main-row"><b>Treaty:</b> A formal agreement between states on trade, peace or other issues
 </div></br> <div id="Tribunalofinquiry" class="row main-row"><b>Tribunal of inquiry:</b> A body set up by the Oireachtas and headed by a judge to investigate matters of urgent public importance, such as corrupt practices by public representatives or poor management of public services, and communicate its findings and recommendations to the Oireachtas
 </div></br> <div id="Troika" class="row main-row"><b>Troika:</b> The European Troika is a term which refers to the decision group comprised of the European Commission, the European Central Bank, and the International Monetary Fund.
