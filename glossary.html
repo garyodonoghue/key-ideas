@@ -17,6 +17,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.js"></script>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
@@ -25,6 +27,24 @@
 		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
 	</head>
 
+  <script>
+    var url = 'https://glaring-torch-16.firebaseio.com/info/glossary.json';
+
+    var commentIndexMappings = [];
+    $.ajax(
+    {
+      type: "GET",
+      url: url,
+      data: "{}",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data) {
+        $('input.typeahead').typeahead({ name: 'accounts', local: data}).on('typeahead:selected', function (obj, datum){
+          $('html, body').animate({ scrollTop: $(divId).offset().top -120 }, 2000);
+        });
+      }
+    });
+  </script>
 
   <body>
     <div class="container">
@@ -71,7 +91,6 @@
 							</div>
              </ul>
            </div>
-     <!--/.nav-collapse -->
           </div>
         </div>
         <h3 class="text-muted">&nbsp;</h3>
@@ -79,111 +98,7 @@
       </div>
 	</div>
 
-	<div id="body">
-
-	<div class="container">
-		<div class="row main-row"><h2> Welcome to KEY Ideas + Decisions!</h2>
-					This is a new civic engagement platform created by young people, for young people in Ireland
-		</div>
-		</br>
-
-		<div class="row main-row">
-			 <a href="http://www.surveygizmo.com/s3/2233454/172f1a4575ec" class="btn btn-danger">Take Our Survey!</a>
-		</div>
-
-		</br>
-
-	<div id="myCarousel" class="carousel slide" style="height:360px" data-ride="carousel">
-
-
-	  <!-- Wrapper for slides -->
-		<div class="carousel-inner" style="height:340px">
-	    <div class="item active" style="padding-left:25%">
-	      <img class="roundyCorners" src="images/logo_large.jpg">
-	    </div>
-
-			<div class="item">
-	      <img class="roundyCorners" src="images/carousel1.jpg">
-				<div class="carousel-caption">
-          <h1 class="text-shadow">Your Voice!</h1>
-				  <h4 class="text-shadow">We want to empower you to feel a part of Irish soceity and to be able to make a difference in the things that matter to you</h4>
-        </div>
-	    </div>
-
-	    <div class="item">
-	      <img class="roundyCorners" src="images/carousel4.jpg">
-				<div class="carousel-caption">
-          <h1 class="text-shadow">Your Ideas!</h1>
-				  <h4 class="text-shadow">We want to provide a space for you to discuss your ideas for change in Irish society with others.</h4>
-        </div>
-	    </div>
-
-			<div class="item">
-	      <img class="roundyCorners" src="images/carousel5.jpg">
-				<div class="carousel-caption">
-          <h1 class="text-shadow">Your Decisions!</h1>
-				  <h4 class="text-shadow">We want to facilitate young people to work together to develop their ideas and turn them into action!</h4>
-        </div>
-	    </div>
-	 </div>
-
-	</br></br>
-	</div>
-
-  <div class="container">
-      <div class="row main-row">
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="row">
-              <img src="images/featured1.png"</img>
-            </div>
-            <div class="row">
-              <h5><b>Information about Irish politics and society</b></h5>
-							<a href="manifestos.html">Party Manifestos</><br>
-							<a href="influence.html">How can I influence policy?</><br>
-							<a href="glossary.html">Glossary of political keywords</><br>
-            </div>
-            <div class="row">
-
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="row">
-              <img src="images/featured2.png"</img>
-            </div>
-            <div class="row">
-							<h5 style=><b>Have your say on these important issues</b></h5>
-              <button id="waterChargesBtn" type="button" class="btn btn-link">Water Charges</button>
-            </div>
-            <div class="row">
-
-            </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            <div class="row">
-              <img src="images/featured3.png"</img>
-            </div>
-            <div class="row">
-							<h5><b>Join us to turn your ideas into action</b></h5>
-              Keep an eye on this space...
-            </div>
-          </div>
-
-        </div>
-  </div>
-	</div>
-</div>
-
-<div id="forumInfo" class="row main-row"></div>
-<div id="forumComments" class="row main-row"></div>
-
-<script src="js/index.js"></script>
-<script src="js/forum.js"></script>
-<script src="js/info.js"></script>
-<script src="js/carousel.js"></script>
+	<div id="body"></>
 
 <br><br><br><br><br>
 </body>
