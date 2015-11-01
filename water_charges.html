@@ -1,35 +1,209 @@
-<head>
-</head>
-<body>
-  <div class="container"><div class="row main-row">
-<h1>Water Charges</h1>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="A platform to allow the youth of ireland to influence policy and get informed" />
+		<meta name="keywords" content="key, ideas, decisions, politics, youth, ireland" />
 
-As part of the bailout agreement, which saw Ireland receive financial assistance from the European Commission, European Central Bank (ECB) and the International Monetary Fund (IMF), the then Irish government committed to the establishment of charges for the use of water in homes and businesses.
-This had previously been paid for using motor taxes for homes and local council rates for businesses.
-The state set up a company called Irish Water to provide water services and maintenance which is funded through direct billing of home and business owners.
-The main for the management of water services in this way is that it will bring the standard of water service delivery in Ireland up to European standards.
-Many oppose the manner in which Irish Water was set up but do not oppose water charges per se, provided they are introduced in a sensible manner which leads to a high quality water supply.
-Others oppose the introduction of water charges altogether, viewing the access to water as an inalienable human right.
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 
-<h3>What do you think?</h3>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-</br></br>
-<div> Resources </div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
+		<link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-button.css" />
+		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
+	</head>
 
-<a href="http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/"> http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/</a>
+  <script>
+    // populate body with glossary information
+    var waterChargesInfo = 'https://glaring-torch-16.firebaseio.com/info/water_charges.json';
 
-<a href="https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/">https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/</a>
+    $.ajax(
+    {
+      type: "GET",
+      url: waterChargesInfo,
+      data: "{}",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (data) {
+        $("#body").html(data);
+      }
+    });
 
-<a href="https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland">https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland</a>
 
-<a href="https://en.wikipedia.org/wiki/Irish_Water">https://en.wikipedia.org/wiki/Irish_Water</a>
+    //populate comments section
+    var commentsUrl = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
 
-<a href="http://www.water.ie/billing-and-charges/charges/">http://www.water.ie/billing-and-charges/charges/</a>
+      var commentIndexMappings = [];
+      $.ajax(
+      {
+        type: "GET",
+        url: commentsUrl,
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+          var commentsArr = $.map(data, function(el, i)
+          {
+            commentIndexMappings.push(i);
+            return el;
+          })
 
-<a href="http://www.irishtimes.com/news/water-charges">http://www.irishtimes.com/news/water-charges</a>
+          var html = '</br></br></br><div class = "container"><div class="row main-row">';
 
-<a href="https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf">https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf</a>
+            for(var i=commentsArr.length-1; i>=0;i--){
+              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><div class="titleBox"><label>';
+              html += commentsArr[i].text;
+              html += '</label></div><div class="commentBox"><p class="taskDescription">';
+              html += '<img class="img-circle" width="100" height="100" src="' + commentsArr[i].profilePicUrl + '">';
+              html += '<div>' + commentsArr[i].userName + '</div>';
+              html += '</br>';
 
-</div>
-</div>
+              html += '</div>';
+              html += '<form class="form-inline" role="form">';
+              //html += '<div class="form-group"><input id="' + commentIndexMappings[i] + 'RespTxt" class="form-control" type="text" placeholder="say something..."></div><div class="form-group" style="margin:10px"><input class="btn btn-danger" id="'+ commentIndexMappings[i] +'" type="submit" value="Respond" onClick="submitResponse(event)"></div></form>';
+              html += '</div></div></div></br><hr>';
+            }
+
+          html+='</div></div>';
+          $("#forumComments").html(html);
+        },
+        error: function (msg, url, line) {
+          alert('error');
+        }
+      });
+
+
+      // setup post button to allow posting of comments
+      function postComment(){
+
+        var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+        //check if user is signed in and authenticated before allowing them to post content
+        var authToken = ref.getAuth();
+
+        if(authToken == null){
+          BootstrapDialog.show({
+                  title: 'Please Login',
+                  message: 'Login in using the buttons on the top-right'
+          });
+        }
+        else{
+          //users to alreadt logged in
+          var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/' + context + '/comments.json';
+          var commentText = $('#commentTxtBox').val();
+          commentText = commentText.replace(/\n/g, "");
+
+          //get the user credentials (profile pic, username) from the auth token
+          var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+          //check if user is signed in and authenticated before allowing them to post content
+          var authToken = ref.getAuth();
+          var authProvider = authToken.provider;
+
+          var profileImageURL;
+          var displayName;
+
+          if(authProvider == "google"){
+              displayName = authToken.google.displayName;
+              profileImageURL = authToken.google.profileImageURL
+          }
+          else if(authProvider == "facebook"){
+            displayName = authToken.facebook.displayName;
+            profileImageURL = authToken.facebook.profileImageURL
+          }
+          else if(authProvider == "twitter"){
+            displayName = authToken.twitter.displayName;
+            profileImageURL = authToken.twitter.profileImageURL
+          }
+
+          $.ajax(
+          {
+            type: "POST",
+            url: url,
+            data: '{"text" : "' + commentText + '", "userName" : "' + displayName + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+              $("#commentTxtBox").val('');
+              displayPosts();
+            },
+            error: function (msg, url, line) {
+              alert('error');
+            }
+          });
+        }
+    }
+  </script>
+
+  <body>
+    <div class="container">
+      <div class="header">
+       <ul class="nav nav-pills pull-right">
+         <li class="active"></li>
+         <li></li>
+         <li></li>
+       </ul>
+       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+         <div class="container">
+           <div class="navbar-header custom-remove-padding">
+             <a class="navbar-brand custom-remove-padding" href="index.html">
+              <img class="logo-image" src="images/logo orange large.JPG"></img>
+            </a>
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+           </div>
+           <div class="navbar-collapse collapse">
+             <ul class="nav navbar-nav">
+               <li class="active"><a href="index.html">Home</a></li>
+               <li><a href="#" onclick="loadAbout()">About Us</a></li>
+							 <li><a href="#" onclick="loadContact()">Contact Us</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
+							 <div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    Sign In
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<ul class='list-inline'>
+									 <a onClick="loginFacebook()" class="btn btn-social-icon">
+											<i class="fa fa-facebook"></i>
+									</a>
+									<a onClick="loginTwitter()" class="btn btn-social-icon">
+											<i class="fa fa-twitter"></i>
+									</a>
+									 <a onClick="loginGoogle()" class="btn btn-social-icon">
+										 <i class="fa fa-google-plus"></i>
+								 </a>
+								 </li>
+							 </ul>
+							  </ul>
+							</div>
+             </ul>
+           </div>
+          </div>
+        </div>
+        <h3 class="text-muted">&nbsp;</h3>
+        <p>&nbsp;</p>
+      </div>
+	</div>
+
+	<div class = "row main-row" id="body"></div>
+  <div id="forumComments"></div>
+
+<script src="js/login.js"></script>
+<br><br><br><br><br>
 </body>
+</html>
