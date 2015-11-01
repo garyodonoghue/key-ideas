@@ -19,31 +19,108 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/typeahead.js"></script>
-
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
 		<link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/social-button.css" />
 		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
+
+    <style type="text/css">
+      .bs-example{
+      	font-family: sans-serif;
+      	position: relative;
+      	margin: 100px;
+      }
+      .typeahead, .tt-query, .tt-hint {
+      	border: 2px solid #CCCCCC;
+      	border-radius: 8px;
+      	font-size: 24px;
+      	height: 30px;
+      	line-height: 30px;
+      	outline: medium none;
+      	padding: 8px 12px;
+      	width: 396px;
+      }
+      .typeahead {
+      	background-color: #FFFFFF;
+      }
+      .typeahead:focus {
+      	border: 2px solid #0097CF;
+      }
+      .tt-query {
+      	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+      }
+      .tt-hint {
+      	color: #999999;
+      }
+      .tt-dropdown-menu {
+      	background-color: #FFFFFF;
+      	border: 1px solid rgba(0, 0, 0, 0.2);
+      	border-radius: 8px;
+      	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      	margin-top: 12px;
+      	padding: 8px 0;
+      	width: 422px;
+      }
+      .tt-suggestion {
+      	font-size: 24px;
+      	line-height: 24px;
+      	padding: 3px 20px;
+      }
+      .tt-suggestion.tt-is-under-cursor {
+      	background-color: #0097CF;
+      	color: #FFFFFF;
+      }
+      .tt-suggestion p {
+      	margin: 0;
+      }
+    </style>
+
 	</head>
 
-  <script>
-    var url = 'https://glaring-torch-16.firebaseio.com/info/glossary.json';
+  <div class="navbar navbar-fixed-top" style="margin-top:-30px; z-index: 1001;" role="toolbar">
+    <div id="" class="bs-example">
+        <input type="text" placeholder="Search for your term..."class="typeahead tt-query" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
 
-    var commentIndexMappings = [];
+  <script>
+    // populate body with glossary information
+    var glossaryInfo = 'https://glaring-torch-16.firebaseio.com/info/glossaryInfo.json';
+
     $.ajax(
     {
       type: "GET",
-      url: url,
+      url: glossaryInfo,
       data: "{}",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (data) {
-        $('input.typeahead').typeahead({ name: 'accounts', local: data}).on('typeahead:selected', function (obj, datum){
-          $('html, body').animate({ scrollTop: $(divId).offset().top -120 }, 2000);
-        });
+        $("#body").html(data);
+
+        // set up typehead search bar to search glossary using keywords and hooking into divIds
+        var glossaryTitles = 'https://glaring-torch-16.firebaseio.com/info/glossary.json';
+
+        $.ajax(
+        {
+          type: "GET",
+          url: glossaryTitles,
+          data: "{}",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function (data) {
+            $('input.typeahead').typeahead({ name: 'accounts', local: data}).on('typeahead:selected', function (obj, datum) {
+                var divIdNoSpaces = datum.value.split(' ').join(''); //take the whitespace out to align with div naming convention
+                var divId = '#'+divIdNoSpaces.split(',').join('');
+                $('html, body').animate({
+                    scrollTop: $(divId).offset().top -120
+                }, 2000);
+                return false;
+            });
+          }});
       }
     });
+
   </script>
 
   <body>
@@ -97,6 +174,8 @@
         <p>&nbsp;</p>
       </div>
 	</div>
+
+  <body>
 
 	<div id="body"></>
 
