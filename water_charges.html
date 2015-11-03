@@ -146,60 +146,19 @@
           });
         }
     }
+
+    $(document).ready(function()
+    {
+          $.get('navbarTemplate.html', function(data) {
+          $('#navBar').html(data);
+      });
+    });
+
   </script>
 
   <body>
-    <div class="container">
-      <div class="header">
-       <ul class="nav nav-pills pull-right">
-         <li class="active"></li>
-         <li></li>
-         <li></li>
-       </ul>
-       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-         <div class="container">
-           <div class="navbar-header custom-remove-padding">
-             <a class="navbar-brand custom-remove-padding" href="index.html">
-              <img class="logo-image" src="images/logo orange large.JPG"></img>
-            </a>
-             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-           </div>
-           <div class="navbar-collapse collapse">
-             <ul class="nav navbar-nav">
-               <li class="active"><a href="index.html">Home</a></li>
-               <li><a href="#" onclick="loadAbout()">About Us</a></li>
-							 <li><a href="#" onclick="loadContact()">Contact Us</a></li>
-             </ul>
-             <ul class="nav navbar-nav navbar-right nav-pills custom-social-group">
-							 <div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    Sign In
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<ul class='list-inline'>
-									 <a onClick="loginFacebook()" class="btn btn-social-icon">
-											<i class="fa fa-facebook"></i>
-									</a>
-									<a onClick="loginTwitter()" class="btn btn-social-icon">
-											<i class="fa fa-twitter"></i>
-									</a>
-									 <a onClick="loginGoogle()" class="btn btn-social-icon">
-										 <i class="fa fa-google-plus"></i>
-								 </a>
-								 </li>
-							 </ul>
-							  </ul>
-							</div>
-             </ul>
-           </div>
-          </div>
-        </div>
-        <h3 class="text-muted">&nbsp;</h3>
-        <p>&nbsp;</p>
-      </div>
-	</div>
 
+  <div id="navBar"></div>
 	<div class = "row main-row" id="body"></div>
   <div id="forumComments"></div>
 

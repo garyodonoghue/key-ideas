@@ -17,7 +17,17 @@
     <link rel="stylesheet" href="css/social-button.css" />
 	</head>
 
+	<script>
+		$(document).ready(function()
+		{
+					$.get('navbarTemplate.html', function(data) {
+					$('#navBar').html(data);
+			});
+		});
+	</script>
+
   <body>
+		<div id="navBar"></div>
     <div class="row main-row">
     <div class="container">
       <h3>Contact us through any of the channels below</h3>

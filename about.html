@@ -17,15 +17,25 @@
     <link rel="stylesheet" href="css/social-button.css" />
 	</head>
 
+	<script>
+		$(document).ready(function()
+		{
+					$.get('navbarTemplate.html', function(data) {
+					$('#navBar').html(data);
+			});
+		});
+	</script>
+
   <body>
+		<div id="navBar"></div>
     <div class="container">
 
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="row main-row">
 		  <h3>Meet the KEY Ideas and Decisions team!</h3></br>
-		  
+
           <iframe src="https://www.ccv.adobe.com/v1/player/sc/US%2F211e925f-e469-4294-8f9a-e00895df4945/embed" width="960" height="540" frameborder="0" allowfullscreen></iframe>
-		  
+
 		  <h2>Laura Finnegan</h2>
           <img height="300" width="300" src="images/Laura.bmp"</img>
           </br></br>
