@@ -35,12 +35,16 @@
 	  ga('send', 'pageview');
 
 	</script>
-	
+
 	<script>
 		$(document).ready(function()
 		{
 				  $.get('navbarTemplate.html', function(data) {
 					$('#navBar').html(data);
+
+					$('#aboutTab').removeClass("active");
+					$('#contactTab').removeClass("active");
+					$('#homeTab').addClass("active");
 			});
 		});
 

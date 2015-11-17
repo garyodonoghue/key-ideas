@@ -33,6 +33,10 @@
 		{
 					$.get('navbarTemplate.html', function(data) {
 					$('#navBar').html(data);
+
+					$('#homeTab').removeClass("active");
+					$('#aboutTab').removeClass("active");
+					$('#contactTab').addClass("active");
 			});
 		});
 	</script>
