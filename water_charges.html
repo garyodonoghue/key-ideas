@@ -37,7 +37,7 @@
 
 	</script>
   <script>
-    // populate body with glossary information
+    // populate body with water charges blurb
     var waterChargesInfo = 'https://glaring-torch-16.firebaseio.com/info/water_charges.json';
 
     $.ajax(
@@ -52,9 +52,11 @@
       }
     });
 
+		displayPosts();
 
     //populate comments section
-    var commentsUrl = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
+    function displayPosts(){
+			var commentsUrl = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
 
       var commentIndexMappings = [];
       $.ajax(
@@ -83,8 +85,7 @@
 
               html += '</div>';
               html += '<form class="form-inline" role="form">';
-              //html += '<div class="form-group"><input id="' + commentIndexMappings[i] + 'RespTxt" class="form-control" type="text" placeholder="say something..."></div><div class="form-group" style="margin:10px"><input class="btn btn-danger" id="'+ commentIndexMappings[i] +'" type="submit" value="Respond" onClick="submitResponse(event)"></div></form>';
-              html += '</div></div></div></br><hr>';
+              html += '</div></br><hr>';
             }
 
           html+='</div></div>';
@@ -93,12 +94,11 @@
         error: function (msg, url, line) {
           alert('error');
         }
-      });
-
+      	});
+			}
 
       // setup post button to allow posting of comments
       function postComment(){
-
         var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
 
         //check if user is signed in and authenticated before allowing them to post content
@@ -112,7 +112,7 @@
         }
         else{
           //users to alreadt logged in
-          var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/' + context + '/comments.json';
+          var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
           var commentText = $('#commentTxtBox').val();
           commentText = commentText.replace(/\n/g, "");
 
