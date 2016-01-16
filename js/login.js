@@ -1,5 +1,3 @@
-var context;
-
 function loginFacebook(){
   var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
 
@@ -12,7 +10,7 @@ function loginFacebook(){
       } else {
         console.log("Authenticated successfully with payload:", authData);
       }
-    }, {remember: "none"});
+    }, {remember: "sessionOnly"});
   }
 }
 
@@ -28,7 +26,7 @@ function loginTwitter(){
       } else {
         console.log("Authenticated successfully with payload:", authData);
       }
-    }, {remember: "none"});
+    }, {remember: "sessionOnly"});
   }
 }
 
@@ -45,6 +43,6 @@ function loginGoogle(){
       } else {
         console.log("Authenticated successfully with payload:", authData);
       }
-    }, {remember: "none"});
+    }, {remember: "sessionOnly"});
   }
 }
