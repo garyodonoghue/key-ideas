@@ -8,7 +8,7 @@ function loginFacebook(){
       if (error) {
         console.log("Login Failed!", error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        console.log("Authenticated successfully with facebook");
         displayProfilePic();
       }
     }, {remember: "sessionOnly"});
@@ -24,9 +24,9 @@ function loginTwitter(){
     ref.authWithOAuthPopup("twitter", function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
-        displayProfilePic();
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        console.log("Authenticated successfully with payload twitter");
+        displayProfilePic();
       }
     }, {remember: "sessionOnly"});
   }
@@ -42,9 +42,9 @@ function loginGoogle(){
     ref.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
-        displayProfilePic();
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        console.log("Authenticated successfully with goodle");
+        displayProfilePic();
       }
     }, {remember: "sessionOnly"});
   }

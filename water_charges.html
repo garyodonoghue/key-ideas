@@ -78,8 +78,8 @@
             for(var i=commentsArr.length-1; i>=0;i--){
               html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><div class="titleBox"><label>';
               html += commentsArr[i].text;
-              html += '</label></div><div class="commentBox"><p class="taskDescription">';
-              html += '<img class="img-circle" width="100" height="100" src="' + commentsArr[i].profilePicUrl + '">';
+              html += '<button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></label></div><div class="commentBox"><p class="taskDescription">';
+              html += '</br><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
               html += '<div>' + commentsArr[i].userName + '</div>';
               html += '</br>';
 
@@ -95,6 +95,91 @@
           alert('error');
         }
       	});
+			}
+
+			// function used to delete a comment, should only be able to
+			function checkCanDeleteComment(commentId, commentText, userName){
+				console.log('commentId:',commentId);
+				console.log('commentText:',commentText);
+				console.log('commenter:',userName);
+
+				var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+				//check if user is signed in and authenticated before allowing them to post content
+				var authToken = ref.getAuth();
+
+				if(authToken == null){
+          BootstrapDialog.show({
+                  title: 'Please Login',
+                  message: 'Login in using the buttons on the top-right'
+          });
+        }
+				else{
+					BootstrapDialog.show({
+									title: 'Delete comment',
+									message: 'Are you sure you want to delete this comment?',
+									buttons: [{
+	                label: 'Cancel',
+	                action: function(dialog) {
+	                    dialog.close();
+	                }
+	            }, {
+	                label: 'Yes I\'m sure',
+	                action: function(dialog) {
+	                    deleteComment(userName, commentId);
+											dialog.close();
+	                }
+	            }]
+					});
+				}
+			}
+
+			function deleteComment(userName, commentId){
+				if(deleteComment){
+					var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
+
+	        //check if user is signed in and authenticated before allowing them to post content
+	        var authToken = ref.getAuth();
+					var authProvider = authToken.provider;
+          var displayName;
+
+          if(authProvider == "google"){
+              displayName = authToken.google.displayName;
+          }
+          else if(authProvider == "facebook"){
+            displayName = authToken.facebook.displayName;
+          }
+          else if(authProvider == "twitter"){
+            displayName = authToken.twitter.displayName;
+          }
+
+					if(userName != displayName.replace("'", "")){
+						BootstrapDialog.show({
+										title: 'Disallowed action!',
+										message: 'You can only delete your own comments!'
+						});
+					}
+					else{
+						console.log('deleting comment: ' + commentId + ' by user:' + userName);
+						var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '.json';
+
+						$.ajax(
+	          {
+	            type: "DELETE",
+	            url: url,
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (data) {
+	              console.log('comment: ' + commentId + ' succes deleted');
+								displayPosts();
+	            },
+	            error: function (msg, url, line) {
+	              alert('error');
+	            }
+	          });
+
+					}
+				}
 			}
 
       // setup post button to allow posting of comments
@@ -143,7 +228,7 @@
           {
             type: "POST",
             url: url,
-            data: '{"text" : "' + commentText + '", "userName" : "' + displayName + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
+            data: '{"text" : "' + commentText + '", "userName" : "' + displayName.replace("'", "") + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
