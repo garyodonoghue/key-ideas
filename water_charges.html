@@ -26,6 +26,12 @@
 		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
 	</head>
 
+	<style>
+	.bootstrap-dialog.type-primary .modal-header{
+	    background-color: #DC5843;
+	}
+	</style>
+
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -76,10 +82,10 @@
           var html = '</br></br></br><div class = "container"><div class="row main-row">';
 
             for(var i=commentsArr.length-1; i>=0;i--){
-              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><table style="width:100%"><tr><td style="text-align: left";><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
-              html += '<div>' + commentsArr[i].userName + '</td><td style="text-align: center;"><div class="titleBox"><label>';
+              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><table style="width:100%"><tr><td style="text-align: left; width:20%";><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
+              html += '<div>' + commentsArr[i].userName + '</td><td style="text-align: left;"><div class="titleBox"><label>';
               html += commentsArr[i].text;
-              html += '</td><td style="text-align: right";><button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></label></div><div class="commentBox"><p class="taskDescription">';
+              html += '</td><td style="text-align: right; width:20%";><button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></label></div><div class="commentBox"><p class="taskDescription">';
               html += '</td></tr></div>';
               html += '</br>';
 
@@ -111,7 +117,8 @@
 				if(authToken == null){
           BootstrapDialog.show({
                   title: 'Please Login',
-                  message: 'Login in using the buttons on the top-right'
+                  message: 'Login in using the buttons on the top-right',
+									cssClass: 'dialog-stlye'
           });
         }
 				else{
@@ -120,6 +127,7 @@
 									message: 'Are you sure you want to delete this comment?',
 									buttons: [{
 	                label: 'Cancel',
+									cssClass: 'dialog-stlye',
 	                action: function(dialog) {
 	                    dialog.close();
 	                }
@@ -155,8 +163,9 @@
 
 					if(userName != displayName.replace("'", "")){
 						BootstrapDialog.show({
-										title: 'Disallowed action!',
-										message: 'You can only delete your own comments!'
+										title: 'Action not permitted!',
+										message: 'You can only delete your own comments!',
+										cssClass: 'dialog-stlye'
 						});
 					}
 					else{
@@ -192,7 +201,8 @@
         if(authToken == null){
           BootstrapDialog.show({
                   title: 'Please Login',
-                  message: 'Login in using the buttons on the top-right'
+                  message: 'Login in using the buttons on the top-right',
+									cssClass: 'dialog-stlye'
           });
         }
         else{
