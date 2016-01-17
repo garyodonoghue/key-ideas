@@ -76,11 +76,11 @@
           var html = '</br></br></br><div class = "container"><div class="row main-row">';
 
             for(var i=commentsArr.length-1; i>=0;i--){
-              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><div class="titleBox"><label>';
+              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><table style="width:100%"><tr><td style="text-align: left";><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
+              html += '<div>' + commentsArr[i].userName + '</td><td style="text-align: center;"><div class="titleBox"><label>';
               html += commentsArr[i].text;
-              html += '<button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></label></div><div class="commentBox"><p class="taskDescription">';
-              html += '</br><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
-              html += '<div>' + commentsArr[i].userName + '</div>';
+              html += '</td><td style="text-align: right";><button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></label></div><div class="commentBox"><p class="taskDescription">';
+              html += '</td></tr></div>';
               html += '</br>';
 
               html += '</div>';
