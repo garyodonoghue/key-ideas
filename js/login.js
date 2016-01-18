@@ -54,24 +54,29 @@ function displayProfilePic(){
   //get the user profile pic from the auth token
   var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
   var authToken = ref.getAuth();
-  var authProvider = authToken.provider;
+  if(authToken != null){
+    var authProvider = authToken.provider;
 
-  var profileImageURL;
-  var fullName;
+    var profileImageURL;
+    var fullName;
 
-  if(authProvider == "google"){
-      fullName = authToken.google.displayName;
-      profileImageURL = authToken.google.profileImageURL
-  }
-  else if(authProvider == "facebook"){
-    fullName = authToken.facebook.displayName;
-    profileImageURL = authToken.facebook.profileImageURL
-  }
-  else if(authProvider == "twitter"){
-    fullName = authToken.twitter.displayName;
-    profileImageURL = authToken.twitter.profileImageURL
-  }
+    if(authProvider == "google"){
+        fullName = authToken.google.displayName;
+        profileImageURL = authToken.google.profileImageURL
+    }
+    else if(authProvider == "facebook"){
+      fullName = authToken.facebook.displayName;
+      profileImageURL = authToken.facebook.profileImageURL
+    }
+    else if(authProvider == "twitter"){
+      fullName = authToken.twitter.displayName;
+      profileImageURL = authToken.twitter.profileImageURL
+    }
 
-  var firstName = fullName.split(" ")[0];
-  document.getElementById("signInDropDown").innerHTML = '<p style="color: #fff;padding-top: 4px; font-size:18px; font-family:font-family: "Helvetica Neue"; display:block">Hello, '+firstName+'</p>';
+    var firstName = fullName.split(" ")[0];
+    var dropDown = document.getElementById("signInDropDown");
+    if(dropDown != null){
+        dropDown.innerHTML = '<p style="color: #fff;padding-top: 4px; font-size:18px; font-family:font-family: "Helvetica Neue"; display:block">Hello, '+firstName+'</p>';
+    }
+  }
 }
