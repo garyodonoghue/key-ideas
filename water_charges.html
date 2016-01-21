@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/typeahead.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
@@ -190,7 +191,7 @@
 				var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
 				//check if user is signed in and authenticated before allowing them to post content
 				var authToken = ref.getAuth();
-				var authProvider = authToken.provider;
+				var authProvider;
 
 				if(authToken == null){
           BootstrapDialog.show({
@@ -200,6 +201,8 @@
           });
         }
 				else{
+					var authProvider = authToken.provider;
+
           var displayName;
 
           if(authProvider == "google"){
@@ -221,9 +224,20 @@
 					}
 					else{
 						// show editor dialog
+						var modalTextHtml = '<textarea id="textArea" name="' + commentId + '" style="width:100%" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>';
+ 						$('#modalTextBox').html(modalTextHtml);
+						$('#textArea').val(commentText);
 
+						jQuery.noConflict();
+ 						$('#myModal').modal('show');
 					}
 				}
+			}
+
+			// adust the text area based on the amount of text in it
+			function textAreaAdjust(o) {
+			    o.style.height = "1px";
+			    o.style.height = (25+o.scrollHeight)+"px";
 			}
 
       // setup post button to allow posting of comments
@@ -287,6 +301,29 @@
         }
     }
 
+
+		function updateComment(){
+			var commentText = $('#textArea').val();
+			var commentId = $('#textArea').attr('name');
+
+			var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '.json';
+			$.ajax(
+			{
+				type: "PATCH",
+				url: url,
+				data: '{"text" : "' + commentText + '"}',
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (data) {
+					BootstrapDialog.alert('Comment successfully updated');
+					displayPosts();
+				},
+				error: function (msg, url, line) {
+					alert('error');
+				}
+			});
+		}
+
     $(document).ready(function()
     {
           $.get('navbarTemplate.html', function(data) {
@@ -302,6 +339,25 @@
   <div id="navBar"></div>
 	<div class = "row main-row" id="body"></div>
   <div id="forumComments"></div>
+
+	<!-- Modal -->
+ 	<div id="myModal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header" style="background-color: #DC5843; border-top-left-radius: 4px; border-top-right-radius: 4px;">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title" style="color: #fff;">Edit your comment</h4>
+       </div>
+
+			 <div id="modalTextBox" class="modal-body"></div>
+
+       <div class="modal-footer">
+         <button type="button" onclick="updateComment()" class="btn btn-default" data-dismiss="modal">Save</button>
+       </div>
+    </div>
+	</div>
+ </div>
 
 <script src="js/login.js"></script>
 <br><br><br><br><br>

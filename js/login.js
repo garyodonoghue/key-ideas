@@ -11,7 +11,11 @@ function loginFacebook(){
         console.log("Authenticated successfully with facebook");
         displayProfilePic();
       }
-    }, {remember: "sessionOnly"});
+    },
+    {
+        remember: "sessionOnly",
+        scope: "email"
+    });
   }
 }
 
