@@ -64,8 +64,8 @@
 
 		displayPosts();
 
-    //populate comments section
-    function displayPosts(){
+		//populate comments section
+		function displayPosts(){
 			var commentsUrl = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
 
       var commentIndexMappings = [];
@@ -91,7 +91,7 @@
               html += commentsArr[i].text;
               html += '</label></td><td style="text-align: right; width:20%";><button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></div><div class="commentBox"><p class="taskDescription">';
 							html += '<button onclick="checkCanEditComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Edit Comment?" class="glyphicon glyphicon-pencil"></button>';
-							html+='<td style="text-align: right; width:5%";><button title="Upvote Comment?" onclick="checkCanUpvoteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" class="glyphicon glyphicon-arrow-up"></button></td></tr></div>';
+							html+='<td style="text-align: right; width:5%";><button title="Upvote Comment?" onclick="checkCanUpvoteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" class="glyphicon glyphicon-arrow-up"></button> ' + commentsArr[i].upvotes + '</td></tr></div>';
               html += '</br>';
 
               html += '</div>';
@@ -107,8 +107,6 @@
         }
       	});
 			}
-
-checkCanUpvoteComment
 
 // function used to delete a comment, should only be able to
 function checkCanUpvoteComment(commentId, userName){
@@ -178,6 +176,7 @@ function checkCanUpvoteComment(commentId, userName){
 						dataType: "json",
 						success: function (data) {
 							console.log('upvotes=:'+numberUpvotes);
+							displayPosts();
 						},
 						error: function (msg, url, line) {
 							alert('error');
@@ -369,7 +368,7 @@ function checkCanUpvoteComment(commentId, userName){
           {
             type: "POST",
             url: url,
-            data: '{"text" : "' + commentText + '", "userName" : "' + displayName.replace("'", "") + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
+            data: '{"text" : "' + commentText + '", "upvotes" : 0, "userName" : "' + displayName.replace("'", "") + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
