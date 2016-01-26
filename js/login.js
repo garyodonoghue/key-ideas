@@ -75,51 +75,37 @@ function updateUserList(){
           if(userIndex > -1){
             console.log('user already registered - do nothing');
           }
+          else{
+            // add new user as they have not logged in before
+            addNewUser(userName, email);
+          }
         }
-        else{ //the user has not already been registered - add an entry for the users under /users with their email address as the payload
-          var url = 'https://glaring-torch-16.firebaseio.com/users/' + userName + '.json';
-
-          $.ajax(
-          {
-            type: "POST",
-            url: url,
-            data: '{"email" : "' + email + '"}'	,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-              // user successfully added, do nothing
-            },
-            error: function (msg, url, line) {
-              alert('error');
-            }
-          });
+        else{ //no users have yet been registered - add an entry for the users under /users with their email address as the payload
+          addNewUser(userName, email);
         }
+      }
     }
-    else{
-      // there were no existing users - add first user
-      var url = 'https://glaring-torch-16.firebaseio.com/users/' + userName;
+  });
+}
 
-      $.ajax(
-      {
-        type: "POST",
-        url: url,
-        data: '{"email" : "' + email + '"}'	,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-          // user successfully added, do nothing
-        },
-        error: function (msg, url, line) {
-          alert('error');
-        }
-      });
-    }
+function addNewUser(userName, email){
+  var url = 'https://glaring-torch-16.firebaseio.com/users/' + userName + '.json';
+
+  $.ajax(
+  {
+    type: "POST",
+    url: url,
+    data: '{"email" : "' + email + '"}'	,
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+      // user successfully added, do nothing
     },
     error: function (msg, url, line) {
       alert('error');
     }
   });
- }
+}
 
 function loginTwitter(){
   var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
