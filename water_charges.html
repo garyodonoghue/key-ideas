@@ -20,6 +20,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/typeahead.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/user-actions.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
@@ -28,12 +29,6 @@
     <link rel="stylesheet" href="css/social-button.css" />
 		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
 	</head>
-
-	<style>
-	.bootstrap-dialog.type-primary .modal-header{
-	    background-color: #DC5843;
-	}
-	</style>
 
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -44,352 +39,7 @@
 	  ga('create', 'UA-70155327-1', 'auto');
 	  ga('send', 'pageview');
 
-	</script>
-  <script>
-
-		displayPosts();
-
-		//populate comments section
-		function displayPosts(){
-			var commentsUrl = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
-
-      var commentIndexMappings = [];
-      $.ajax(
-      {
-        type: "GET",
-        url: commentsUrl,
-        data: "{}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-          var commentsArr = $.map(data, function(el, i)
-          {
-            commentIndexMappings.push(i);
-            return el;
-          })
-
-          var html = '</br></br></br><div class = "container"><div class="row main-row">';
-
-            for(var i=commentsArr.length-1; i>=0;i--){
-              html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><table style="width:100%"><tr><td style="text-align: left; width:20%";><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
-              html += '<div>' + commentsArr[i].userName + '</td><td style="text-align: left;"><div class="titleBox"><label>';
-              html += commentsArr[i].text;
-              html += '</label></td><td style="text-align: right; width:20%";><button onclick="checkCanDeleteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Delete Comment?" class="glyphicon glyphicon-remove"></button></div><div class="commentBox"><p class="taskDescription">';
-							html += '<button onclick="checkCanEditComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].text +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" title="Edit Comment?" class="glyphicon glyphicon-pencil"></button>';
-							html+='<td style="text-align: right; width:5%";><button title="Upvote Comment?" onclick="checkCanUpvoteComment(\''+ commentIndexMappings[i] +'\', \''+ commentsArr[i].userName.replace("'", "") +'\')" class="glyphicon glyphicon-arrow-up"></button> ' + commentsArr[i].upvotes + '</td></tr></div>';
-              html += '</br>';
-
-              html += '</div>';
-              html += '<form class="form-inline" role="form">';
-              html += '</div></br><hr>';
-            }
-
-          html+='</div></div>';
-          $("#forumComments").html(html);
-        },
-        error: function (msg, url, line) {
-          alert('error');
-        }
-      	});
-			}
-
-// function used to delete a comment, should only be able to
-function checkCanUpvoteComment(commentId, userName){
-	var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-	//check if user is signed in and authenticated before allowing them to post content
-	var authToken = ref.getAuth();
-
-	if(authToken == null){
-		BootstrapDialog.show({
-						title: 'Please Login',
-						message: 'Login in using the buttons on the top-right',
-						cssClass: 'dialog-stlye'
-		});
-	}
-	else{
-		//check if user is signed in and authenticated before allowing them to post content
-		var authToken = ref.getAuth();
-		var authProvider = authToken.provider;
-		var displayName;
-
-		if(authProvider == "google"){
-				displayName = authToken.google.displayName;
-		}
-		else if(authProvider == "facebook"){
-			displayName = authToken.facebook.displayName;
-		}
-		else if(authProvider == "twitter"){
-			displayName = authToken.twitter.displayName;
-		}
-
-		if(userName == displayName.replace("'", "")){
-			BootstrapDialog.show({
-							title: 'Action not permitted!',
-							message: 'You can not upvote your own comments!',
-							cssClass: 'dialog-stlye'
-			});
-		}
-		else{
-			var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '/upvotes.json';
-				var numberUpvotes;
-
-			// get the number of upvotes a comment has, if null, then treat as 0
-			$.ajax(
-			{
-				type: "GET",
-				url: url,
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (data) {
-					if(isNaN(data) || data == null){
-						numberUpvotes = 0;
-					}
-					else{
-						numberUpvotes = data;
-					}
-
-					numberUpvotes = parseInt(numberUpvotes) + 1;
-
-					var updateUpvotesUrl  = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '.json';
-
-					$.ajax(
-					{
-						type: "PATCH",
-						url: updateUpvotesUrl,
-						contentType: "application/json; charset=utf-8",
-						data: '{"upvotes" : "' + numberUpvotes + '"}',
-						dataType: "json",
-						success: function (data) {
-							console.log('upvotes=:'+numberUpvotes);
-							displayPosts();
-						},
-						error: function (msg, url, line) {
-							alert('error');
-						}
-					});
-				}
-				});
-				}
-			}
-		}
-
-
-			// function used to delete a comment, should only be able to
-			function checkCanDeleteComment(commentId, commentText, userName){
-				var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-				//check if user is signed in and authenticated before allowing them to post content
-				var authToken = ref.getAuth();
-
-				if(authToken == null){
-          BootstrapDialog.show({
-                  title: 'Please Login',
-                  message: 'Login in using the buttons on the top-right',
-									cssClass: 'dialog-stlye'
-          });
-        }
-				else{
-	        //check if user is signed in and authenticated before allowing them to post content
-	        var authToken = ref.getAuth();
-					var authProvider = authToken.provider;
-          var displayName;
-
-          if(authProvider == "google"){
-              displayName = authToken.google.displayName;
-          }
-          else if(authProvider == "facebook"){
-            displayName = authToken.facebook.displayName;
-          }
-          else if(authProvider == "twitter"){
-            displayName = authToken.twitter.displayName;
-          }
-
-					if(userName != displayName.replace("'", "")){
-						BootstrapDialog.show({
-										title: 'Action not permitted!',
-										message: 'You can only delete your own comments!',
-										cssClass: 'dialog-stlye'
-						});
-					}
-					else{
-						BootstrapDialog.show({
-										title: 'Delete comment',
-										message: 'Are you sure you want to delete this comment?',
-										buttons: [{
-		                label: 'Cancel',
-										cssClass: 'dialog-stlye',
-		                action: function(dialog) {
-		                    dialog.close();
-		                }
-		            }, {
-		                label: 'Yes I\'m sure',
-		                action: function(dialog) {
-		                    deleteComment(userName, commentId);
-												dialog.close();
-		                }
-		            }]
-						});
-					}
-				}
-			}
-
-			function deleteComment(userName, commentId){
-						console.log('deleting comment: ' + commentId + ' by user:' + userName);
-						var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '.json';
-
-						$.ajax(
-	          {
-	            type: "DELETE",
-	            url: url,
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function (data) {
-	              console.log('comment: ' + commentId + ' successfully deleted');
-								displayPosts();
-	            },
-	            error: function (msg, url, line) {
-	              alert('error');
-	            }
-	          });
-			}
-
-			// function used to delete a comment, should only be able to
-			function checkCanEditComment(commentId, commentText, userName){
-				var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-				//check if user is signed in and authenticated before allowing them to post content
-				var authToken = ref.getAuth();
-				var authProvider;
-
-				if(authToken == null){
-          BootstrapDialog.show({
-                  title: 'Please Login',
-                  message: 'Login in using the buttons on the top-right',
-									cssClass: 'dialog-stlye'
-          });
-        }
-				else{
-					var authProvider = authToken.provider;
-
-          var displayName;
-
-          if(authProvider == "google"){
-              displayName = authToken.google.displayName;
-          }
-          else if(authProvider == "facebook"){
-            displayName = authToken.facebook.displayName;
-          }
-          else if(authProvider == "twitter"){
-            displayName = authToken.twitter.displayName;
-          }
-
-					if(userName != displayName.replace("'", "")){
-						BootstrapDialog.show({
-										title: 'Action not permitted!',
-										message: 'You can only edit your own comments!',
-										cssClass: 'dialog-stlye'
-						});
-					}
-					else{
-						// show editor dialog
-						var modalTextHtml = '<textarea id="textArea" name="' + commentId + '" style="width:100%" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>';
- 						$('#modalTextBox').html(modalTextHtml);
-						$('#textArea').val(commentText);
-
-						jQuery.noConflict();
- 						$('#myModal').modal('show');
-					}
-				}
-			}
-
-			// adust the text area based on the amount of text in it
-			function textAreaAdjust(o) {
-			    o.style.height = "1px";
-			    o.style.height = (25+o.scrollHeight)+"px";
-			}
-
-      // setup post button to allow posting of comments
-      function postComment(){
-        var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-
-        //check if user is signed in and authenticated before allowing them to post content
-        var authToken = ref.getAuth();
-
-        if(authToken == null){
-          BootstrapDialog.show({
-                  title: 'Please Login',
-                  message: 'Login in using the buttons on the top-right',
-									cssClass: 'dialog-stlye'
-          });
-        }
-        else{
-          //users to alreadt logged in
-          var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments.json';
-          var commentText = $('#commentTxtBox').val();
-          commentText = commentText.replace(/\n/g, "");
-
-          //get the user credentials (profile pic, username) from the auth token
-          var ref = new Firebase("https://glaring-torch-16.firebaseio.com");
-
-          //check if user is signed in and authenticated before allowing them to post content
-          var authToken = ref.getAuth();
-          var authProvider = authToken.provider;
-
-          var profileImageURL;
-          var displayName;
-
-          if(authProvider == "google"){
-              displayName = authToken.google.displayName;
-              profileImageURL = authToken.google.profileImageURL
-          }
-          else if(authProvider == "facebook"){
-            displayName = authToken.facebook.displayName;
-            profileImageURL = authToken.facebook.profileImageURL
-          }
-          else if(authProvider == "twitter"){
-            displayName = authToken.twitter.displayName;
-            profileImageURL = authToken.twitter.profileImageURL
-          }
-
-          $.ajax(
-          {
-            type: "POST",
-            url: url,
-            data: '{"text" : "' + commentText + '", "upvotes" : 0, "userName" : "' + displayName.replace("'", "") + '", "profilePicUrl" : "' + profileImageURL + '"}'	,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-              $("#commentTxtBox").val('');
-              displayPosts();
-            },
-            error: function (msg, url, line) {
-              alert('error');
-            }
-          });
-        }
-    }
-
-
-		function updateComment(){
-			var commentText = $('#textArea').val();
-			var commentId = $('#textArea').attr('name');
-
-			var url = 'https://glaring-torch-16.firebaseio.com/discussion_topics/water_charges/comments/' + commentId + '.json';
-			$.ajax(
-			{
-				type: "PATCH",
-				url: url,
-				data: '{"text" : "' + commentText + '"}',
-				contentType: "application/json; charset=utf-8",
-				dataType: "json",
-				success: function (data) {
-					BootstrapDialog.alert('Comment successfully updated');
-					displayPosts();
-				},
-				error: function (msg, url, line) {
-					alert('error');
-				}
-			});
-		}
-
+		displayPosts('water_charges');
   </script>
 
   <body>
@@ -401,11 +51,14 @@ function checkCanUpvoteComment(commentId, userName){
 		});
 	</script>
 
-	<div class="container"><div class="row main-row"><h1>Water Charges</h1>As part of the bailout agreement, which saw Ireland receive financial assistance from the European Commission, European Central Bank (ECB) and the International Monetary Fund (IMF), the then Irish government committed to the establishment of charges for the use of water in homes and businesses. This had previously been paid for using motor taxes for homes and local council rates for businesses. The state set up a company called Irish Water to provide water services and maintenance which is funded through direct billing of home and business owners. The main for the management of water services in this way is that it will bring the standard of water service delivery in Ireland up to European standards. Many oppose the manner in which Irish Water was set up but do not oppose water charges per se, provided they are introduced in a sensible manner which leads to a high quality water supply. Others oppose the introduction of water charges altogether, viewing the access to water as an inalienable human right.  <h3>What do you think?</h3>  </br></br> <div> Resources </div>  <a href="http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/"> http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/</a>  <a href="https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/">https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/</a>  <a href="https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland">https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland</a>  <a href="https://en.wikipedia.org/wiki/Irish_Water">https://en.wikipedia.org/wiki/Irish_Water</a>  <a href="http://www.water.ie/billing-and-charges/charges/">http://www.water.ie/billing-and-charges/charges/</a>  <a href="http://www.irishtimes.com/news/water-charges">http://www.irishtimes.com/news/water-charges</a>  <a href="https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf">https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf</a>  </br></br></br><div class="container"><div class="row main-row">Post your opinion on this topic or read people's comments below....</div> </div> </div>  </br></br></br> <div class="row main-row"><div class="form-group"><textarea id="commentTxtBox" style="width:50%; margin: 0 auto;" class="form-control"  onkeyup="textAreaAdjust(this)" placeholder="Post comment..."></textarea></br><input class="btn btn-danger" onClick="postComment()" type="submit" value="Submit"></div></div></div></br>
+
+	<div class="container"><div class="row main-row"><h1>Water Charges</h1>As part of the bailout agreement, which saw Ireland receive financial assistance from the European Commission, European Central Bank (ECB) and the International Monetary Fund (IMF), the then Irish government committed to the establishment of charges for the use of water in homes and businesses. This had previously been paid for using motor taxes for homes and local council rates for businesses. The state set up a company called Irish Water to provide water services and maintenance which is funded through direct billing of home and business owners. The main for the management of water services in this way is that it will bring the standard of water service delivery in Ireland up to European standards. Many oppose the manner in which Irish Water was set up but do not oppose water charges per se, provided they are introduced in a sensible manner which leads to a high quality water supply. Others oppose the introduction of water charges altogether, viewing the access to water as an inalienable human right.  <h3>What do you think?</h3>  </br></br> <div> Resources </div>  <a href="http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/"> http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/</a>  <a href="https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/">https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/</a>  <a href="https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland">https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland</a>  <a href="https://en.wikipedia.org/wiki/Irish_Water">https://en.wikipedia.org/wiki/Irish_Water</a>  <a href="http://www.water.ie/billing-and-charges/charges/">http://www.water.ie/billing-and-charges/charges/</a>  <a href="http://www.irishtimes.com/news/water-charges">http://www.irishtimes.com/news/water-charges</a>  <a href="https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf">https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf</a>  </br></br></br><div class="container"><div class="row main-row">Post your opinion on this topic or read people's comments below....</div> </div> </div>  </br></br></br> <div class="row main-row"><div class="form-group"><textarea id="commentTxtBox" style="width:50%; margin: 0 auto;" class="form-control"  onkeyup="textAreaAdjust(this)" placeholder="Post comment..."></textarea></br><input class="btn btn-danger" onClick="postComment('water_charges')" type="submit" value="Submit"></div></div></div></br>
+
+
 	<div class = "row main-row" id="body"></div>
   <div id="forumComments"></div>
 
-	<!-- Modal -->
+ <!-- Modal - use load to bring this in from an external modal.html file (http://api.jquery.com/load/)  -->
  	<div id="myModal" class="modal fade" role="dialog">
    <div class="modal-dialog">
      <!-- Modal content-->
@@ -418,7 +71,7 @@ function checkCanUpvoteComment(commentId, userName){
 			 <div id="modalTextBox" class="modal-body"></div>
 
        <div class="modal-footer">
-         <button type="button" onclick="updateComment()" class="btn btn-default" data-dismiss="modal">Save</button>
+         <button type="button" onclick="updateComment('water_charges')" class="btn btn-default" data-dismiss="modal">Save</button>
        </div>
     </div>
 	</div>

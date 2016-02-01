@@ -81,3 +81,11 @@
 .fa-facebook, .fa-twitter, .fa-google-plus, .fa-youtube, .fa-envelope{
   color:#DC5843;
 }
+
+.dialog-stlye .modal-dialog{
+    background-color: #DC5843;
+}
+
+.bootstrap-dialog.type-primary .modal-header{
+    background-color: #DC5843;
+}
