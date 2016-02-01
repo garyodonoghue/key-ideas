@@ -47,21 +47,6 @@
 	</script>
   <script>
 
-    // populate body with water charges blurb
-    var waterChargesInfo = 'https://glaring-torch-16.firebaseio.com/info/water_charges.json';
-
-    $.ajax(
-    {
-      type: "GET",
-      url: waterChargesInfo,
-      data: "{}",
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (data) {
-        $("#body").html(data);
-      }
-    });
-
 		displayPosts();
 
 		//populate comments section
@@ -405,19 +390,18 @@ function checkCanUpvoteComment(commentId, userName){
 			});
 		}
 
-    $(document).ready(function()
-    {
-          $.get('navbarTemplate.html', function(data) {
-          $('#navBar').html(data);
-					displayProfilePic();
-      });
-    });
-
   </script>
 
   <body>
+	<div id="navBar"></div>
+	<script>
+		$.get('navbarTemplate.html', function(data) {
+			$('#navBar').html(data);
+			displayProfilePic();
+		});
+	</script>
 
-  <div id="navBar"></div>
+	<div class="container"><div class="row main-row"><h1>Water Charges</h1>As part of the bailout agreement, which saw Ireland receive financial assistance from the European Commission, European Central Bank (ECB) and the International Monetary Fund (IMF), the then Irish government committed to the establishment of charges for the use of water in homes and businesses. This had previously been paid for using motor taxes for homes and local council rates for businesses. The state set up a company called Irish Water to provide water services and maintenance which is funded through direct billing of home and business owners. The main for the management of water services in this way is that it will bring the standard of water service delivery in Ireland up to European standards. Many oppose the manner in which Irish Water was set up but do not oppose water charges per se, provided they are introduced in a sensible manner which leads to a high quality water supply. Others oppose the introduction of water charges altogether, viewing the access to water as an inalienable human right.  <h3>What do you think?</h3>  </br></br> <div> Resources </div>  <a href="http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/"> http://bocktherobber.com/2014/11/hseh20-government-makes-complete-shit-of-irish-water-launch/</a>  <a href="https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/">https://www.reddit.com/r/ireland/comments/2b2eeg/people_who_opposed_water_charges_please_put/</a>  <a href="https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland">https://en.wikipedia.org/wiki/Water_supply_and_sanitation_in_the_Republic_of_Ireland</a>  <a href="https://en.wikipedia.org/wiki/Irish_Water">https://en.wikipedia.org/wiki/Irish_Water</a>  <a href="http://www.water.ie/billing-and-charges/charges/">http://www.water.ie/billing-and-charges/charges/</a>  <a href="http://www.irishtimes.com/news/water-charges">http://www.irishtimes.com/news/water-charges</a>  <a href="https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf">https://www.maynoothuniversity.ie/sites/default/files/assets/document/TheIrishWaterwar_0.pdf</a>  </br></br></br><div class="container"><div class="row main-row">Post your opinion on this topic or read people's comments below....</div> </div> </div>  </br></br></br> <div class="row main-row"><div class="form-group"><textarea id="commentTxtBox" style="width:50%; margin: 0 auto;" class="form-control"  onkeyup="textAreaAdjust(this)" placeholder="Post comment..."></textarea></br><input class="btn btn-danger" onClick="postComment()" type="submit" value="Submit"></div></div></div></br>
 	<div class = "row main-row" id="body"></div>
   <div id="forumComments"></div>
 
