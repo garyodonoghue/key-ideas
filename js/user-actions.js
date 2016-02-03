@@ -314,7 +314,7 @@ function displayPosts(context){
         return el;
       })
 
-      var html = '</br></br></br><div class = "container"><div class="row main-row">';
+      var html = '</br><div class = "container"><div class="row main-row">';
 
         for(var i=commentsArr.length-1; i>=0;i--){
           html += '<div id="'+commentIndexMappings[i]+'" class="form-group"><table style="width:100%"><tr><td style="text-align: left; width:20%";><img class="img-circle" width="50" height="50" src="' + commentsArr[i].profilePicUrl + '">';
