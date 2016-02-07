@@ -18,7 +18,7 @@
 		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		
+
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
 		<link rel="stylesheet" href="css/style.css" />
@@ -56,6 +56,14 @@
     {
           $.get('navbarTemplate.html', function(data) {
           $('#navBar').html(data);
+
+					$('#homeTab').removeClass("active");
+					$('#contactTab').removeClass("active");
+					$('#aboutTab').removeClass("active");
+					$('#howChangeHappensTab').removeClass("active");
+					$('#whatsBeingDiscussedTab').removeClass("active");
+					$('#howChangeHappensTab').addClass("active");
+					
 					displayProfilePic();
       });
     });

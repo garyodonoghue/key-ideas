@@ -54,12 +54,20 @@
 	<script>
 		$.get('navbarTemplate.html', function(data) {
 			$('#navBar').html(data);
+
+			$('#homeTab').removeClass("active");
+			$('#contactTab').removeClass("active");
+			$('#aboutTab').removeClass("active");
+			$('#howChangeHappensTab').removeClass("active");
+			$('#whatsBeingDiscussedTab').removeClass("active");
+			$('#howChangeHappensTab').addClass("active");
+			
 			displayProfilePic();
 		});
 	</script>
 
 	<div class="container"><div class="row main-row" style="font-family: 'Open Sans', sans-serif; width:50%; margin: 0 auto;"><p style="font-size: 48px; color:#DC5843;">Why Vote?</p><br>
-		
+
 	<br><br><p style="text-align:left">
 		It may sometimes seem like voting is not worthwhile but in fact, making an informed choice regarding your local candidates is vital to ensure you have done your best to put people in power who share your goals for society. It is especially important that we as young vote because it has been shown that those who vote tend be older, wealthier and supporters of traditional parties. It is no surprise then that their interests are looked after by successive governments. However, when young people turn up to vote en masse, it can change the country for the better as we saw with last year’s marriage referendum.
 

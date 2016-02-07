@@ -81,3 +81,7 @@
 .fa-facebook, .fa-twitter, .fa-google-plus, .fa-youtube, .fa-envelope{
   color:#DC5843;
 }
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+    background-color: #96241B !important;
+}

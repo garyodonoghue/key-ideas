@@ -54,6 +54,14 @@
 	<script>
 		$.get('navbarTemplate.html', function(data) {
 			$('#navBar').html(data);
+
+			$('#homeTab').removeClass("active");
+			$('#contactTab').removeClass("active");
+			$('#aboutTab').removeClass("active");
+			$('#howChangeHappensTab').removeClass("active");
+			$('#whatsBeingDiscussedTab').removeClass("active");
+			$('#whatsBeingDiscussedTab').addClass("active");
+
 			displayProfilePic();
 		});
 	</script>
