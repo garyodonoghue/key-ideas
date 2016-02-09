@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KEY - How To Contribute</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="A platform to allow the youth of ireland to influence policy and get informed" />
+		<meta name="keywords" content="key, ideas, decisions, politics, youth, ireland" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/user-actions.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
+		<link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-button.css" />
+		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
+	</head>
+
+	<style>
+ 	.bootstrap-dialog.type-primary .modal-header{
+ 	    background-color: #DC5843;
+ 	}
+ 	</style>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-70155327-1', 'auto');
+	  ga('send', 'pageview');
+
+  </script>
+
+  <body>
+	<div id="navBar"></div>
+	<script>
+		$.get('navbarTemplate.html', function(data) {
+			$('#navBar').html(data);
+
+			$('#homeTab').removeClass("active");
+			$('#contactTab').removeClass("active");
+			$('#aboutTab').removeClass("active");
+			$('#howChangeHappensTab').removeClass("active");
+			$('#whatsBeingDiscussedTab').removeClass("active");
+      $('#howToContributeTab').removeClass("active");
+      $('#howToContributeTab').addClass("active");
+
+			displayProfilePic();
+		});
+	</script>
+
+  <div id="body"></div>
+    <iframe style="position: absolute; height: 100%; width:100%; border: none" src="https://docs.google.com/document/d/1Pb0mhyja9VZrq5jqTTUMUhhHRwH2VWEl8r1baEiyBME/pub">
+      <p>Your browser does not support iframes.</p>
+    </iframe>
+  </div>
+</html>
