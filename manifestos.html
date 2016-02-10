@@ -36,22 +36,8 @@
 	  ga('send', 'pageview');
 
 	</script>
-
-  <script>
-    var url = 'https://glaring-torch-16.firebaseio.com/info/partyManifesto.json';
-    var commentIndexMappings = [];
-    $.ajax(
-    {
-      type: "GET",
-      url: url,
-      data: "{}",
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function (data) {
-        $("#body").html(data);
-      }
-    });
-
+	<div id="navBar"></div>
+	<script>
     $(document).ready(function()
     {
           $.get('navbarTemplate.html', function(data) {
@@ -70,10 +56,29 @@
 
   </script>
 
-  <body>
-    <div id="navBar"></div>
-    <div id="body"></div>
+	<div class="container"><div class="row main-row" style="font-family: 'Open Sans', sans-serif; width:50%; margin: 0 auto;"><p style="font-size: 48px; color:#DC5843;">Party Manifestos</p><br>
 
+		Below is a list of links to Party policy pages, and where available, manifestos:
+		<br><br>
+		Anti-Austerity Alliance <a href="http://antiausterityalliance.ie/category/what-we-stand-for/">policies</a>
+		<br><br>
+		Fianna Fail <a href="https://www.fiannafail.ie/the-issues/">policies</a> and <a href="https://www.fiannafail.ie/wp-content/uploads/2016/02/Manifesto-for-Rural-Ireland-1.pdf">manifesto for rural ireland</a>
+		<br><br>
+		Fine Gael <a href="http://www.finegael.ie/our-plan/the-plan/">policies</a> and <a href="http://www.finegael.ie/__uuid/7df44e94-e6d4-4744-9f5b-c9ea1f1216d2/FG_GE16_LEP_Final.pdf">long term economic plan</a>
+		<br><br>
+		Green party <a href="https://greenparty.ie/policies/">policies</a>
+		<br><br>
+		People Before Profit <a href="http://www.peoplebeforeprofit.ie/category/policies/">policies</a>
+		<br><br>
+		Renua <a href="http://www.renuaireland.com/category/policies/">policies</a> and <a href="http://www.renuaireland.com/2016/01/04/manifesto/">manifesto</a>
+		<br><br>
+		Sinn Féin <a href="http://www.sinnfein.ie/policies">policies</a> and <a href="https://www.sinnfein.ie/files/2016/GE2016ElectionManifesto.pdf">manifesto</a>
+		<br><br>
+		Social Democrats <a href="https://socialdemocrats.ie/policies/">policies</a> and <a href="https://drive.google.com/file/d/0B7hTX_nop6XkRGdURzVoendyQzQ/view">manifesto</a>
+
+</div>
+</div>
+<script src="js/login.js"></script>
 <br><br><br><br><br>
 </body>
 </html>
