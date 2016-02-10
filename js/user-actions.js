@@ -118,8 +118,8 @@ function deleteComment(context, userName, commentId){
         dataType: "json",
         success: function (data) {
           console.log('comment: ' + commentId + ' successfully deleted');
-          BootstrapDialog.alert('Comment successfully deleted');
           displayPosts(context);
+          BootstrapDialog.alert('Comment successfully deleted');
         },
         error: function (msg, url, line) {
           console.log('error deleting comment: ' + commentId + ' for user: ' + userName);
@@ -308,12 +308,16 @@ function displayPosts(context){
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {
-      var commentsArr = $.map(data, function(el, i)
-      {
-        commentIndexMappings.push(i);
-        return el;
-      })
+      var commentsArr = [];
 
+      if(data != null){
+        commentsArr = $.map(data, function(el, i)
+        {
+          commentIndexMappings.push(i);
+          return el;
+        })
+      }
+      
       var html = '</br><div class = "container"><div class="row main-row">';
 
         for(var i=commentsArr.length-1; i>=0;i--){
