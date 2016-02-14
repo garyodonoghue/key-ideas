@@ -122,8 +122,7 @@ function deleteComment(context, userName, commentId){
           BootstrapDialog.alert('Comment successfully deleted');
         },
         error: function (msg, url, line) {
-          console.log('error deleting comment: ' + commentId + ' for user: ' + userName);
-          alert('error');
+          // TODO log user actions in firebase
         }
     });
 }
@@ -183,8 +182,7 @@ function postComment(context){
         displayPosts(context);
       },
       error: function (msg, url, line) {
-        console.log('error posting comment: ' + commentText + ' for user: ' + displayName);
-        alert('error');
+        // TODO log user actions in firebase
       }
     });
   }
@@ -207,8 +205,7 @@ function updateComment(context){
       displayPosts(context);
     },
     error: function (msg, url, line) {
-      console.log('error updating comment: ' + commentId);
-      alert('error');
+      // TODO log user actions in firebase
     }
   });
 }
@@ -285,8 +282,7 @@ function checkCanUpvoteComment(context, commentId, userName){
 							displayPosts(context);
 						},
 						error: function (msg, url, line) {
-              console.log('error upvoting comment: ' + commentId + ' for user: ' + userName);
-              alert('error');
+              // TODO log user actions in firebase
 						}
 					});
 				}
@@ -317,7 +313,7 @@ function displayPosts(context){
           return el;
         })
       }
-      
+
       var html = '</br><div class = "container"><div class="row main-row">';
 
         for(var i=commentsArr.length-1; i>=0;i--){
@@ -338,8 +334,7 @@ function displayPosts(context){
       $("#forumComments").html(html);
     },
     error: function (msg, url, line) {
-      console.log('error displaying comments for context: ' + context);
-      alert('error');
+      // TODO log user actions in firebase
     }
     });
 }

@@ -6,9 +6,9 @@ function loginFacebook(){
   if(authToken == null){
     ref.authWithOAuthPopup("facebook", function(error, authData) {
       if (error) {
-        console.log("Login Failed!", error);
+        // TODO log user actions in firebase
       } else {
-        console.log("Authenticated successfully with facebook");
+        // TODO log user actions in firebase
         displayProfilePic();
         updateUserList();
       }
@@ -102,7 +102,7 @@ function addNewUser(userName, email){
       // user successfully added, do nothing
     },
     error: function (msg, url, line) {
-      alert('error');
+      // TODO log user actions in firebase
     }
   });
 }
@@ -115,9 +115,9 @@ function loginTwitter(){
   if(authToken == null){
     ref.authWithOAuthPopup("twitter", function(error, authData) {
       if (error) {
-        console.log("Login Failed!", error);
+        // TODO log user actions in firebase
       } else {
-        console.log("Authenticated successfully with payload twitter");
+        // TODO log user actions in firebase
         displayProfilePic();
         updateUserList();
       }
@@ -138,9 +138,9 @@ function loginGoogle(){
   if(authToken == null){
     ref.authWithOAuthPopup("google", function(error, authData) {
       if (error) {
-        console.log("Login Failed!", error);
+        // TODO log user actions in firebase
       } else {
-        console.log("Authenticated successfully with goodle");
+        // TODO log user actions in firebase
         displayProfilePic();
         updateUserList();
       }
