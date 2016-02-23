@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="A platform to allow the youth of ireland to influence policy and get informed" />
+		<meta name="keywords" content="key, ideas, decisions, politics, youth, ireland" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/typeahead.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/user-actions.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css"></script>
+		<link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-button.css" />
+		<link rel="stylesheet" href="https://rawgit.com/daneden/animate.css/master/animate.css" />
+	</head>
+
+	<style>
+ 	.bootstrap-dialog.type-primary .modal-header{
+ 	    background-color: #DC5843;
+ 	}
+ 	</style>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-70155327-1', 'auto');
+	  ga('send', 'pageview');
+
+		displayPosts('levels_of_government');
+  </script>
+
+  <body>
+	<div id="navBar"></div>
+	<script>
+		$.get('navbarTemplate.html', function(data) {
+			$('#navBar').html(data);
+
+			$('#homeTab').removeClass("active");
+			$('#contactTab').removeClass("active");
+			$('#aboutTab').removeClass("active");
+			$('#howChangeHappensTab').removeClass("active");
+			$('#whatsBeingDiscussedTab').removeClass("active");
+			$('#howChangeHappensTab').addClass("active");
+
+			displayProfilePic();
+		});
+	</script>
+
+	<div class="container"><div class="row main-row" style="font-family: 'Open Sans', sans-serif; width:50%; margin: 0 auto;"><p style="font-size: 48px; color:#DC5843;">Who To Vote For?</p><br>
+
+	<p style="text-align:left">
+    With the next General Election coming up soon, it is a good time to think about what kind of politician you want to represent you in the Dáil. Its also important to think about what kind of government you want Ireland to have. In order to make the best decision you need to think both about the candidate including:
+    <ul style="text-align:left">
+      <li>Their personal qualities and experience</li>
+        <ul>
+          <li>You can find this out by looking at their <a href="http://www.whichcandidate.ie/">personal webpage</a>, and searching <a href="https://news.google.ie/">news articles</a> to see what journalists, other politicians and your fellow citizens have to say about them. Do you think their career to date has given them the skills to represent you well? If you have received canvassing materials from them, does it emphasise their experience and qualities or provide little detail?</li>
+          <li>If a candidate has been a TD before, you can check the <a href="https://www.kildarestreet.com/">Kildare Street</a> database to see what their contributions to the Dáil have been like.</li>
+        </ul>
+
+      <li>What their individual goals are for their time in the Dáil and their positions on specific policies</li>
+        <ul>
+          <li>Again, their personal website will be useful here. Also useful are online election portals such as <a href="http://www.smartvote.ie/">Smartvote</a>, <a href="http://www.whichcandidate.ie/">Which Candidate</a>, and those hosted by <a href="http://www.rte.ie/news/election-2016/">RTE</a> and <a href="http://www.thejournal.ie/election-2016/">The Journal</a> where all candidates answer the same questions so it is easy to compare</li>
+        </ul>
+
+      <li>Whether those goals are beneficial and achievable</li>
+        <ul>
+          <li>This is a matter of judgment for you. It can help to evaluate whether their goals are SMART. This stands for:</li>
+            <ul>
+              <li>Specific - is the goal described with enough detail? What more do you need to know about it?</li>
+              <li>Measurable - is it possible to measure progress towards this goal? How will you know when it has been achieved?</li>
+              <li>Achievable - can it even be achieved or is it just an ideal?</li>
+              <li>Relevant - is it relevant to your concerns about the future of Irish society?</li>
+              <li>Time-bound - by when do they expect to achieve this goal and is that realistic?</li>
+            </ul>
+          <li>Talk to others about what these goals mean for them so you can get a broader view.</li>
+          <li>Talk to the candidate themselves and see how knowledgeable they are with regard to their own goals.</li>
+        </ul>
+    And their party including:
+      <li>Their stance on specific issues you care about</li>
+        <ul>
+          <li>You can find this on party websites and specifically in the party’s manifesto. Think about whether their positions on these issues aligns with your values. Its also good to think about whether there is evidence that their proposals work, askforevidence.org can be useful for checking this, and that they can be funded.</li>
+        </ul>
+
+      <li>Their track record</li>
+        <ul>
+          <li>Has this party governed well before? How many of their promises do they tend to keep?</li>
+        </ul>
+
+      <li>Their overall election manifesto (i.e. what they are promising)</li>
+        <ul>
+          <li>There will be other issues in the manifesto that may not be a high priority to you but which could nonetheless have important implications for you and society in general.</li>
+        </ul>
+    </ul>
+
+    Sources: League of Women Voters Education Fund, Agyei Tyehimba, Adelle Frank
+
+</p>
+</div>
+</div>
+<script src="js/login.js"></script>
+<br><br><br><br><br>
+</body>
+</html>
